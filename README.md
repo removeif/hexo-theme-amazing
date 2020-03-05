@@ -1,5 +1,6 @@
-# origin theme readme
--><a href="# modify readme">Amazing</a>
+# origin thmeme
+<a href="#modify readme">Amazing</a>
+
 <p align="center" class="mb-2">
 <img class="not-gallery-item" height="48" src="https://ppoffice.github.io/hexo-theme-icarus/img/logo.svg">
 <br> A simple, delicate, and modern theme for the static site generator Hexo.
@@ -148,9 +149,11 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 
 # modify readme
+
 <p align="center" class="mb-2">
-Amazing
+<h1>Amazing<h1>
 </p>
+
 **预览图**
 + 首页1
 ![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200208141757.png)
