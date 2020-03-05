@@ -1,0 +1,333 @@
+# Version of the configuration file
+version: 3.0.0
+# Path or URL to the website's logo
+logo: https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2019/20191121122803.png #https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2019/20191121115040.png
+# Page metadata configurations
+head:
+    # URL or path to the website's icon
+    favicon: https://cdn.jsdelivr.net/gh/removeif/removeif.github.io@latest/img/wico.png
+    # Canonical URL of the current page
+    canonical_url:
+    # Open Graph metadata
+    # https://hexo.io/docs/helpers.html#open-graph
+    open_graph:
+        # Page title (og:title) (optional)
+        # You should leave this blank for most of the time
+        title: 辣椒の酱
+        # Page type (og:type) (optional)
+        # You should leave this blank for most of the time
+        type: blog
+        # Page URL (og:url) (optional)
+        # You should leave this blank for most of the time
+        url: https://removeif.github.io/
+        # Page cover (og:image) (optional) Default to the Open Graph image or thumbnail of the page
+        # You should leave this blank for most of the time
+        image: https://cdn.jsdelivr.net/gh/removeif/removeif.github.io@latest/img/avatar.jpg
+        # Site name (og:site_name) (optional)
+        # You should leave this blank for most of the time
+        site_name: 辣椒の酱
+        # Page author (article:author) (optional)
+        # You should leave this blank for most of the time
+        author: removeif
+        # Page description (og:description) (optional)
+        # You should leave this blank for most of the time
+        description: java,技术分享,后端开发,支付框架,数据接口,算法,leetcode
+        # Twitter card type (twitter:card)
+        twitter_card:
+        # Twitter ID (twitter:creator)
+        twitter_id:
+        # Twitter ID (twitter:creator)
+        twitter_site:
+        # Google+ profile link (deprecated)
+        google_plus:
+        # Facebook admin ID
+        fb_admins:
+        # Facebook App ID
+        fb_app_id:
+    # Structured data of the page
+    # https://developers.google.com/search/docs/guides/intro-structured-data
+    structured_data:
+        # Page title (optional)
+        # You should leave this blank for most of the time
+        title: 辣椒の酱
+        # Page description (optional)
+        # You should leave this blank for most of the time
+        description: java,技术分享,后端开发,支付框架,数据接口,算法,leetcode
+        # Page URL (optional)
+        # You should leave this blank for most of the time
+        url: https://removeif.github.io/
+        # Page author (article:author) (optional)
+        # You should leave this blank for most of the time
+        author: removeif
+        # Page images (optional) Default to the Open Graph image or thumbnail of the page
+        # You should leave this blank for most of the time
+        image: https://cdn.jsdelivr.net/gh/removeif/removeif.github.io@latest/img/avatar.jpg
+    # Additional HTML meta tags in an array
+    meta:
+        # Meta tag specified in <attribute>=<value> style
+        # E.g., name=theme-color;content=#123456 => <meta name="theme-color" content="#123456">
+        - ''
+    # URL or path to the website's RSS atom.xml
+    rss: /atom.xml
+# Page top navigation bar configurations
+navbar:
+    # Naviagtion menu items
+    menu:
+        首页: /
+        归档: /archives
+        分类: /categories
+        标签: /tags
+        律法: /tags/法律/
+        影音: /media
+        相册: /album
+        友链: /friend
+        碎碎念: /self-talking
+        留言: /message
+        关于: /about
+    # Links to be shown on the right of the navigation bar
+    links:
+        Download on GitHub:
+            icon: fab fa-github
+            url: 'https://github.com/removeif'
+# Page footer configurations
+footer:
+    # Links to be shown on the right of the footer section
+    links:
+        Creative Commons:
+            icon: fab fa-creative-commons
+            url: 'https://creativecommons.org/'
+        Attribution 4.0 International:
+            icon: fab fa-creative-commons-by
+            url: 'https://creativecommons.org/licenses/by/4.0/'
+        Download on GitHub:
+            icon: fab fa-github
+            url: 'https://github.com/removeif'
+# Article related configurations
+article:
+    # Code highlight settings
+    highlight:
+        # Code highlight themes
+        # https://github.com/highlightjs/highlight.js/tree/master/src/styles
+        theme: atom-one-dark
+        # Show copy code button
+        clipboard: true
+        # Default folding status of the code blocks. Can be "", "folded", "unfolded"
+        fold: unfolded
+    # Whether to show thumbnail image for every article
+    thumbnail: true
+    # Whether to show estimated article reading time
+    readtime: true
+# Search plugin configurations
+# https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Search/
+search:
+    type: insight
+
+# Donate plugin configurations
+donate:
+    # Alipay donate button configurations
+    -
+        # Donation entry name
+        type: alipay
+        # Qrcode image URL
+        qrcode: 'https://raw.githubusercontent.com/removeif/blog_image/master/img/2019/20190802135456.png'
+    -
+        # Donation entry name
+        type: wechat
+        # Qrcode image URL
+        qrcode: 'https://raw.githubusercontent.com/removeif/blog_image/master/img/2019/20190802135550.png'
+#    -
+#    -
+#        type: patreon
+#        # URL to the Patreon page
+#        url: ''
+#    # Paypal donate button configurations
+#    -
+#        type: paypal
+#        # Paypal business ID or email address
+#        business: ''
+#        # Currency code
+#        currency_code: USD
+#    # Wechat donate button configurations
+#    -
+#        type: wechat
+#        # Wechat qrcode image URL
+#        qrcode: ''
+# Share plugin configurations
+# https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Share/
+share:
+    type: sharejs
+    # URL to the ShareThis share plugin script
+    install_url: ''
+# Sidebar configurations.
+# Please be noted that a sidebar is only visible when it has at least one widget
+sidebar:
+    # Left sidebar configurations
+    left:
+        # Whether the sidebar sticks to the top when page scrolls
+        sticky: true
+    # Right sidebar configurations
+    right:
+        # Whether the sidebar sticks to the top when page scrolls
+        sticky: false
+# Sidebar widget configurations
+# http://ppoffice.github.io/hexo-theme-icarus/categories/Widgets/
+widgets:
+    -
+            # Where should the widget be placed, left sidebar or right sidebar
+            position: left
+            type: toc
+    # Profile widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: left
+        type: profile
+        # Author name
+        author: 辣椒の酱
+        # Title of the author to be shown in the profile widget
+        author_title: 尚未执佩剑，转眼即江湖
+        # Author's current location to be shown in the profile widget
+        location: 阿尔及利亚
+        # Path or URL to the avatar to be shown in the profile widget
+        avatar: https://cdn.jsdelivr.net/gh/removeif/removeif.github.io@latest/img/avatar.jpg
+        # Whether show the rounded avatar image
+        avatar_rounded: true
+        # Email address for the Gravatar
+        gravatar:
+        # URL or path for the follow button
+        follow_link: 'https://weibo.com/u/3050419984'
+        # Links to be shown on the bottom of the profile widget
+        social_links:
+            Github:
+                icon: fab fa-github
+                url: 'https://github.com/removeif'
+            Weibo:
+                icon: fab fa-weibo
+                url: 'https://weibo.com/u/3050419984'
+            Email:
+                icon: fa fa-envelope
+                url: 'mailto:removeif@163.com'
+            Next:
+                icon: fab fa-dribbble
+                url: 'https://removeif.github.io/remove.io'
+            RSS:
+                icon: fas fa-rss
+                url: /atom.xml
+
+    # Recommendation links widget configurations
+    # Table of contents widget configurations
+    -
+        position: right
+        type: latest_comment
+#    -
+#        # Where should the widget be placed, left sidebar or right sidebar
+#        position: left
+#        type: links
+#        # Names and URLs of the sites
+#        links:
+#            Hexo: 'https://hexo.io'
+#            Bulma: 'https://bulma.io'
+    # Recent posts widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: right
+        type: recent_posts
+    # Categories widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: right
+        type: categories
+    # Archives widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: right
+        type: archives
+    # Tags widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: right
+        type: tags
+    # Google FeedBurner email subscription widget configurations
+    -
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: right
+        type: subscribe_email
+        # Hint text under the email input
+        description: 输入邮箱开始订阅，更博后邮件通知！
+        # Feedburner ID
+        feedburner_id: removeifFeedsId
+    # Google AdSense unit configurations
+#    -
+#        # Where should the widget be placed, left sidebar or right sidebar
+#        position: left
+#        type: adsense
+#        # AdSense client ID
+#        client_id: ''
+#        # AdSense AD unit ID
+#        slot_id: ''
+# Plugin configurations
+plugins:
+    # Enable page startup animations
+    animejs: true
+    # Show the "back to top" button
+    back_to_top: true
+    # Baidu Analytics plugin settings
+    # https://tongji.baidu.com
+    baidu_analytics:
+        # Baidu Analytics tracking ID
+        tracking_id:
+    # BuSuanZi site/page view counter
+    # https://busuanzi.ibruce.info
+    busuanzi: true
+    # Enable the lightGallery and Justified Gallery plugins
+    # https://ppoffice.github.io/hexo-theme-icarus/Plugins/General/gallery-plugin/
+    gallery: true
+    # Google Analytics plugin settings
+    # https://analytics.google.com
+    google_analytics:
+        # Google Analytics tracking ID
+        tracking_id:
+    # Hotjar user feedback plugin
+    # https://www.hotjar.com/
+    hotjar:
+        # Hotjar site id
+        site_id:
+    # Enable the KaTeX math typesetting supprot
+    # https://katex.org/
+    katex: false
+    # Enable the MathJax math typesetting support
+    # https://www.mathjax.org/
+    mathjax: false
+    # Enable the Outdated Browser plugin
+    # http://outdatedbrowser.com/
+    outdated_browser: false
+    # Show a progress bar at top of the page on page loading
+    progressbar: true
+# CDN provider settings
+# https://ppoffice.github.io/hexo-theme-icarus/Configuration/Theme/speed-up-your-site-with-custom-cdn/
+providers:
+    # Name or URL template of the JavaScript and/or stylesheet CDN provider
+    cdn: jsdelivr
+    # Name or URL template of the webfont CDN provider
+    fontcdn: google
+    # Name or URL of the fontawesome icon font CDN provider
+    iconcdn: fontawesome
+    # https://cdn.jsdelivr.net/gh/removeif/removeif.github.io@v1.0.6/json_data/record.json
+    my_cdn_pre: https://cdn.jsdelivr.net/gh/removeif/removeif.github.io@v1.0.6
+
+# Comment plugin configurations
+# https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Comment/
+comment:
+    type: gitalk
+    # Disqus shortname
+#    shortname: ''
+    owner: removeif         # (required) GitHub user name
+    repo: blog_comment          # (required) GitHub repository name
+    client_id: 46a9f3481b46ea0129d8     # (required) OAuth application client id
+    client_secret: 79c7c9cb847e141757d7864453bcbf89f0655b24 # (required) OAuth application client secret
+    admin: ['removeif']
+    create_issue_manually: true
+    distraction_free_mode: false
+    has_hot_recommend: true # 是否有热门推荐
+    has_latest_comment: true #是否有最新评论
+
+live2Dswitch: on #live2D开关 on 为打开
