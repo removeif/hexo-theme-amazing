@@ -49,7 +49,7 @@ v11.1.0
 192:hexo-theme-icarus-removeif xx$ npm -v
 6.4.1
 ```  
-#### 在博客页面克隆博客博客主题代码
+#### 在博客目录下clone主题代码
 ```jshelllanguage
 git clone https://github.com/removeif/hexo-theme-amazing.git /themes/amazing
 ```
