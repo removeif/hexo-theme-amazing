@@ -1,5 +1,5 @@
 # origin thmeme
-<a href="#modify readme">Amazing</a>
+<a href="#1">Amazing</a>
 
 <p align="center" class="mb-2">
 <img class="not-gallery-item" height="48" src="https://ppoffice.github.io/hexo-theme-icarus/img/logo.svg">
@@ -147,12 +147,11 @@ If you feel like to help us build a better Icarus, you can
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/ppoffice/hexo-theme-icarus/blob/master/LICENSE) file for details.
 
 
+<div id="1"/>
 
 # modify readme
 
-<p align="center" class="mb-2">
-<h1>Amazing<h1>
-</p>
+<p align="center" class="mb-2"><h1>Amazing<h1></p>
 
 **预览图**
 + 首页1
@@ -208,7 +207,8 @@ v11.1.0
 git clone https://github.com/removeif/hexo-theme-amazing.git /themes/amazing
 ```
 #### 开始部分配置：
-**敲黑板！！！！首先全局以及主题中的`_config.yml`配置成自己的对应参数。**
+**敲黑板！！！！首先全局以及主题中的`_config.yml`配置成自己的对应参数。**  
+
 把主题中ex_pages文件夹中的文件复制到博客相应目录下面。包含了文章模板、关于页、相册页、友链、留言板、音乐、影音、碎碎念页面（各个页面的.md文件可自定义修改内容），可以自己选择性需要哪些页面复制哪些过去，同时对应配置主题中`_config.yml`需要哪些页面进行修改，如下配置
 ```yaml
 navbar:
