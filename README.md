@@ -14,6 +14,8 @@
 因为修改了原作者源码，有什么问题请先联系我，不要去麻烦原作者了，能自己解决的问题就不要麻烦别人了，每个人的时间都很宝贵。  
 膜拜和感谢所有模块的原作者,orz👻,辛苦了。  
 
+**本仓库为纯主题仓库，博客主题完整仓库请移步为[hexo-theme-icarus-removeif](https://github.com/removeif/hexo-theme-icarus-removeif)**
+
 
 线上博客：[欢迎围观](https://removeif.github.io/)，[博客源码Live Demo](https://removeif.github.io/removeif-demo/)
 
