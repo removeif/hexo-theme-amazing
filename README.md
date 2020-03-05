@@ -1,5 +1,16 @@
-# origin thmeme
-<a href="#1">Amazing</a>
+**预览图**
++ 首页1
+![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200208141757.png)
++ 首页2
+![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200208142200.png)
++ 博客文章
+![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200208142111.png)
++ 首页深色
+![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200208142013.png)
+
+<a href="#1">Amazing config</a>
+
+# origin thmeme config
 
 <p align="center" class="mb-2">
 <img class="not-gallery-item" height="48" src="https://ppoffice.github.io/hexo-theme-icarus/img/logo.svg">
@@ -151,17 +162,7 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 # modify readme
 
-<p align="center" class="mb-2"><h1>Amazing<h1></p>
-
-**预览图**
-+ 首页1
-![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200208141757.png)
-+ 首页2
-![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200208142200.png)
-+ 博客文章
-![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200208142111.png)
-+ 首页深色
-![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200208142013.png)
+<p align="center" class="mb-2">Amazing</p>
 
 ### 写在前面
 
