@@ -173,9 +173,9 @@ sidebar:
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Widgets/
 widgets:
     -
-            # Where should the widget be placed, left sidebar or right sidebar
-            position: left
-            type: toc
+        # Where should the widget be placed, left sidebar or right sidebar
+        position: left
+        type: toc
     # Profile widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
