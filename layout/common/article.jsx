@@ -29,7 +29,7 @@ module.exports = class extends Component {
 
         const id = crypto.createHash('md5').update(helper.get_path_end_str(page.path,page.uniqueId,page.title)).digest('hex');
 
-        const myPermalink = config.url+url_for(page.link || page.path);
+        const myPermalink = config.url + config.root + page.path;
 
         return <Fragment>
             {/*{console.log(index+","+count)}*/}
@@ -97,6 +97,14 @@ module.exports = class extends Component {
                         {page.tags.map(tag => {
                             return <a class="link-muted mr-2" rel="tag" href={url_for(tag.path)}>{tag.name}</a>;
                         })}
+
+                        {page.updated && page.updated > page.date ?
+                            <p class="text-right font1_1">
+                                <time datetime={date_xml(page.updated)}>
+                                    <strong><em>&nbsp;本文最后修改于:&nbsp;{date(page.updated)}.</em></strong>
+                                </time>
+                            </p> : null
+                        }
                     </div> : null}
                     {/* "Read more" button */}
                     {index && page.excerpt ?
