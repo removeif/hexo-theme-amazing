@@ -31,7 +31,7 @@ module.exports = function(hexo) {
             }
         } else {
             // 对于短连接模式，原来有issue评论的，使用title关联，如果有最新评论以及热门推荐的需要 更爱相应issue中的文章url 
-            if (title != undefined) {
+            if (title != undefined && title != "") {
                 title += ".html";
                 title = title.toLocaleLowerCase();
                 return title.replace(/\ /gi, "-");
