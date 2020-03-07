@@ -29,6 +29,7 @@ module.exports = class extends Component {
 
         const id = crypto.createHash('md5').update(helper.get_path_end_str(page.path,page.uniqueId)).digest('hex');
 
+        const myPermalink = config.url+'/'+url_for(page.path)
 
         return <Fragment>
             {/*{console.log(index+","+count)}*/}
@@ -129,9 +130,9 @@ module.exports = class extends Component {
                     {/*copyright*/}
                     {!index && page.layout == 'post' ?
                     <ul class="post-copyright">
-                        <li><strong>本文标题：</strong><a href={url_for(page.permalink)}>{page.title}</a></li>
+                        <li><strong>本文标题：</strong><a href={myPermalink}>{page.title}</a></li>
                         <li><strong>本文作者：</strong><a href={url_for(config.url)}>{config.author}</a></li>
-                        <li><strong>本文链接：</strong><a href={url_for(page.permalink)}>{config.url+'/'+page.path}</a></li>
+                        <li><strong>本文链接：</strong><a href={myPermalink}>{myPermalink}</a></li>
                         <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
                         </li>
                     </ul>:null}
