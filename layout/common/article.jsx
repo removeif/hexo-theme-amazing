@@ -29,7 +29,7 @@ module.exports = class extends Component {
 
         const id = crypto.createHash('md5').update(helper.get_path_end_str(page.path,page.uniqueId,page.title)).digest('hex');
 
-        const myPermalink = config.url+'/'+url_for(page.link || page.path);
+        const myPermalink = config.url+url_for(page.link || page.path);
 
         return <Fragment>
             {/*{console.log(index+","+count)}*/}
