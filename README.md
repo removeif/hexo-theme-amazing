@@ -286,7 +286,7 @@ widget中的归档和分类和标签精简了，数据多时很丑，改为了�
 原来已有博客文章的迁移，只需要把原来对应的文章放到source/_posts里即可。然后去对应文章下面创建评论issue。  
 #### 以上配置好后
 ```yaml
-$ npm install hexo --save #安装依赖包（只需要执行一次）可直接把本文最后的json文件复制到博客下面的依赖文件package.json后在执行此命令
+$ npm install #安装依赖包（只需要执行一次）可直接把本文最后的json文件复制到博客下面的依赖文件package.json后在执行此命令
 $ hexo clean #清除缓存
 $ hexo g #编译 
 $ hexo s #启动服务 
