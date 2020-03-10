@@ -3,7 +3,7 @@ const { cacheComponent } = require('../util/cache');
 
 class LatestComment extends Component {
     render() {
-        const {isReturn} = this.props;
+        const { isReturn } = this.props;
 
         if (!isReturn) {
             return null
@@ -13,7 +13,7 @@ class LatestComment extends Component {
             <div class="card-content">
                 <h3 class="menu-label">最新评论</h3><span class="body_hot_comment">加载中，最新评论有1分钟延迟...</span>
             </div>
-            </div>
+        </div>
     }
 }
 
@@ -21,11 +21,12 @@ module.exports = cacheComponent(LatestComment, 'widget.latestcomment', props => 
     const { config } = props;
     const { comment } = config;
 
-    if (comment.type == 'undefined' || comment.type != 'gitalk') {
+    if (comment.type == 'undefined' || comment.type != 'gitalk'
+        || !comment.has_latest_comment) {
         return null
     }
 
     return {
-        isReturn:true
+        isReturn: true
     };
 });

@@ -327,7 +327,7 @@ comment:
     admin: ['removeif']
     create_issue_manually: true
     distraction_free_mode: false
-    has_hot_recommend: true # 是否有热门推荐
-    has_latest_comment: true #是否有最新评论
+    has_hot_recommend: false # 是否有热门推荐
+    has_latest_comment: false #是否有最新评论
 
 live2Dswitch: on #live2D开关 on 为打开
