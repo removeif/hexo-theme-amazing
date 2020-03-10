@@ -208,7 +208,8 @@ wrong_hash_message: 不好意思，信息无法验证！
 ```
 注：**加密文章不会出现在最新文章列表widget中，也不会出现在文章中推荐列表中，首页列表中需要设置top: -1 让它排在最后比较合理一些。**
 #### 10.碎碎念的使用
-在github中，创建碎碎念issue，并且打上对应的label（`eg:666666`）对应配置中为id，填写到source/self-talking/index.md文件中如下对应位置，其余配置也要改成自己的，如clientID等。
+在github中，创建碎碎念issue，并且打上对应的label（`eg:Gitalk,666666`）如下图，此处666666对应下面配置代码中的id，填写到source/self-talking/index.md文件中如下对应位置，其余配置也要改成自己的，如clientID等。
+![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200310182707.png)
 ```js
 <script>
     var gitalk = new Gitalk({
