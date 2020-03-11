@@ -145,8 +145,8 @@ module.exports = class extends Component {
             <link rel="stylesheet" href={url_for('/css/style.css')} />
             <script src={cdn('jquery', '3.3.1', 'dist/jquery.min.js')}></script>
             <script src={url_for('/js/globalUtils.js')}></script>
-            {adsenseClientId ? <script data-ad-client={adsenseClientId}
-                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async={true}></script> : null}
+            {/* {adsenseClientId ? <script data-ad-client={adsenseClientId}
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async={true}></script> : null} */}
             {config.live2Dswitch == 'on' ? <link rel="stylesheet" href={url_for('/live2d/waifu.css')}/> : null}
             {config.live2Dswitch == 'on' ? <script type="text/javascript" async={true} src={url_for('/live2d/autoload.js')}></script>: null}
 
