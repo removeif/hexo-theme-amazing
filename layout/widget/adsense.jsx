@@ -25,7 +25,6 @@ class AdSense extends Component {
                         data-ad-slot={slotId}
                         data-ad-format="auto"
                         data-full-width-responsive="true"></ins>
-                        data-ad-format="auto"
                     <script dangerouslySetInnerHTML={{ __html: '(adsbygoogle = window.adsbygoogle || []).push({});' }}></script>
                 </div>
             </div>
