@@ -27,7 +27,8 @@ class Profile extends Component {
             counter,
             followLink,
             followTitle,
-            socialLinks
+            socialLinks,
+            hasHitokoto
         } = this.props;
 
         const hitokotoJs = `function getYiyan(){
@@ -86,9 +87,12 @@ class Profile extends Component {
                     <a class="level-item button is-primary is-rounded" href={followLink} target="_blank" rel="noopener">{followTitle}</a>
                 </div> : null}
                 {this.renderSocialLinks(socialLinks)}
-                <hr/>
-                <p id="hitokoto">:D 一言句子获取中...</p>
-                <script type="text/javascript" dangerouslySetInnerHTML={{ __html: hitokotoJs }} defer={true}></script>
+                {hasHitokoto == undefined || hasHitokoto ? <div>
+                    <hr />
+                    <p id="hitokoto">:D 一言句子获取中...</p>
+                    <script type="text/javascript" dangerouslySetInnerHTML={{ __html: hitokotoJs }} defer={true}></script>
+                </div> : null}
+
             </div>
         </div>;
     }
@@ -104,7 +108,8 @@ module.exports = cacheComponent(Profile, 'widget.profile', props => {
         author_title,
         location,
         follow_link,
-        social_links
+        social_links,
+        hasHitokoto
     } = widget;
     const { url_for, _p, __ } = helper;
 
@@ -162,6 +167,7 @@ module.exports = cacheComponent(Profile, 'widget.profile', props => {
         },
         followLink: url_for(follow_link),
         followTitle: __('widget.follow'),
-        socialLinks
+        socialLinks,
+        hasHitokoto
     };
 });

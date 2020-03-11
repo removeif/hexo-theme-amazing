@@ -212,6 +212,7 @@ widgets:
             RSS:
                 icon: fas fa-rss
                 url: /atom.xml
+        hasHitokoto: false #左边一言开关，true-开，false-关       
 
     # Recommendation links widget configurations
     # Table of contents widget configurations
@@ -330,4 +331,4 @@ comment:
     has_hot_recommend: true # 是否有热门推荐
     has_latest_comment: true #是否有最新评论
 
-live2Dswitch: on #live2D开关 on 为打开
+live2Dswitch: on #live2D开关 on-开 off-关
