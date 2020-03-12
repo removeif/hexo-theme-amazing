@@ -17,7 +17,8 @@
 **本仓库为纯主题仓库，博客主题完整仓库请移步为[hexo-theme-icarus-removeif](https://github.com/removeif/hexo-theme-icarus-removeif)**
 
 
-**adsense分支配置**
+**adsense分支配置**  
+
 需要更改文件/themes/amazing/layout/widget/ads_x.jsx中的以下两个值，为自己在adsense中申请的页内广告的对应的值。
 ```text
 data-ad-client="ca-pub-6343805421927634"
