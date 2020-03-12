@@ -332,3 +332,4 @@ comment:
     has_latest_comment: true #是否有最新评论
 
 live2Dswitch: on #live2D开关 on-开 off-关
+index_adsense_positions: 0, #首页adsense放置广告的位置,尽量少配置些，多了有可能不显示。一位的时候，加个逗号，如1,或者1,5,9

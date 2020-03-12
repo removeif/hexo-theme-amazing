@@ -5,6 +5,7 @@ const Donates = require('./donates');
 const Comment = require('./comment');
 const crypto = require('crypto');
 const RecommendPosts = require('../widget/recommend_post');
+const AdsenseX = require('../widget/ads_x');
 
 
 /**
@@ -19,8 +20,8 @@ function getWordCount(content) {
 module.exports = class extends Component {
     render() {
 
-        const { config, helper, page, index, site } = this.props;
-        const { article, plugins,comment } = config;
+        const { config, helper, page, index, site,indexAt } = this.props;
+        const { article, plugins,comment,index_adsense_positions } = config;
         const { has_thumbnail, get_thumbnail, url_for, date, date_xml, __, _p } = helper;
 
         const language = page.lang || page.language || config.language || 'en';
@@ -149,6 +150,7 @@ module.exports = class extends Component {
                     {!index ? <Share config={config} page={page} helper={helper} /> : null}
                 </article>
             </div>
+            {index && (index_adsense_positions.indexOf(indexAt) > -1) ? <AdsenseX/> : null}
             {/* Donate button */}
             {!index ? <Donates config={config} helper={helper} /> : null}
             {/* Post navigation */}
@@ -167,6 +169,7 @@ module.exports = class extends Component {
                 </div> : null}
             </nav> : null}
             {/* Comment */}
+            {!index ? <AdsenseX /> : null}
             {!index ? <Comment config={config} page={page} helper={helper} /> : null}
         </Fragment>;
     }

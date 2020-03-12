@@ -1,6 +1,7 @@
 const { Component, Fragment } = require('inferno');
 const Article = require('./common/article');
 const Paginator = require('./misc/paginator');
+const AdsenseX = require('./widget/ads_x');
 
 module.exports = class extends Component {
     render() {
@@ -8,7 +9,7 @@ module.exports = class extends Component {
         const { __, url_for } = helper;
 
         return <Fragment>
-            {page.posts.map(post => <Article config={config} page={post} helper={helper} index={true} />)}
+            {page.posts.map((post, index, arr) => <Article config={config} page={post} helper={helper} index={true} indexAt={index} />)}
             {page.total > 1 ? <Paginator
                 current={page.current}
                 total={page.total}
@@ -17,6 +18,7 @@ module.exports = class extends Component {
                 urlFor={url_for}
                 prevTitle={__('common.prev')}
                 nextTitle={__('common.next')} /> : null}
+            <AdsenseX />
         </Fragment>;
     }
 };

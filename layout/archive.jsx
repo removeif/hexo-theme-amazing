@@ -2,6 +2,7 @@ const moment = require('moment');
 const { Component, Fragment } = require('inferno');
 const Paginator = require('./misc/paginator');
 const ArticleMedia = require('./common/article-media');
+const AdsenseX = require('./widget/ads_x');
 
 module.exports = class extends Component {
     render() {
@@ -163,6 +164,7 @@ module.exports = class extends Component {
                 urlFor={url_for}
                 prevTitle={__('common.prev')}
                 nextTitle={__('common.next')} /> : null}
+            <AdsenseX />
         </Fragment>;
     }
 };

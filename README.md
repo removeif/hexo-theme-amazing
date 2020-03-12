@@ -17,6 +17,19 @@
 **本仓库为纯主题仓库，博客主题完整仓库请移步为[hexo-theme-icarus-removeif](https://github.com/removeif/hexo-theme-icarus-removeif)**
 
 
+**adsense分支配置**
+需要更改文件/themes/amazing/layout/widget/ads_x.jsx中的以下两个值，为自己在adsense中申请的页内广告的对应的值。
+```text
+data-ad-client="ca-pub-6343805421927634"
+data-ad-slot="5134765588"
+```
+然后主题_config.yml中配置显示的广告的位数
+```text
+index_adsense_positions: 0, #首页adsense放置广告的位置,尽量少配置些，多了有可能不显示。一位的时候，加个逗号，如1,或者1,5,9
+```
+可实现的效果，在首页，归档页，分类页，标签页，每篇文章末尾自动加上此adsense广告模块，详情效果可参考[博客](https://removeif.github.io/about/)
+
+
 线上博客：[欢迎围观](https://removeif.github.io/)，[博客源码Live Demo](https://removeif.github.io/removeif-demo/)
 
 ### 一、icarus主题之上主要改动
