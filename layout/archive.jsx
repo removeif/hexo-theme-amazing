@@ -6,7 +6,7 @@ const ArticleMedia = require('./common/article-media');
 module.exports = class extends Component {
     render() {
         const { config, page,site, helper } = this.props;
-        const { url_for, __, has_thumbnail, get_thumbnail, date_xml, date } = helper;
+        const { url_for, my_cdn, __, has_thumbnail, get_thumbnail, date_xml, date } = helper;
 
         const language = page.lang || page.language || config.language;
 
@@ -150,7 +150,7 @@ module.exports = class extends Component {
                     <div style="post-calendar-pre">
                         <div id="post-calendar"></div>
                     </div>
-                    <script type="text/javascript" src={url_for("/js/echarts.min.js")}></script>
+                    <script type="text/javascript" src={my_cdn(url_for("/js/echarts.min.js"))}></script>
                     <script type="text/javascript" dangerouslySetInnerHTML={{ __html: js }}></script>
                     {articleList}
                 </div>

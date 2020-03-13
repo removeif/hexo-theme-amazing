@@ -21,9 +21,10 @@ class Gallery extends Component {
 
 module.exports = cacheComponent(Gallery, 'plugin.gallery', props => {
     const { head, helper } = props;
+    const { url_for, my_cdn } = helper;
     return {
         head,
-        jsUrl: helper.url_for('/js/gallery.js'),
+        jsUrl: my_cdn(url_for('/js/gallery.js')),
         lightGallery: {
             jsUrl: helper.cdn('lightgallery', '1.6.8', 'dist/js/lightgallery.min.js'),
             cssUrl: helper.cdn('lightgallery', '1.6.8', 'dist/css/lightgallery.min.css')

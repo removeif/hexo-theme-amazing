@@ -10,7 +10,7 @@ const classname = require('./util/classname');
 module.exports = class extends Component {
     render() {
         const { env, site, config, page, helper, body } = this.props;
-
+        const { my_cdn } = helper;
         const{ comment } = config;
 
         // =====index hot_recommend
@@ -37,7 +37,7 @@ module.exports = class extends Component {
             <Head env={env} site={site} config={config} helper={helper} page={page} />
             <body class={`is-${columnCount}-column has-navbar-fixed-top`}>
                 <Navbar config={config} helper={helper} page={page} />
-                <script type="text/javascript" src="/js/theme-setting.js"></script>
+                <script type="text/javascript" src={my_cdn('/js/theme-setting.js')}></script>
                 <section class="section">
                     <div class="container">
                         <div class="columns">
