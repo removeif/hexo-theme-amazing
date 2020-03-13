@@ -58,6 +58,7 @@ class Gitalk extends Component {
 
 module.exports = cacheComponent(Gitalk, 'comment.gitalk', props => {
     const { helper, comment } = props;
+    const { my_cdn, url_for } = helper;
 
     // FIXME: config name change
     const id = crypto.createHash('md5').update(helper.get_path_end_str(props.page.path,props.page.uniqueId,props.page.title)).digest('hex');
@@ -77,8 +78,8 @@ module.exports = cacheComponent(Gitalk, 'comment.gitalk', props => {
         proxy: comment.proxy,
         flipMoveOptions: comment.flip_move_options,
         enableHotKey: comment.enable_hotkey,
-        cssUrl: helper.cdn('gitalk', '1.5.0', 'dist/gitalk.css'),
-        jsUrl: helper.url_for('/js/gitalk.min.js'),
+        cssUrl: helper.cdn('gitalk', '1.6.0', 'dist/gitalk.css'),
+        jsUrl: my_cdn(url_for('/js/gitalk.min.js')),
         isLocked: !canComments,
     };
 });

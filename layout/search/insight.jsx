@@ -40,6 +40,7 @@ class Insight extends Component {
 
 module.exports = cacheComponent(Insight, 'search.insight', props => {
     const { helper } = props;
+    const { url_for, my_cdn } = helper;
 
     return {
         hint: helper.__('search.hint'),
@@ -50,8 +51,8 @@ module.exports = cacheComponent(Insight, 'search.insight', props => {
             tags: helper.__('insight.tags'),
             untitled: helper.__('insight.untitled')
         },
-        contentUrl: helper.url_for('/content.json'),
-        jsUrl: helper.url_for('/js/insight.js'),
-        cssUrl: helper.url_for('/css/insight.css')
+        contentUrl: my_cdn(url_for('/content.json')),
+        jsUrl: my_cdn(url_for('/js/insight.js')),
+        cssUrl: my_cdn(url_for('/css/insight.css'))
     };
 });

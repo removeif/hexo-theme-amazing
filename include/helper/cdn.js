@@ -85,10 +85,14 @@ module.exports = function(hexo) {
 
         // https://cdn.jsdelivr.net/gh/removeif/removeif.github.io@v1.0.6/json_data/record.json
         // full url,return
-        if(filename.startsWith("https://cdn.jsdelivr.net") || filename.startsWith("//")){
+        if (filename.startsWith("https://cdn.jsdelivr.net")) {
             return filename;
-        }else{
-            return this.config.providers.my_cdn_pre+filename;
+        } else {
+            if (this.config.providers.my_cdn_pre != undefined && this.config.providers.my_cdn_pre != "") {
+                return this.config.providers.my_cdn_pre + filename;
+            } else {
+                return filename;
+            }
         }
     });
 

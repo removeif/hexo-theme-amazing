@@ -21,21 +21,13 @@ module.exports = class extends Component {
     render() {
 
         const { config, helper, page, index, site,indexAt } = this.props;
-        const { article, plugins,comment,index_adsense_positions } = config;
-        const { has_thumbnail, get_thumbnail, url_for, date, date_xml, __, _p } = helper;
-
+        const { article, plugins,comment,index_adsense_positions } = config;  
+        const { has_thumbnail, my_cdn, get_thumbnail, url_for, date, date_xml, __, _p } = helper;
         const language = page.lang || page.language || config.language || 'en';
-
-        const isGitalk = comment.type != 'undefined' && comment.type == 'gitalk';
-
         const id = crypto.createHash('md5').update(helper.get_path_end_str(page.path,page.uniqueId,page.title)).digest('hex');
-
         const myPermalink = config.url + config.root + page.path;
 
         return <Fragment>
-            {/*{console.log(index+","+count)}*/}
-            {/* First page add hot recommend*/}
-            {/*{ index && isGitalk ? <Widget helper={helper} type={'hot_recommend'} config={config} page={page}/> : null}*/}
             {/* Main content */}
             <div class="card">
                 {/* Thumbnail */}
@@ -57,7 +49,7 @@ module.exports = class extends Component {
                             <time class="level-item" dateTime={date_xml(page.date)}>{date(page.date)}</time>
 
                             {comment.type !== 'undefined' && comment.type == 'gitalk' ?
-                                <a class="commentCountImg" href={`${url_for(page.link || page.path)}#comment-container`}><span class="display-none-class">{id}</span><img class="not-gallery-item" src={`${url_for('/img/chat.svg')}`}/>&nbsp;<span class="commentCount" id={id}>&nbsp;99+</span>&nbsp;&nbsp;&nbsp;&nbsp;</a> : null}
+                                <a class="commentCountImg" href={`${url_for(page.link || page.path)}#comment-container`}><span class="display-none-class">{id}</span><img class="not-gallery-item" src={`${my_cdn(url_for('/img/chat.svg'))}`}/>&nbsp;<span class="commentCount" id={id}>&nbsp;99+</span>&nbsp;&nbsp;&nbsp;&nbsp;</a> : null}
                             {/* Categories */}
                             {page.categories && page.categories.length ? <span class="level-item">
                                 {(() => {
