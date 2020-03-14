@@ -30,7 +30,7 @@ function getPageTitle(page, siteTitle, helper) {
 module.exports = class extends Component {
     render() {
         const { env, site, config, helper, page } = this.props;
-        const { url_for, cdn, my_cdn, iconcdn, fontcdn, is_post } = helper;
+        const { url_for, cdn, my_cdn, iconcdn, fontcdn, is_post, remove_html_tag } = helper;
         const {
             url,
             meta_generator = true,
@@ -106,14 +106,14 @@ module.exports = class extends Component {
             <title>{getPageTitle(page, config.title, helper)}</title>
 
             {typeof open_graph === 'object' ? <OpenGraph
-                type={open_graph.type || (is_post(page) ? 'article' : 'website')}
-                title={open_graph.title || page.title || config.title}
+                type={(is_post(page) ? 'article' : 'website') || open_graph.type}
+                title={page.title || open_graph.title || config.title}
                 date={page.date}
                 updated={page.updated}
                 author={open_graph.author || config.author}
-                description={open_graph.description || page.description || page.excerpt || page.content || config.description}
+                description={page.description || remove_html_tag(page.excerpt) || open_graph.description || page.content || config.description}
                 keywords={page.keywords || (page.tags && page.tags.length ? page.tags : undefined) || config.keywords}
-                url={open_graph.url || url}
+                url={page.permalink || open_graph.url || url}
                 images={openGraphImages}
                 siteName={open_graph.site_name || config.title}
                 language={language}
@@ -125,9 +125,9 @@ module.exports = class extends Component {
                 facebookAppId={open_graph.fb_app_id} /> : null}
 
             {typeof structured_data === 'object' ? <StructuredData
-                title={structured_data.title || config.title}
-                description={structured_data.description || page.description || page.excerpt || page.content || config.description}
-                url={structured_data.url || page.permalink || url}
+                title={page.title || structured_data.title || config.title}
+                description={page.description || remove_html_tag(page.excerpt) || structured_data.description || page.content || config.description}
+                url={page.permalink || structured_data.url || url}
                 author={structured_data.author || config.author}
                 date={page.date}
                 updated={page.updated}
@@ -145,8 +145,8 @@ module.exports = class extends Component {
             <script src={my_cdn(url_for('/js/globalUtils.js'))}></script>
             {adsenseClientId ? <script data-ad-client={adsenseClientId}
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async={true}></script> : null}
-            {config.live2Dswitch == 'on' ? <link rel="stylesheet" href={my_cdn(url_for('/live2d/waifu.css'))}/> : null}
-            {config.live2Dswitch == 'on' ? <script type="text/javascript" async={true} src={my_cdn(url_for('/live2d/autoload.js'))}></script>: null}
+            {config.live2Dswitch == 'on' ? <link rel="stylesheet" href={my_cdn(url_for('/live2d/waifu.css'))} /> : null}
+            {config.live2Dswitch == 'on' ? <script type="text/javascript" async={true} src={my_cdn(url_for('/live2d/autoload.js'))}></script> : null}
 
         </head>;
     }

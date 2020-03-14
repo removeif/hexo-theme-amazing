@@ -14,6 +14,11 @@ module.exports = function (hexo) {
         return (page === null ? this.page : page).__tags === true;
     });
 
+    hexo.extend.helper.register('remove_html_tag', function (content = null) {
+        return content == undefined || content === null ? null : content.replace(/<\/?.+?>/g,"");
+    });
+
+
     // 获取路劲中最后一个字符串，针对于后面调整分类和链接格式时，id不受影响
     hexo.extend.helper.register('get_path_end_str', function (path, unique, title) {
 
