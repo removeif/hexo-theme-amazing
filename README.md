@@ -113,7 +113,19 @@ comment:
 
 #### 2.友链数据文件：
 文件路径：themes/amazing/source/js/friend.js  
-相应格式增加自己需要的数据。
+相应格式增加自己需要的数据。  
+友链数据中，"valid": 0 代表异常网站，"valid": 1或者不填此字段代表正常网站，可以自己配置；"stopTime": "2019.09.09"代表异常时访问的时间
+```text
+{
+"date": "2019.09.09",
+"stopTime": "2019.09.09",
+"src": "https://cdn.jsdelivr.net/gh/removeif/removeif.github.io/images/tuzi.jpg",
+"name": "@辣椒の酱",
+"desc": "后端开发，技术分享。",
+"url": "https://removeif.github.io/",
+"valid": 0
+}
+```
 
 #### 3.影音数据文件：
 文件路径： 
