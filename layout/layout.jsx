@@ -28,6 +28,10 @@ module.exports = class extends Component {
             ]
         })
 
+        function loadBusuanzi(){
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", function () {});
+        }
+
         // 开始 PJAX 执行的函数
         document.addEventListener('pjax:send', function () {
     
@@ -43,6 +47,7 @@ module.exports = class extends Component {
             loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
             loadGallery();
             loadBackTop();
+            loadBusuanzi();
         });`;
 
         if (page.path != 'index.html'
