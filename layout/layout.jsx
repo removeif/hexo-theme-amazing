@@ -42,12 +42,16 @@ module.exports = class extends Component {
             $(".section").css({opacity:1});
             loadIssueData();
             loadSelfTalkGitalk();
-            loadEchart();
             loadMathJax();
             loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
             loadGallery();
             loadBackTop();
             loadBusuanzi();
+            try{
+                loadEchart();
+            }catch (e) {
+                console.log("no echart");
+            }
         });`;
 
         if (page.path != 'index.html'
