@@ -21,6 +21,30 @@ module.exports = class extends Component {
             "   </div>" +
             "</div>";
 
+        var pjaxJs = `var pjax = new Pjax({
+            elements: "a",//代表点击链接就更新
+            selectors: [  //代表要更新的节点
+                ".section"
+            ]
+        })
+
+        // 开始 PJAX 执行的函数
+        document.addEventListener('pjax:send', function () {
+    
+        });
+        
+        // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity:1});
+            loadIssueData();
+            loadSelfTalkGitalk();
+            loadEchart();
+            loadMathJax();
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadGallery()
+            loadBackTop();
+        });`;
+
         if (page.path != 'index.html'
             || (comment.type == 'undefined'
                 || comment.type != 'gitalk'
@@ -58,6 +82,7 @@ module.exports = class extends Component {
                 <Footer config={config} helper={helper} />
                 <Scripts site={site} config={config} helper={helper} page={page} />
                 <Search config={config} helper={helper} />
+                <script type="text/javascript" dangerouslySetInnerHTML={{ __html: pjaxJs }}></script>
             </body>
         </html>;
     }

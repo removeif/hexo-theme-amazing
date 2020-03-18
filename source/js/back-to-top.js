@@ -1,4 +1,6 @@
-$(document).ready(() => {
+$(document).ready(loadBackTop());
+
+function loadBackTop() {
     const $button = $('#back-to-top');
     const $footer = $('footer.footer');
     const $mainColumn = $('.column-main');
@@ -82,7 +84,7 @@ $(document).ready(() => {
         if (!hasRightSidebar()) {
             return 0;
         }
-        return Math.max.apply(null, $rightSidebar.find('.widget').map(function() {
+        return Math.max.apply(null, $rightSidebar.find('.widget').map(function () {
             return $(this).offset().top + $(this).outerHeight(true);
         }));
     }
@@ -147,4 +149,4 @@ $(document).ready(() => {
     $('#back-to-top').on('click', () => {
         $('body, html').animate({ scrollTop: 0 }, 400);
     });
-});
+}

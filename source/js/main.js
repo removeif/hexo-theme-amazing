@@ -1,5 +1,7 @@
 /* eslint-disable node/no-unsupported-features/node-builtins */
-(function($, moment, ClipboardJS, config) {
+// (mainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings));
+
+function loadMainJs($, moment, ClipboardJS, config) {
     if (!$('.columns .column-right-shadow').children().length) {
         $('.columns .column-right-shadow').append($('.columns .column-right').children().clone());
     }
@@ -181,9 +183,18 @@
             link.target = '_blank';
         });
     }
-}(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings));
+}
+
+function loadMathJax() { //加载mathjax
+    $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+        var math = document.getElementsByClassName("entry-content")[0];
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+    });
+}
 
 $(document).ready(function () {
+    loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
     /* 添加背景色 */
     var navbar = $(".is-fixed-top");
     var navbar1 = $(".justify-content-start");

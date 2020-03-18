@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', loadGallery());
+function loadGallery() {
     if (typeof ($.fn.lightGallery) === 'function') {
         $('.article').lightGallery({ selector: '.gallery-item' });
     }
@@ -8,4 +9,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         $('.justified-gallery').justifiedGallery({rowHeight:230, margins:4});
     }
-});
+}

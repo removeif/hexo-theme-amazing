@@ -203,7 +203,8 @@ function loadIndexHotData() {
     }
 }
 
-$(document).ready(setTimeout(function () { // 延迟1s执行，保证其余的先加载
+function loadIssueData(){
+    setTimeout(function () { // 延迟1s执行，保证其余的先加载
         var COMMENT_ARR = {};
         var COMMENT_CACHE = localStorage.getItem(COMMENT_CACHE_KEY);
         var COMMENT = {};
@@ -240,12 +241,33 @@ $(document).ready(setTimeout(function () { // 延迟1s执行，保证其余的�
             }
         }
 
-        console.clear();
+        // console.clear();
         console.log("~~~~xiu xiu xiu 欢迎光临~~~");
         console.log("~~~~唉，控制台太多报错了，呜呜呜呜~~~");
         console.log("~~~~记得有时间多来看看哦，https://removeif.github.io/")
     }
     ,
     500
-))
-;
+)
+}
+
+function loadSelfTalkGitalk() { //加载碎碎念
+    if($("#comment-container1").length <= 0){
+        return;
+    }
+    $.getScript("/js/gitalk_self.min.js", function () {
+        var gitalk = new Gitalk({
+            clientID: '46a9f3481b46ea0129d8',
+            clientSecret: '79c7c9cb847e141757d7864453bcbf89f0655b24',
+            id: '666666',
+            repo: 'issue_database',
+            owner: 'removeif',
+            admin: "removeif",
+            createIssueManually: true,
+            distractionFreeMode: false
+        });
+        gitalk.render('comment-container1');
+    });
+}
+
+$(document).ready(loadIssueData());

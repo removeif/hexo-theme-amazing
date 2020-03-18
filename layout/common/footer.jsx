@@ -13,7 +13,8 @@ class Footer extends Component {
             links,
             showVisitorCounter,
             url_for,
-            my_cdn
+            my_cdn,
+            side_music_netease_id
         } = this.props;
 
         return <footer class="footer">
@@ -51,6 +52,26 @@ class Footer extends Component {
                             })}
                         </div> : null}
                     </div>
+                    {side_music_netease_id?
+                    <div class="sideMusic">
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"/>
+                        <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+                        <meting-js style="width: auto;height: 2000px;"
+                            server="netease"
+                            type="playlist"
+                            id={side_music_netease_id}
+                            theme="#2980b9"
+                            loop="all"
+                            autoplay="false"
+                            order="list"
+                            storageName="aplayer-setting"
+                            lrctype="0"
+                            list-max-height="400px"
+                            fixed="true"
+                            >
+                        </meting-js>
+                    </div>:null}
                 </div>
             </div>
         </footer>;
@@ -60,7 +81,7 @@ class Footer extends Component {
 module.exports = cacheComponent(Footer, 'common.footer', props => {
     const { config, helper } = props;
     const { url_for, _p, date, my_cdn } = helper;
-    const { logo, title, author, footer, plugins } = config;
+    const { logo, title, author, footer, plugins,side_music_netease_id } = config;
 
     const links = {};
     if (footer && footer.links) {
@@ -83,6 +104,7 @@ module.exports = cacheComponent(Footer, 'common.footer', props => {
         siteYear: date(new Date(), 'YYYY'),
         author,
         links,
+        side_music_netease_id,
         showVisitorCounter: plugins && plugins.busuanzi === true,
         visitorCounterTitle: _p('plugin.visitor', '<span id="busuanzi_value_site_uv">0</span>')
     };
