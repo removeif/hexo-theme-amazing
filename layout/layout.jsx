@@ -41,7 +41,7 @@ module.exports = class extends Component {
             loadEchart();
             loadMathJax();
             loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
-            loadGallery()
+            loadGallery();
             loadBackTop();
         });`;
 
