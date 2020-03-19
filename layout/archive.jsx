@@ -135,7 +135,7 @@ module.exports = class extends Component {
             }]
 
         };
-        myChart.setOption(option);},500)}`;
+        myChart.setOption(option);},500)};loadEchart();`;
 
         let articleList;
         if (!page.year) {

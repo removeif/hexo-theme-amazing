@@ -11,7 +11,7 @@ module.exports = class extends Component {
     render() {
         const { env, site, config, page, helper, body } = this.props;
         const { my_cdn } = helper;
-        const{ comment } = config;
+        const { comment, use_pjax } = config;
 
         // =====index hot_recommend
         var hotRecommendStr =
@@ -91,7 +91,7 @@ module.exports = class extends Component {
                 <Footer config={config} helper={helper} />
                 <Scripts site={site} config={config} helper={helper} page={page} />
                 <Search config={config} helper={helper} />
-                <script type="text/javascript" dangerouslySetInnerHTML={{ __html: pjaxJs }}></script>
+                {use_pjax ? <script type="text/javascript" dangerouslySetInnerHTML={{ __html: pjaxJs }}></script> : null}
             </body>
         </html>;
     }
