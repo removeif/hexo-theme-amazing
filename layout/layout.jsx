@@ -40,12 +40,12 @@ module.exports = class extends Component {
         // PJAX 完成之后执行的函数，可以和上面的重载放在一起
         document.addEventListener('pjax:complete', function () {
             $(".section").css({opacity:1});
-            loadIssueData();
-            loadSelfTalkGitalk();
             loadMathJax();
             loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
             loadGallery();
             loadBackTop();
+            loadGitalk();
+            loadIssueData();
             loadBusuanzi();
             try{
                 loadEchart();
