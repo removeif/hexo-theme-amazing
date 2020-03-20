@@ -24,8 +24,10 @@ module.exports = class extends Component {
         var pjaxJs = `var pjax = new Pjax({
             elements: "a",//代表点击链接就更新
             selectors: [  //代表要更新的节点
-                ".section"
-            ]
+                ".section",
+                "title"
+            ],
+            cache: false
         })
 
         function loadBusuanzi(){
