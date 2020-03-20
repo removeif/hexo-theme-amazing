@@ -34,24 +34,23 @@ module.exports = class extends Component {
 
         // 开始 PJAX 执行的函数
         document.addEventListener('pjax:send', function () {
-            loadBusuanzi();
-            loadIssueData();
-            try{
-                loadEchart();
-            }catch (e) {
-                console.log("no echart");
-            }
-
         });
         
         // PJAX 完成之后执行的函数，可以和上面的重载放在一起
         document.addEventListener('pjax:complete', function () {
             $(".section").css({opacity:1});
+            loadIssueData();
             loadMathJax();
             loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
             loadGallery();
             loadBackTop();
             loadSelfGitalk();
+            loadBusuanzi();
+            try{
+                loadEchart();
+            }catch (e) {
+                console.log("no echart");
+            }
         });`;
 
         if (page.path != 'index.html'
