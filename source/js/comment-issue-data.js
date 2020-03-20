@@ -240,7 +240,10 @@ function loadIssueData() {
                 writeHtmlCommentCountValueById(id);
             }
         }
-
+        // 提前加载
+        if (typeof Gitalk !== "function") {
+            $.getScript("/js/gitalk.min.js", function () { });
+        }
         console.clear();
         console.log("~~~~欢迎光临！记得有时间多来看看哦，https://removeif.github.io/ ~~~~")
     }
@@ -249,12 +252,8 @@ function loadIssueData() {
 )
 }
 
-function loadGitalk() { //加载碎碎念
+function loadSelfGitalk() { //加载碎碎念
     if ($("#comment-container1").length <= 0) {
-        // 有此节点时获取通用gitalk
-        if ($("#comment-container").length > 0) {
-            $.getScript("/js/gitalk.min.js", function () { });
-        }
         return;
     }
     // 碎碎念页面才会走到下面
@@ -271,10 +270,8 @@ function loadGitalk() { //加载碎碎念
         });
         gitalk.render('comment-container1');
     });
-    // 有此节点时获取通用gitalk
-    if ($("#comment-container").length > 0) {
-        $.getScript("/js/gitalk.min.js", function () { });
-    }
+    //完了之后替换回去
+    $.getScript("/js/gitalk.min.js", function () { });
 }
 
 $(document).ready(loadIssueData());
