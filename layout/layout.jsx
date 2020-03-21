@@ -46,7 +46,7 @@ module.exports = class extends Component {
             loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
             loadGallery();
             loadBackTop();
-            loadSelfGitalk();
+            // loadSelfGitalk();
             loadBusuanzi();
             try{
                 loadEchart();

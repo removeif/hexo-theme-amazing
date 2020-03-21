@@ -259,8 +259,8 @@ function loadSelfGitalk() { //加载碎碎念
     // 碎碎念页面才会走到下面
     $.getScript("/js/gitalk_self.min.js", function () {
         var gitalk = new Gitalk({
-            clientID: '46a9f3481b46ea0129d8',
-            clientSecret: '79c7c9cb847e141757d7864453bcbf89f0655b24',
+            clientID: clientId,
+            clientSecret: clientSecret,
             id: '666666',
             repo: 'issue_database',
             owner: 'removeif',
