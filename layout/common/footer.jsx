@@ -31,7 +31,7 @@ class Footer extends Component {
                             <br />
                             &copy; 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href={url_for('/message')} target="_blank">留言</a>，立即处理]
                             <br />
-                            <script type="text/javascript" src={my_cdn('/js/statistics.js')}></script>
+                            <script type="text/javascript" src={my_cdn(url_for('/js/statistics.js'))}></script>
                             <span id="statistic-times">网站运行时间统计加载中...</span>
                             <br />
                             {showVisitorCounter ? <div class="size-small"><span id="busuanzi_container_site_uv">
