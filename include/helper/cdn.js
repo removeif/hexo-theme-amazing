@@ -89,6 +89,11 @@ module.exports = function(hexo) {
             return filename;
         } else {
             if (this.config.providers.my_cdn_pre != undefined && this.config.providers.my_cdn_pre != "") {
+                if (filename.endsWith(".css") && !filename.endsWith(".min.css")) {
+                    filename = filename.replace(".css", ".min.css");
+                } else if (filename.endsWith(".js") && !filename.endsWith(".min.js")) {
+                    filename = filename.replace(".js", ".min.js");
+                }
                 return this.config.providers.my_cdn_pre + filename;
             } else {
                 return filename;
