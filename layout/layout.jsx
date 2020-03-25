@@ -10,8 +10,10 @@ const classname = require('./util/classname');
 module.exports = class extends Component {
     render() {
         const { env, site, config, page, helper, body } = this.props;
-        const { my_cdn,url_for } = helper;
+        const { my_cdn, url_for } = helper;
         const { comment, use_pjax } = config;
+        // 默认不加载公式，文中头部开启mathJax:true才加载
+        var isMath = page.mathJax != undefined && page.mathJax;
 
         // =====index hot_recommend
         var hotRecommendStr =
@@ -42,17 +44,12 @@ module.exports = class extends Component {
         document.addEventListener('pjax:complete', function () {
             $(".section").css({opacity:1});
             loadIssueData();
-            loadMathJax();
-            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
-            loadGallery();
-            loadBackTop();
-            // loadSelfGitalk();
-            loadBusuanzi();
-            try{
-                loadEchart();
-            }catch (e) {
-                console.log("no echart");
+            if(${isMath}){
+                loadMathJax();
             }
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadBusuanzi();
         });`;
 
         if (page.path != 'index.html'
@@ -83,9 +80,9 @@ module.exports = class extends Component {
                                 'is-8-tablet is-8-desktop is-8-widescreen': columnCount === 2,
                                 'is-8-tablet is-8-desktop is-6-widescreen': (page.layout != 'post' && page.layout != 'page') && columnCount === 3,
                                 'is-8-tablet is-8-desktop is-9-widescreen': page.layout == 'page' || page.layout == 'post'
-                            })} dangerouslySetInnerHTML={{ __html: hotRecommendStr+body }}></div>
+                            })} dangerouslySetInnerHTML={{ __html: hotRecommendStr + body }}></div>
                             <Widgets site={site} config={config} helper={helper} page={page} position={'left'} />
-                            { page.layout == 'page' || page.layout == 'post' ? null : <Widgets site={site} config={config} helper={helper} page={page} position={'right'} />}
+                            {page.layout == 'page' || page.layout == 'post' ? null : <Widgets site={site} config={config} helper={helper} page={page} position={'right'} />}
                         </div>
                     </div>
                 </section>

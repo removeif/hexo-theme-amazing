@@ -33,8 +33,9 @@ class Mathjax extends Component {
 }
 
 module.exports = cacheComponent(Mathjax, 'plugin.mathjax', props => {
-    const { head, helper } = props;
-    if (head) {
+    const { head, helper, page } = props;
+    var mathJax = page.mathJax != undefined && page.mathJax;
+    if (head || !mathJax) {
         return null;
     }
     return {

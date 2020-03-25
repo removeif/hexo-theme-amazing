@@ -62,11 +62,12 @@ module.exports = class extends Component {
                 </div>;
         }
 
+        const echartJsUrl = my_cdn(url_for("/js/echarts.min.js"));
         const js = `function loadEchart(){
             if($("#post-calendar").length <= 0){
                 return;
             }
-            setTimeout(function () {
+            $.getScript('${echartJsUrl}', function () { 
             let myChart = echarts.init(document.getElementById('post-calendar'));
             let option = {
             title: {
@@ -135,7 +136,7 @@ module.exports = class extends Component {
             }]
 
         };
-        myChart.setOption(option);},500)};loadEchart();`;
+        myChart.setOption(option);})};loadEchart();`;
 
         let articleList;
         if (!page.year) {

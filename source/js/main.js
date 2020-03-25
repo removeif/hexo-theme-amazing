@@ -6,7 +6,7 @@ function loadMainJs($, moment, ClipboardJS, config) {
         $('.columns .column-right-shadow').append($('.columns .column-right').children().clone());
     }
 
-    $('.article img:not(".not-gallery-item")').each(function() {
+    $('.article img:not(".not-gallery-item")').each(function () {
         // wrap images with link and add caption if possible
         if ($(this).parent('a').length === 0) {
             $(this).wrap('<a class="gallery-item" href="' + $(this).attr('src') + '"></a>');
@@ -16,13 +16,24 @@ function loadMainJs($, moment, ClipboardJS, config) {
         }
     });
 
+    // render images
+    if (typeof ($.fn.lightGallery) === 'function') {
+        $('.article').lightGallery({ selector: '.gallery-item', mode: 'lg-fade' });
+    }
+    if (typeof ($.fn.justifiedGallery) === 'function') {
+        if ($('.justified-gallery > p > .gallery-item').length) {
+            $('.justified-gallery > p > .gallery-item').unwrap();
+        }
+        $('.justified-gallery').justifiedGallery({ rowHeight: 230, margins: 4 });
+    }
+
     if (typeof moment === 'function') {
-        $('.article-meta time').each(function() {
+        $('.article-meta time').each(function () {
             $(this).text(moment($(this).attr('datetime')).fromNow());
         });
     }
 
-    $('.article > .content > table').each(function() {
+    $('.article > .content > table').each(function () {
         if ($(this).width() > $(this).parent().width()) {
             $(this).wrap('<div class="table-overflow"></div>');
         }
@@ -56,7 +67,7 @@ function loadMainJs($, moment, ClipboardJS, config) {
         && typeof config.article.highlight !== 'undefined') {
 
         $('figure.highlight').addClass('hljs');
-        $('figure.highlight .code .line span').each(function() {
+        $('figure.highlight .code .line span').each(function () {
             const classes = $(this).attr('class').split(/\s+/);
             if (classes.length === 1) {
                 $(this).addClass('hljs-' + classes[0]);
@@ -68,7 +79,7 @@ function loadMainJs($, moment, ClipboardJS, config) {
         const clipboard = config.article.highlight.clipboard;
         const fold = config.article.highlight.fold.trim();
 
-        $('figure.highlight').each(function() {
+        $('figure.highlight').each(function () {
             if ($(this).find('figcaption').length) {
                 $(this).find('figcaption').addClass('level is-mobile');
                 $(this).find('figcaption').append('<div class="level-left">');
@@ -83,7 +94,7 @@ function loadMainJs($, moment, ClipboardJS, config) {
         });
 
         if (typeof ClipboardJS !== 'undefined' && clipboard) {
-            $('figure.highlight').each(function() {
+            $('figure.highlight').each(function () {
                 const id = 'code-' + Date.now() + (Math.random() * 1000 | 0);
                 const button = '<a href="javascript:;" class="copy" title="Copy" data-clipboard-target="#' + id + ' .code"><i class="fas fa-copy"></i></a>';
                 $(this).attr('id', id);
@@ -93,7 +104,7 @@ function loadMainJs($, moment, ClipboardJS, config) {
         }
 
         if (fold) {
-            $('figure.highlight').each(function() {
+            $('figure.highlight').each(function () {
                 if ($(this).find('figcaption').find('span').length > 0) {
                     const span = $(this).find('figcaption').find('span');
                     if (span[0].innerText.indexOf('>folded') > -1) {
@@ -107,7 +118,7 @@ function loadMainJs($, moment, ClipboardJS, config) {
                 toggleFold(this, fold === 'folded');
             });
 
-            $('figure.highlight figcaption .fold').click(function() {
+            $('figure.highlight figcaption .fold').click(function () {
                 const $code = $(this).closest('figure.highlight');
                 toggleFold($code.eq(0), !$code.hasClass('folded'));
             });
