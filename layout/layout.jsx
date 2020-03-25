@@ -29,7 +29,7 @@ module.exports = class extends Component {
                 ".section",
                 "title"
             ],
-            cache: false
+            cache: true
         })
 
         function loadBusuanzi(){
