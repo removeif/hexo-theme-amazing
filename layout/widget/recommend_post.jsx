@@ -3,9 +3,8 @@ const { cacheComponent } = require('../util/cache');
 
 class RecommendPosts extends Component {
     render() {
-        const { title, recommendPost, relatePost, recommend_title, related_title } = this.props;
+        const { recommendPost, relatePost, recommend_title, related_title } = this.props;
 
-        var hasPost = recommendPost.length > 0 || relatePost.length > 0;
         var i = 0, j = 0;
         return <div>
             {relatePost.length > 0 ?
@@ -53,12 +52,12 @@ module.exports = cacheComponent(RecommendPosts, 'widget.recommendposts', props =
         return cur == post;
     }
 
-    relatePost = site.posts.filter(post => isRelatePost(curPost.categories, post.categories) && curPost.permalink != post.permalink).sort('date', -1).limit(5).map(post => ({
+    relatePost = site.posts.filter(post => isRelatePost(curPost.categories, post.categories) && curPost.permalink != post.permalink).sort('date', -1).limit(8).map(post => ({
         url: url_for(post.link || post.path),
         title: post.title
     }));
 
-    recommendPost = site.posts.filter((item, index, arr) => item.encrypt != true && item.recommend != undefined && item.recommend > 0).sort('recommend', -1).sort('recommend', -1).limit(5).map(post => ({
+    recommendPost = site.posts.filter((item, index, arr) => item.encrypt != true && item.recommend != undefined && item.recommend > 0).sort('recommend', -1).sort('recommend', -1).limit(6).map(post => ({
         url: url_for(post.link || post.path),
         title: post.title
     }));

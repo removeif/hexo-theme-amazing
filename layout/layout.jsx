@@ -89,6 +89,7 @@ module.exports = class extends Component {
                 <Footer config={config} helper={helper} />
                 <Scripts site={site} config={config} helper={helper} page={page} />
                 <Search config={config} helper={helper} />
+                {use_pjax ? <script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script> : null}
                 {use_pjax ? <script type="text/javascript" dangerouslySetInnerHTML={{ __html: pjaxJs }}></script> : null}
             </body>
         </html>;
