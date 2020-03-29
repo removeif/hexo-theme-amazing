@@ -3,9 +3,9 @@ const { cacheComponent } = require('../util/cache');
 
 class SubscribeEmail extends Component {
     render() {
-        const { title, description, feedburnerId, buttonTitle } = this.props;
+        const { title, description, feedburnerId, buttonTitle, enable } = this.props;
 
-        return <div class="card widget">
+        return enable ? <div class="card widget">
             <div class="card-content">
                 <div class="menu">
                     <h3 class="menu-label">{title}</h3>
@@ -28,18 +28,19 @@ class SubscribeEmail extends Component {
                     </form>
                 </div>
             </div>
-        </div>;
+        </div> : '';
     }
 }
 
 module.exports = cacheComponent(SubscribeEmail, 'widget.subscribeemail', props => {
     const { helper, widget } = props;
-    const { feedburner_id, description } = widget;
+    const { feedburner_id, description, enable } = widget;
 
     return {
         description,
         feedburnerId: feedburner_id,
         title: helper.__('widget.subscribe_email'),
-        buttonTitle: helper.__('widget.subscribe')
+        buttonTitle: helper.__('widget.subscribe'),
+        enable,
     };
 });
