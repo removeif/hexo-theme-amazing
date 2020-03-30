@@ -23,6 +23,7 @@ widget:
     subscribe: '订阅'
     adsense: '广告'
     recommend_posts: '推荐文章'
+    related_posts: '相关文章'
 article:
     more: '阅读更多'
     comments: '评论'

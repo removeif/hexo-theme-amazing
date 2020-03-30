@@ -30,7 +30,8 @@ class Gitalk extends Component {
                 Please set it in <code>_config.yml</code>.
             </div>;
         }
-        const js = `var gitalk = new Gitalk({
+        const js = ` $.getScript('${jsUrl}', function () { 
+            var gitalk = new Gitalk({
             id: '${id}',
             repo: '${repo}',
             owner: '${owner}',
@@ -46,11 +47,10 @@ class Gitalk extends Component {
             enableHotKey: ${enableHotKey ? !!enableHotKey : true},
             isLocked: ${isLocked}
         })
-        gitalk.render('comment-container')`;
+        gitalk.render('comment-container')});`;
         return <Fragment>
             <div id="comment-container"></div>
             <link rel="stylesheet" href={cssUrl} />
-            <script src={jsUrl}></script>
             <script dangerouslySetInnerHTML={{ __html: js }}></script>
         </Fragment>;
     }

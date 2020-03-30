@@ -22,6 +22,8 @@ widget:
     subscribe_email: 'Subscribe to Updates'
     subscribe: 'Subscribe'
     adsense: 'Advertisement'
+    recommend_posts: 'Recommend Post'
+    related_posts: 'Related Post'
 article:
     more: 'Read More'
     comments: 'Comments'

@@ -63,7 +63,13 @@ module.exports = class extends Component {
                 </div>;
         }
 
-        const js = `let myChart = echarts.init(document.getElementById('post-calendar'));
+        const echartJsUrl = my_cdn(url_for("/js/echarts.min.js"));
+        const js = `function loadEchart(){
+            if($("#post-calendar").length <= 0){
+                return;
+            }
+            $.getScript('${echartJsUrl}', function () { 
+            let myChart = echarts.init(document.getElementById('post-calendar'));
             let option = {
             title: {
                 top: 0,
@@ -131,7 +137,7 @@ module.exports = class extends Component {
             }]
 
         };
-        myChart.setOption(option);`;
+        myChart.setOption(option);})};loadEchart();`;
 
         let articleList;
         if (!page.year) {

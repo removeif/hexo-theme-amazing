@@ -55,7 +55,10 @@ index_adsense_positions: 0, #首页adsense放置广告的位置,尽量少配置�
 + 透明无界样式
 + 简化部分widget数据，加入`查看全部`按钮
 + gitalk评论增加评论开关，评论列表中标记博主
-+ 还有什么新的，好的feature欢迎大家随时提出来，有能力有时间就做出来
++ 加入pjax提升页面访问体验，配置文件中可开启关闭
++ 侧边栏加入可配置网易云歌单音乐插件，配合pjax可以实现页面间切换背景音乐不间断
++ 文章中加入相关文章模块，取分类相同的最新的5条文章
++ `还有什么新的，好的feature欢迎大家随时提出来，有能力有时间就做出来`
 
 ### 二、部分配置说明：
 
@@ -128,7 +131,19 @@ comment:
 
 #### 2.友链数据文件：
 文件路径：themes/amazing/source/js/friend.js  
-相应格式增加自己需要的数据。
+相应格式增加自己需要的数据。  
+友链数据中，"valid": 0 代表异常网站，"valid": 1或者不填此字段代表正常网站，可以自己配置；"stopTime": "2019.09.09"代表异常时访问的时间
+```text
+{
+"date": "2019.09.09",
+"stopTime": "2019.09.09",
+"src": "https://cdn.jsdelivr.net/gh/removeif/removeif.github.io/images/tuzi.jpg",
+"name": "@辣椒の酱",
+"desc": "后端开发，技术分享。",
+"url": "https://removeif.github.io/",
+"valid": 0
+}
+```
 
 #### 3.影音数据文件：
 文件路径： 
@@ -225,7 +240,7 @@ wrong_hash_message: 不好意思，信息无法验证！
 ```
 注：**加密文章不会出现在最新文章列表widget中，也不会出现在文章中推荐列表中，首页列表中需要设置top: -1 让它排在最后比较合理一些。**
 #### 10.碎碎念的使用
-在github中，创建碎碎念issue，并且打上对应的label（`eg:Gitalk,666666`）如下图，此处666666对应下面配置代码中的id，填写到source/self-talking/index.md文件中如下对应位置，其余配置也要改成自己的，如clientID等。
+在github中，创建碎碎念issue，并且打上对应的label（`eg:Gitalk,666666`）如下图，此处666666对应下面配置代码中的id，填写到themes/amazing/source/js/comment-issue-data.js文件中如下对应位置，其余配置也要改成自己的，如clientID等。
 ![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200310182707.png)
 ```js
 <script>

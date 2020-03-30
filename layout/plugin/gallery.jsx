@@ -13,7 +13,6 @@ class Gallery extends Component {
         return <Fragment>
             <script src={lightGallery.jsUrl} defer={true}></script>
             <script src={justifiedGallery.jsUrl} defer={true}></script>
-            <script src={jsUrl} defer={true}></script>
         </Fragment>;
 
     }
@@ -24,10 +23,9 @@ module.exports = cacheComponent(Gallery, 'plugin.gallery', props => {
     const { url_for, my_cdn } = helper;
     return {
         head,
-        jsUrl: my_cdn(url_for('/js/gallery.js')),
         lightGallery: {
-            jsUrl: helper.cdn('lightgallery', '1.6.8', 'dist/js/lightgallery.min.js'),
-            cssUrl: helper.cdn('lightgallery', '1.6.8', 'dist/css/lightgallery.min.css')
+            jsUrl: helper.cdn('lightgallery', '1.6.12', 'dist/js/lightgallery.min.js'),
+            cssUrl: helper.cdn('lightgallery', '1.6.12', 'dist/css/lightgallery.min.css')
         },
         justifiedGallery: {
             jsUrl: helper.cdn('justifiedGallery', '3.7.0', 'dist/js/jquery.justifiedGallery.min.js'),

@@ -1141,6 +1141,24 @@ a.navbar-item.is-active,
     border: 0.01em solid #deeafb;
 }
 
+.aplayer-narrow{
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.aplayer-narrow:hover {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.aplayer{
+    transition: all .5s ease-out;
+}
+
+.aplayer .aplayer-miniswitcher {
+    background: white !important;
+}
+
 // ============self-talking  start
 .content .gt-container .gt-comment-header {
     font-size: 0.875em;
@@ -1234,13 +1252,17 @@ night-color-hover = #7a7a7a
 night-link = #3273dc
 
 .night {
-
+    
     color: silver!important;
+    background-color black;
+
+    .aplayer .aplayer-miniswitcher {
+        background:#c0c0c0 !important;
+    }
 
     .navbar-highlight{
         background-color night-color !important;
     }
-    background-color black;
     .content blockquote {
         background-color: night-color
     }

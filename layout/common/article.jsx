@@ -137,7 +137,7 @@ module.exports = class extends Component {
                         <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
                         </li>
                     </ul>:null}
-                    {!index && page.layout == 'post' ? <RecommendPosts config={config} page={page} helper={helper} site={site}/>:null}
+                    {!index && page.layout == 'post' ? <RecommendPosts config={config} curPost={page} helper={helper} site={site}/>:null}
                     {/* Share button */}
                     {!index ? <Share config={config} page={page} helper={helper} /> : null}
                 </article>
