@@ -109,7 +109,7 @@ module.exports = cacheComponent(Profile, 'widget.profile', props => {
         location,
         follow_link,
         social_links,
-        hasHitokoto
+        has_hitokoto
     } = widget;
     const { url_for, _p, __ } = helper;
 
@@ -168,6 +168,6 @@ module.exports = cacheComponent(Profile, 'widget.profile', props => {
         followLink: url_for(follow_link),
         followTitle: __('widget.follow'),
         socialLinks,
-        hasHitokoto
+        hasHitokoto: has_hitokoto
     };
 });

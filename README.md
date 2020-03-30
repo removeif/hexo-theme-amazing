@@ -61,7 +61,7 @@ git clone https://github.com/removeif/hexo-theme-amazing.git /themes/amazing
 #### 开始部分配置：
 **敲黑板！！！！首先全局以及主题中的`_config.yml`配置成自己的对应参数。**  
 
-把主题中ex_pages文件夹中的文件复制到博客相应目录下面。包含了文章模板、关于页、相册页、友链、留言板、音乐、影音、碎碎念页面（各个页面的.md文件可自定义修改内容），可以自己选择性需要哪些页面复制哪些过去，同时对应配置主题中`_config.yml`需要哪些页面进行修改，如下配置
+把主题中ex_pages文件夹中的文件复制到博客主目录相应目录下面。包含了文章模板、关于页、相册页、友链、留言板、音乐、影音、碎碎念页面（各个页面的.md文件可自定义修改内容），可以自己选择性需要哪些页面复制哪些过去，同时对应配置主题中`_config.yml`需要哪些页面进行修改，如下配置
 ```yaml
 navbar:
     # Naviagtion menu items
@@ -70,7 +70,6 @@ navbar:
         归档: /archives
         分类: /categories
         标签: /tags
-        律法: /tags/法律/
         影音: /media
         相册: /album
         友链: /friend
@@ -93,7 +92,7 @@ var ADMIN_NAME = "removeif";
 ```
 github api 详情可以参照[官方api说明](https://developer.github.com/v3/#rate-limiting)  
 关于配置暴露client_id和client_secret安全性问题，gitalk作者有[解释](https://github.com/gitalk/gitalk/issues/150)  
-对应主题中的`_config.yml`要开启如下配置，xxx换成自己的，否则无效。
+对应主题中的`_config.yml`要开启如下配置，xxx换成自己的，否则无效。**部署博客后需要到相应文章评论处点击初始化issue评论，完成评论的初始化。**
 ```yaml
 comment:
     type: gitalk
@@ -143,7 +142,7 @@ comment:
 #### 5.看板娘配置
 主题中的`_config.yml`配置如下设置
 ```text
-live2Dswitch: off #live2D开关 on为打开,off为关闭
+has_live_2D_switch: true #live2D开关 true为打开,false为关闭
 ```
 
 #### 6.置顶设置：
@@ -225,21 +224,23 @@ wrong_hash_message: 不好意思，信息无法验证！
 ```
 注：**加密文章不会出现在最新文章列表widget中，也不会出现在文章中推荐列表中，首页列表中需要设置top: -1 让它排在最后比较合理一些。**
 #### 10.碎碎念的使用
-在github中，创建碎碎念issue，并且打上对应的label（`eg:Gitalk,666666`）如下图，此处666666对应下面配置代码中的id，填写到themes/amazing/source/js/comment-issue-data.js文件中如下对应位置，其余配置也要改成自己的，如clientID等。
+在github中，创建碎碎念issue，并且打上对应的label（`eg:Gitalk,666666`）如下图，此处666666对应下面配置代码中的id，填写到：博客目录/source/self-talking/index.md文件中如下对应位置，其余配置也要改成自己的，如clientID等。
 ![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200310182707.png)
 ```js
 <script>
-    var gitalk = new Gitalk({
-        clientID: '46a9f3481b46ea0129d8',
-        clientSecret: '79c7c9cb847e141757d7864453bcbf89f0655b24',
-        id: '666666',
-        repo: 'issue_database',
-        owner: 'removeif',
-        admin: "removeif",
-        createIssueManually: true,
-        distractionFreeMode: false
-    })
-    gitalk.render('comment-container1')
+    $.getScript("/js/gitalk_self.min.js", function () {
+        var gitalk = new Gitalk({
+            clientID: clientId,
+            clientSecret: clientSecret,
+            id: '666666',
+            repo: 'issue_database',
+            owner: 'removeif',
+            admin: "removeif",
+            createIssueManually: true,
+            distractionFreeMode: false
+        });
+        gitalk.render('comment-container1');
+    });
 </script>
 ```
 如下：
@@ -302,6 +303,19 @@ widget中的归档和分类和标签精简了，数据多时很丑，改为了�
 ![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200211151129.png)
 
 原来已有博客文章的迁移，只需要把原来对应的文章放到source/_posts里即可。然后去对应文章下面创建评论issue。  
+#### 其余配置
+完整配置，请仔细阅读主题中**_config.yml**
+```yaml
+has_hitokoto: true #左边一言开关，true-开，false-关       
+has_latest_modify_time: true #是否显示最后修改时间 true开启，false-关闭   
+has_copyright: true # 文中是否显示copyright true开启，false-关闭   
+website_start_time: 2018/11/11 00:00:00 #网站运行开始时间,不填不显示
+footer_registered_no: 测试-川ICP备20001070号-1 #备案号
+footer_copyright_dsec: true #footer 版权说明 true-开 false-关
+has_live_2D_switch: true #live2D开关 true-开 false-关
+side_music_netease_id: 2364053447 #侧边栏网易云歌单id
+use_pjax: false #是否开启pjax，false-不开启，true-开启，开启后局部更新网页信息，切换页面背景音乐不间断等特性
+```
 #### 以上配置好后
 ```yaml
 $ npm install #安装依赖包（只需要执行一次）可直接把本文最后的json文件复制到博客下面的依赖文件package.json后在执行此命令
@@ -315,11 +329,11 @@ $ hexo d #推到远程
 ok,enjoy it！👏👏👏
 
 ### 写在后面
-如果你有问题请反馈: [issues](https://github.com/removeif/hexo-theme-icarus-removeif/issues) （请务必先于issues中寻找答案）  
-如果你喜欢该主题: [star](https://github.com/removeif/hexo-theme-icarus-removeif)  
-如果你想定制主题: [fork](https://github.com/removeif/hexo-theme-icarus-removeif) 
+如果你有问题请反馈: [issues](https://github.com/removeif/hexo-theme-amazing/issues) （请务必先于issues中寻找答案）  
+如果你喜欢该主题: [star](https://github.com/removeif/hexo-theme-amazing)  
+如果你想定制主题: [fork](https://github.com/removeif/hexo-theme-amazing) 
 ### License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/removeif/hexo-theme-icarus-removeif/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/removeif/hexo-theme-amazing/blob/master/LICENSE) file for details.
 
 ### 其余主题彩蛋
 **文章中横竖图demo；对于横竖图推荐分开使用，且长宽一致的，如统一手机拍照、电脑截图**

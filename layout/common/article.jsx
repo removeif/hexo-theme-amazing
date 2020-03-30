@@ -20,12 +20,13 @@ module.exports = class extends Component {
     render() {
 
         const { config, helper, page, index, site } = this.props;
-        const { article, plugins,comment } = config;
+        const { article, plugins,comment,has_latest_modify_time,has_copyright } = config;
         const { has_thumbnail, my_cdn, get_thumbnail, url_for, date, date_xml, __, _p } = helper;
         const language = page.lang || page.language || config.language || 'en';
         const id = crypto.createHash('md5').update(helper.get_path_end_str(page.path,page.uniqueId,page.title)).digest('hex');
         const myPermalink = config.url + config.root + page.path;
-
+        var hasLatestTime = has_latest_modify_time == undefined || has_latest_modify_time;
+        var hasCopyright = has_copyright == undefined || has_copyright;
         return <Fragment>
             {/* Main content */}
             <div class="card">
@@ -90,8 +91,8 @@ module.exports = class extends Component {
                             return <a class="link-muted mr-2" rel="tag" href={url_for(tag.path)}>{tag.name}</a>;
                         })}
 
-                        {page.updated && page.updated > page.date ?
-                            <p class="text-right font1_1">
+                        {hasLatestTime && page.updated && page.updated > page.date ?
+                            <p class="text-right">
                                 <time datetime={date_xml(page.updated)}>
                                     <strong><em>&nbsp;本文最后修改于:&nbsp;{date(page.updated)}.</em></strong>
                                 </time>
@@ -111,7 +112,7 @@ module.exports = class extends Component {
                                         })}
                                     </div>
                                 </div> : null}
-                            {page.updated && page.updated > page.date ?
+                            {hasLatestTime && page.updated && page.updated > page.date ?
                                 <div class="level-start">
                                     <div class="level-item has-text-grey is-size-7 is-hidden-mobile">
                                         <time datetime={date_xml(page.updated)}><i
@@ -128,7 +129,7 @@ module.exports = class extends Component {
                             </div>
                         </div> : null}
                     {/*copyright*/}
-                    {!index && page.layout == 'post' ?
+                    {hasCopyright && !index && page.layout == 'post' ?
                     <ul class="post-copyright">
                         <li><strong>本文标题：</strong><a href={myPermalink}>{page.title}</a></li>
                         <li><strong>本文作者：</strong><a href={url_for(config.url)}>{config.author}</a></li>

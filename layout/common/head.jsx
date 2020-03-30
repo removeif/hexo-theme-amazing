@@ -49,7 +49,7 @@ module.exports = class extends Component {
         } = head;
 
         const language = page.lang || page.language || config.language;
-
+        const has_live_2D_switch = config.has_live_2D_switch;
         let hlTheme, images;
         if (highlight && highlight.enable === false) {
             hlTheme = null;
@@ -98,6 +98,7 @@ module.exports = class extends Component {
             structuredImages = page.photos;
         }
 
+        var hasLive2D = has_live_2D_switch == undefined || has_live_2D_switch;
         return <head>
             <meta charset="utf-8" />
             {meta_generator ? <meta name="generator" content={`Hexo ${env.version}`} /> : null}
@@ -146,8 +147,8 @@ module.exports = class extends Component {
             <script src={my_cdn(url_for('/js/globalUtils.js'))}></script>
             {adsenseClientId ? <script data-ad-client={adsenseClientId}
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async={true}></script> : null}
-            {config.live2Dswitch == 'on' ? <link rel="stylesheet" href={my_cdn(url_for('/live2d/waifu.css'))} /> : null}
-            {config.live2Dswitch == 'on' ? <script type="text/javascript" async={true} src={my_cdn(url_for('/live2d/autoload.js'))}></script> : null}
+            {hasLive2D ? <link rel="stylesheet" href={my_cdn(url_for('/live2d/waifu.css'))} /> : null}
+            {hasLive2D ? <script type="text/javascript" async={true} src={my_cdn(url_for('/live2d/autoload.js'))}></script> : null}
 
         </head>;
     }
