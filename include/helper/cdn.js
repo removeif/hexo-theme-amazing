@@ -91,9 +91,9 @@ module.exports = function (hexo) {
         } else {
             const myCdnPre = this.config.providers.my_cdn_pre;
             if (myCdnPre != undefined && myCdnPre != "") {
-                if (filename.endsWith(".css") && !filename.endsWith(".min.css") && myCdnPre.indexOf("cdn.jsdelivr.net")) {
+                if (filename.endsWith(".css") && !filename.endsWith(".min.css") && myCdnPre.indexOf("cdn.jsdelivr.net") > -1) {
                     filename = filename.replace(".css", ".min.css");
-                } else if (filename.endsWith(".js") && !filename.endsWith(".min.js") && myCdnPre.indexOf("cdn.jsdelivr.net")) {
+                } else if (filename.endsWith(".js") && !filename.endsWith(".min.js") && myCdnPre.indexOf("cdn.jsdelivr.net") > -1) {
                     filename = filename.replace(".js", ".min.js");
                 }
                 return this.config.providers.my_cdn_pre + filename;
