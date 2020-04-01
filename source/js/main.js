@@ -194,6 +194,8 @@ function loadMainJs($, moment, ClipboardJS, config) {
             link.target = '_blank';
         });
     }
+    // load toc fold or show
+    loadToc();
 }
 
 function loadMathJax() { //加载mathjax
