@@ -19,6 +19,7 @@ const PROVIDERS = {
         loli: 'https://fonts.loli.net/${ type }?family=${ fontname }'
     },
     ICON: {
+        loli: 'https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css',
         fontawesome: 'https://use.fontawesome.com/releases/v5.12.0/css/all.css'
     }
 };
@@ -53,8 +54,8 @@ const CDNJS_FIXTURES = {
     'disqusjs': (ver, fname) => []
 };
 
-module.exports = function(hexo) {
-    hexo.extend.helper.register('cdn', function(_package, version, filename) {
+module.exports = function (hexo) {
+    hexo.extend.helper.register('cdn', function (_package, version, filename) {
         let { cdn = 'jsdelivr' } = typeof this.config.providers === 'object' ? this.config.providers : {};
         if (cdn in PROVIDERS.LIBRARY) {
             cdn = PROVIDERS.LIBRARY[cdn];
@@ -81,17 +82,18 @@ module.exports = function(hexo) {
     });
 
     // filename resource abs url
-    hexo.extend.helper.register('my_cdn', function(filename) {
+    hexo.extend.helper.register('my_cdn', function (filename) {
 
         // https://cdn.jsdelivr.net/gh/removeif/removeif.github.io@v1.0.6/json_data/record.json
         // full url,return
         if (filename.startsWith("https://cdn.jsdelivr.net")) {
             return filename;
         } else {
-            if (this.config.providers.my_cdn_pre != undefined && this.config.providers.my_cdn_pre != "") {
-                if (filename.endsWith(".css") && !filename.endsWith(".min.css")) {
+            const myCdnPre = this.config.providers.my_cdn_pre;
+            if (myCdnPre != undefined && myCdnPre != "") {
+                if (filename.endsWith(".css") && !filename.endsWith(".min.css") && myCdnPre.indexOf("cdn.jsdelivr.net")) {
                     filename = filename.replace(".css", ".min.css");
-                } else if (filename.endsWith(".js") && !filename.endsWith(".min.js")) {
+                } else if (filename.endsWith(".js") && !filename.endsWith(".min.js") && myCdnPre.indexOf("cdn.jsdelivr.net")) {
                     filename = filename.replace(".js", ".min.js");
                 }
                 return this.config.providers.my_cdn_pre + filename;
@@ -101,7 +103,7 @@ module.exports = function(hexo) {
         }
     });
 
-    hexo.extend.helper.register('fontcdn', function(fontName, type = 'css') {
+    hexo.extend.helper.register('fontcdn', function (fontName, type = 'css') {
         let { fontcdn = 'google' } = typeof this.config.providers === 'object' ? this.config.providers : {};
         if (fontcdn in PROVIDERS.FONT) {
             fontcdn = PROVIDERS.FONT[fontcdn];
@@ -110,11 +112,11 @@ module.exports = function(hexo) {
             .replace(/\${\s*type\s*}/gi, type);
     });
 
-    hexo.extend.helper.register('iconcdn', function() {
-        let { iconfont = 'fontawesome' } = typeof this.config.providers === 'object' ? this.config.providers : {};
-        if (iconfont in PROVIDERS.ICON) {
-            iconfont = PROVIDERS.ICON[iconfont];
+    hexo.extend.helper.register('iconcdn', function () {
+        let { iconcdn = 'fontawesome' } = typeof this.config.providers === 'object' ? this.config.providers : {};
+        if (iconcdn in PROVIDERS.ICON) {
+            iconcdn = PROVIDERS.ICON[iconcdn];
         }
-        return iconfont;
+        return iconcdn;
     });
 };
