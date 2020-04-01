@@ -78,13 +78,13 @@ class Toc extends Component {
             .sort((a, b) => a - b);
 
         if (keys.length > 0) {
-            result = <ul class="menu-list">
+            result = <ul class="menu-list toc">
                 {keys.map(i => this.renderToc(toc[i]))}
             </ul>;
         }
         if ('id' in toc && 'index' in toc && 'text' in toc) {
             result = <li>
-                <a class="is-flex" id={`toc-item-${toc.id}`} href={'#' + toc.id}>
+                <a class="is-flex toc-item" id={`toc-item-${toc.id}`} href={'#' + toc.id}>
                     {/*<span class="mr-2">{toc.index}</span>*/}
                     <span>{toc.text}</span>
                 </a>
