@@ -21,13 +21,14 @@ module.exports = class extends Component {
     render() {
 
         const { config, helper, page, index, site,indexAt } = this.props;
-        const { article, plugins,comment,index_adsense_positions,has_latest_modify_time,has_copyright } = config;
+        const { article, plugins,comment,index_adsense_positions,has_latest_modify_time,has_copyright,busuanzi_only_count } = config;
         const { has_thumbnail, my_cdn, get_thumbnail, url_for, date, date_xml, __, _p } = helper;
         const language = page.lang || page.language || config.language || 'en';
         const id = crypto.createHash('md5').update(helper.get_path_end_str(page.path,page.uniqueId,page.title)).digest('hex');
         const myPermalink = config.url + config.root + page.path;
         var hasLatestTime = has_latest_modify_time == undefined || has_latest_modify_time;
         var hasCopyright = has_copyright == undefined || has_copyright;
+        var showBusuanziVisitor = plugins && plugins.busuanzi === true && (busuanzi_only_count != undefined && !busuanzi_only_count);
         return <Fragment>
             {/* Main content */}
             <div class="card">
@@ -74,7 +75,7 @@ module.exports = class extends Component {
                                 })()}
                             </span> : null}
                             {/* Visitor counter */}
-                            {!index && plugins && plugins.busuanzi === true ? <span class="level-item" id="busuanzi_container_page_pv" dangerouslySetInnerHTML={{
+                            {!index && showBusuanziVisitor ? <span class="level-item" id="busuanzi_container_page_pv" dangerouslySetInnerHTML={{
                                 __html: '<i class="far fa-eye"></i>' + _p('plugin.visit', '&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>')
                             }}></span> : null}
                         </div>

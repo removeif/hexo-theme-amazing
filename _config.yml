@@ -333,6 +333,8 @@ comment:
 
 has_latest_modify_time: true #是否显示最后修改时间 true开启，false-关闭   
 
+busuanzi_only_count: false #当上面plugins中busuanzi: true时，此配置busuanzi_only_count为true时，网站不显示不蒜子统计数据，但是会每次统计。false时显示统计数据。
+
 has_copyright: true # 文中是否显示copyright true开启，false-关闭   
 
 website_start_time: 2018/11/11 00:00:00 #网站运行开始时间,不填不显示
