@@ -87,7 +87,7 @@ class Footer extends Component {
 module.exports = cacheComponent(Footer, 'common.footer', props => {
     const { config, helper } = props;
     const { url_for, _p, date, my_cdn } = helper;
-    const { logo, title, author, footer, plugins, side_music_netease_id, website_start_time, footer_copyright_dsec, footer_registered_no } = config;
+    const { logo, title, author, footer, plugins, side_music_netease_id, website_start_time, footer_copyright_dsec, footer_registered_no, busuanzi_only_count } = config;
 
     const links = {};
     if (footer && footer.links) {
@@ -114,7 +114,7 @@ module.exports = cacheComponent(Footer, 'common.footer', props => {
         author,
         links,
         side_music_netease_id,
-        showVisitorCounter: plugins && plugins.busuanzi === true,
+        showVisitorCounter: plugins && plugins.busuanzi === true && (busuanzi_only_count != undefined && !busuanzi_only_count),
         visitorCounterTitle: _p('plugin.visitor', '<span id="busuanzi_value_site_uv">0</span>')
     };
 });
