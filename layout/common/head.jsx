@@ -37,7 +37,9 @@ module.exports = class extends Component {
             meta_generator = true,
             head = {},
             article,
-            highlight
+            highlight,
+            has_live_2D_switch,
+            global_gray
         } = config;
         const {
             meta = [],
@@ -49,7 +51,6 @@ module.exports = class extends Component {
         } = head;
 
         const language = page.lang || page.language || config.language;
-        const has_live_2D_switch = config.has_live_2D_switch;
         let hlTheme, images;
         if (highlight && highlight.enable === false) {
             hlTheme = null;
@@ -99,6 +100,7 @@ module.exports = class extends Component {
         }
 
         var hasLive2D = has_live_2D_switch == undefined || has_live_2D_switch;
+        var globalGray = global_gray != undefined && global_gray;
         return <head>
             <meta charset="utf-8" />
             {meta_generator ? <meta name="generator" content={`Hexo ${env.version}`} /> : null}
@@ -143,6 +145,7 @@ module.exports = class extends Component {
             {hlTheme ? <link rel="stylesheet" href={cdn('highlight.js', '9.12.0', 'styles/' + hlTheme + '.css')} /> : null}
             <Plugins site={site} config={config} helper={helper} page={page} head={true} />
             <link rel="stylesheet" href={my_cdn(url_for('/css/style.css'))} />
+            {globalGray ? <link rel="stylesheet" href={url_for('/css/global_gray.css')} /> : null}
             <script src={cdn('jquery', '3.3.1', 'dist/jquery.min.js')}></script>
             <script src={my_cdn(url_for('/js/globalUtils.js'))}></script>
             {adsenseClientId ? <script data-ad-client={adsenseClientId}
