@@ -19,12 +19,14 @@ class Gallery extends Component {
 }
 
 module.exports = cacheComponent(Gallery, 'plugin.gallery', props => {
-    const { head, helper } = props;
+    const { head, helper, config } = props;
     const { url_for, my_cdn } = helper;
+    const { lightgallery_is_full } = config;
+    const galleryJsUrl = (lightgallery_is_full != undefined && lightgallery_is_full) ? 'dist/js/lightgallery-all.min.js' : 'dist/js/lightgallery.min.js';
     return {
         head,
         lightGallery: {
-            jsUrl: helper.cdn('lightgallery', '1.6.12', 'dist/js/lightgallery.min.js'),
+            jsUrl: helper.cdn('lightgallery', '1.6.12', `${ galleryJsUrl }`),
             cssUrl: helper.cdn('lightgallery', '1.6.12', 'dist/css/lightgallery.min.css')
         },
         justifiedGallery: {

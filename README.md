@@ -321,9 +321,12 @@ widget中的归档和分类和标签精简了，数据多时很丑，改为了�
 #### 其余配置
 完整配置，请仔细阅读主题中**_config.yml**
 ```yaml
-has_hitokoto: true #左边一言开关，true-开，false-关       
+has_hitokoto: true #左边一言开关，true-开，false-关 
 has_latest_modify_time: true #是否显示最后修改时间 true开启，false-关闭   
+busuanzi_only_count: false #当上面plugins中busuanzi: true时，此配置busuanzi_only_count为true时，网站不显示不蒜子统计数据，但是会每次统计。false时显示统计数据。
 has_copyright: true # 文中是否显示copyright true开启，false-关闭   
+# http://sachinchoolur.github.io/lightGallery/docs/api.html 
+lightgallery_is_full: true #图片灯箱是否显示完整的插件(包括放大，分享等)，true-显示，false-显示简洁版
 website_start_time: 2018/11/11 00:00:00 #网站运行开始时间,不填不显示
 footer_registered_no: 测试-川ICP备20001070号-1 #备案号
 footer_copyright_dsec: true #footer 版权说明 true-开 false-关
@@ -428,7 +431,6 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
     "hexo-generator-tag": "^1.0.0",
     "hexo-log": "^1.0.0",
     "hexo-pagination": "^1.0.0",
-    "hexo-renderer-ejs": "^1.0.0",
     "hexo-renderer-inferno": "^0.1.1",
     "hexo-renderer-marked": "^2.0.0",
     "hexo-renderer-stylus": "^1.1.0",

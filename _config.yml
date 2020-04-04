@@ -331,11 +331,16 @@ comment:
     has_hot_recommend: true # 是否有热门推荐
     has_latest_comment: true #是否有最新评论
 
+global_gray: false #true 全局灰色，特定时期可以开启，false-不开启
+
 has_latest_modify_time: true #是否显示最后修改时间 true开启，false-关闭   
 
 busuanzi_only_count: false #当上面plugins中busuanzi: true时，此配置busuanzi_only_count为true时，网站不显示不蒜子统计数据，但是会每次统计。false时显示统计数据。
 
 has_copyright: true # 文中是否显示copyright true开启，false-关闭   
+
+# http://sachinchoolur.github.io/lightGallery/docs/api.html 
+lightgallery_is_full: true #图片灯箱是否显示完整的插件(包括放大，分享等)，true-显示，false-显示简洁版
 
 website_start_time: 2018/11/11 00:00:00 #网站运行开始时间,不填不显示
 
