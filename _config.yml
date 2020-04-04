@@ -331,7 +331,7 @@ comment:
     has_hot_recommend: true # 是否有热门推荐
     has_latest_comment: true #是否有最新评论
 
-global_gray: false #true 全局灰色，特定时期可以开启,false-不开启
+global_gray: false #true 全局灰色，特定时期可以开启，false-不开启
 
 has_latest_modify_time: true #是否显示最后修改时间 true开启，false-关闭   
 
