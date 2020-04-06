@@ -20,15 +20,16 @@ function getWordCount(content) {
 module.exports = class extends Component {
     render() {
 
-        const { config, helper, page, index, site,indexAt } = this.props;
-        const { article, plugins,comment,index_adsense_positions,has_latest_modify_time,has_copyright,busuanzi_only_count } = config;
+        const { config, helper, page, index, site, indexAt } = this.props;
+        const { article, plugins, comment, index_adsense_positions, has_latest_modify_time, has_copyright, busuanzi_only_count, index_show_tags_cateories } = config;
         const { has_thumbnail, my_cdn, get_thumbnail, url_for, date, date_xml, __, _p } = helper;
         const language = page.lang || page.language || config.language || 'en';
-        const id = crypto.createHash('md5').update(helper.get_path_end_str(page.path,page.uniqueId,page.title)).digest('hex');
+        const id = crypto.createHash('md5').update(helper.get_path_end_str(page.path, page.uniqueId, page.title)).digest('hex');
         const myPermalink = config.url + config.root + page.path;
         var hasLatestTime = has_latest_modify_time == undefined || has_latest_modify_time;
         var hasCopyright = has_copyright == undefined || has_copyright;
         var showBusuanziVisitor = plugins && plugins.busuanzi === true && (busuanzi_only_count != undefined && !busuanzi_only_count);
+        var indexShowTagsCat = index_show_tags_cateories == undefined || index_show_tags_cateories;
         return <Fragment>
             {/* Main content */}
             <div class="card">
@@ -37,8 +38,8 @@ module.exports = class extends Component {
                     {index ? <a href={url_for(page.link || page.path)} class="image is-7by3">
                         <img class="thumbnail" src={get_thumbnail(page)} alt={page.title || get_thumbnail(page)} />
                     </a> : <span class="image is-7by3">
-                        <img class="thumbnail" src={get_thumbnail(page)} alt={page.title || get_thumbnail(page)} />
-                    </span>}
+                            <img class="thumbnail" src={get_thumbnail(page)} alt={page.title || get_thumbnail(page)} />
+                        </span>}
                 </div> : null}
                 {/* Metadata */}
                 <article class={`card-content article${'direction' in page ? ' ' + page.direction : ''}`} role="article">
@@ -46,26 +47,12 @@ module.exports = class extends Component {
                         <div class="level-left">
                             {/*置顶图标*/}
                             {page.top > 0 ?
-                            <div class="level-item tag is-danger" style="background-color: #3273dc;">已置顶</div>:null}
+                                <div class="level-item tag is-danger" style="background-color: #3273dc;">已置顶</div> : null}
                             {/* Date */}
                             <time class="level-item" dateTime={date_xml(page.date)}>{date(page.date)}</time>
 
                             {comment.type !== 'undefined' && comment.type == 'gitalk' ?
-                                <a class="commentCountImg" href={`${url_for(page.link || page.path)}#comment-container`}><span class="display-none-class">{id}</span><img class="not-gallery-item" src={`${my_cdn(url_for('/img/chat.svg'))}`}/>&nbsp;<span class="commentCount" id={id}>&nbsp;99+</span>&nbsp;&nbsp;&nbsp;&nbsp;</a> : null}
-                            {/* Categories */}
-                            {page.categories && page.categories.length ? <span class="level-item">
-                                {(() => {
-                                    const categories = [];
-                                    categories.push(<i class="fas fa-folder-open has-text-grey">&nbsp;</i>)
-                                    page.categories.forEach((category, i) => {
-                                        categories.push(<a class="link-muted" href={url_for(category.path)}>{category.name}</a>);
-                                        if (i < page.categories.length - 1) {
-                                            categories.push(<span>&nbsp;/&nbsp;</span>);
-                                        }
-                                    });
-                                    return categories;
-                                })()}
-                            </span> : null}
+                                <a class="commentCountImg" href={`${url_for(page.link || page.path)}#comment-container`}><span class="display-none-class">{id}</span><img class="not-gallery-item" src={`${my_cdn(url_for('/img/chat.svg'))}`} />&nbsp;<span class="commentCount" id={id}>&nbsp;99+</span>&nbsp;&nbsp;&nbsp;&nbsp;</a> : null}
                             {/* Read time */}
                             {article && article.readtime && article.readtime === true ? <span class="level-item">
                                 {(() => {
@@ -87,64 +74,71 @@ module.exports = class extends Component {
                     {/* Content/Excerpt */}
                     <div class="content" dangerouslySetInnerHTML={{ __html: index && page.excerpt ? page.excerpt : page.content }}></div>
                     {/* Tags */}
-                    {!index && page.tags && page.tags.length ? <div class="article-tags size-small is-uppercase mb-4">
-                        <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                        {page.tags.map(tag => {
-                            return <a class="link-muted mr-2" rel="tag" href={url_for(tag.path)}>{tag.name}</a>;
-                        })}
-
-                        {hasLatestTime && page.updated && page.updated > page.date ?
-                            <p class="text-right">
-                                <time datetime={date_xml(page.updated)}>
-                                    <strong><em>&nbsp;本文最后修改于:&nbsp;{date(page.updated)}.</em></strong>
-                                </time>
-                            </p> : null
-                        }
+                    {index && indexShowTagsCat ? <div class="index-category-tag">
+                        {page.categories && page.categories.length ? <div class="level-item">
+                            {(() => {
+                                const categories = [];
+                                categories.push(<i class="fas fa-folder-open has-text-grey">&nbsp;</i>)
+                                page.categories.forEach((category, i) => {
+                                    categories.push(<a class="article-more button is-small link-muted" href={url_for(category.path)}>{category.name}</a>);
+                                    if (i < page.categories.length - 1) {
+                                        categories.push(<span>&nbsp;</span>);
+                                    }
+                                });
+                                return categories;
+                            })()}
+                        </div> : null}
+                        &nbsp;&nbsp;
+                        {/* Categories */}
+                        {page.tags && page.tags.length ?
+                            <div class="level-item">
+                                {(() => {
+                                    const tags = [];
+                                    tags.push(<i class="fas fa-tags has-text-grey">&nbsp;</i>)
+                                    page.tags.forEach((tag, i) => {
+                                        tags.push(<a class="article-more button is-small link-muted" href={url_for(tag.path)}>{tag.name}</a>);
+                                        if (i < page.tags.length - 1) {
+                                            tags.push(<span>&nbsp;</span>);
+                                        }
+                                    });
+                                    return tags;
+                                })()}
+                            </div> : null}
                     </div> : null}
-                    {/* "Read more" button */}
+                    {/* "Read more" button ・ */}
                     {index && page.excerpt ?
                         <div class="level is-mobile is-flex">
-                            {page.tags && page.tags.length ?
-                                <div class="level-start">
-                                    <div class="is-uppercase article-more button is-small size-small">
-                                        <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                                        {page.tags.map(tag => {
-                                            return <a class="link-muted mr-2" rel="tag"
-                                                      href={url_for(tag.path)}>{tag.name}</a>;
-                                        })}
-                                    </div>
-                                </div> : null}
+                            <div class="level-start">
+                                <div class="level-item">
+                                    <a class="article-more button is-small size-small link-muted"
+                                        href={`${url_for(page.path)}#more`}><i class="fas fa-book-reader has-text-grey">&nbsp;</i>{__('article.more')}>></a>
+                                </div>
+                            </div>
                             {hasLatestTime && page.updated && page.updated > page.date ?
                                 <div class="level-start">
-                                    <div class="level-item has-text-grey is-size-7 is-hidden-mobile">
+                                    <div class="level-item has-text-grey is-size-7">
                                         <time datetime={date_xml(page.updated)}><i
                                             class="far fa-calendar-check">&nbsp;最后修改:&nbsp;</i>{date(page.updated)}
                                         </time>
                                     </div>
                                 </div> : null
                             }
-                            <div class="level-start">
-                                <div class="level-item">
-                                    <a class="article-more button is-small size-small link-muted"
-                                       href={`${url_for(page.path)}#more`}><i class="fas fa-book-reader has-text-grey">&nbsp;</i>{__('article.more')}>></a>
-                                </div>
-                            </div>
                         </div> : null}
                     {/*copyright*/}
                     {hasCopyright && !index && page.layout == 'post' ?
-                    <ul class="post-copyright">
-                        <li><strong>本文标题：</strong><a href={myPermalink}>{page.title}</a></li>
-                        <li><strong>本文作者：</strong><a href={url_for(config.url)}>{config.author}</a></li>
-                        <li><strong>本文链接：</strong><a href={myPermalink}>{myPermalink}</a></li>
-                        <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+                        <ul class="post-copyright">
+                            <li><strong>本文标题：</strong><a href={myPermalink}>{page.title}</a></li>
+                            <li><strong>本文作者：</strong><a href={url_for(config.url)}>{config.author}</a></li>
+                            <li><strong>本文链接：</strong><a href={myPermalink}>{myPermalink}</a></li>
+                            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
                         </li>
-                    </ul>:null}
-                    {!index && page.layout == 'post' ? <RecommendPosts config={config} curPost={page} helper={helper} site={site}/>:null}
+                        </ul> : null}
+                    {!index && page.layout == 'post' ? <RecommendPosts config={config} curPost={page} helper={helper} site={site} /> : null}
                     {/* Share button */}
                     {!index ? <Share config={config} page={page} helper={helper} /> : null}
                 </article>
             </div>
-            {index && (index_adsense_positions.indexOf(indexAt) > -1) ? <AdsenseX/> : null}
+            {index && (index_adsense_positions.indexOf(indexAt) > -1) ? <AdsenseX /> : null}
             {/* Donate button */}
             {!index ? <Donates config={config} helper={helper} /> : null}
             {/* Post navigation */}
