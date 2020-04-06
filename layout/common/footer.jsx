@@ -30,7 +30,7 @@ class Footer extends Component {
                         <p class="size-small">
                             <span dangerouslySetInnerHTML={{ __html: `&copy; ${siteYear} ${author || siteTitle}` }}></span>
                             &nbsp;&nbsp;Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
-                                href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>,Modify by <a href="https://github.com/removeif" target="_blank">removeif</a>&nbsp;
+                                href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>,Modify by <a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">removeif</a>&nbsp;
                             <br />
                             {registeredNo ? <span>&copy; {registeredNo}<br /></span> : null}
                             {footerCopyrightDsec ? <span>&copy; 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href={url_for('/message')} target="_blank">留言</a>，立即处理]<br /></span> : null}
@@ -43,7 +43,7 @@ class Footer extends Component {
                             {showVisitorCounter ? <div class="size-small"><span id="busuanzi_container_site_uv">
                                 ❤️感谢<strong>&nbsp;<span id="busuanzi_value_site_uv">99+</span>&nbsp;</strong>
                             </span>小伙伴的
-                                <strong>&nbsp;<span id="busuanzi_value_site_pv">99+</span>&nbsp;</strong>次光临，查看💐<a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">主题源码</a>！❤️</div> : null}
+                                <strong>&nbsp;<span id="busuanzi_value_site_pv">99+</span>&nbsp;</strong>次光临！❤️</div> : null}
                         </p>
                     </div>
                     <div class="level-end">
