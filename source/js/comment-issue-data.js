@@ -155,18 +155,19 @@ function loadCommentDataAndRender() {
 // 渲染评论数据
 function renderCommentData(COMMENT_ARR) {
     if (COMMENT_ARR.length > 0) {
-        // 热门评论内容
+        // 热门最新
         var htmlContentWidget = "<div class='comment-content'>";
         for (var i = 0; i < COMMENT_ARR.length; i++) {
             var item = COMMENT_ARR[i];
             var contentStr = item.content;
             htmlContentWidget +=
                 "<div class='card-comment-item'>" + "<a href=\"" + item.userUrl + "\"target=\"_blank\">" + "<img class='ava' src='" + item.userAvatar + "'/></a>" +
-                "<div class='item-header-text'><a href='" + item.userUrl + "' target='_blank'>" + item.userName + "</a>&nbsp;发表于" + getDateDiff(new Date(item.date).getTime()) + "</div>" + "<div class=\"item-text\"><a href =\"" + item.url + '#comment-container' + "\"target=\"_blank\">" + contentStr + "</a></div>" +
+                "<div class='item-header-text'><a href='" + item.userUrl + "' target='_blank'>" + item.userName + "</a>&nbsp;发表于" + getDateDiff(new Date(item.date).getTime()) + "</div>" + "<div class=\"item-text\"><a href =\"" + item.url + '#comment-container\">' + contentStr + "</a></div>" +
                 "</div>";
         }
         htmlContentWidget += "</div>"
         $(".body_hot_comment").html(htmlContentWidget);
+        loadPjax();
     } else {
         $(".body_hot_comment").html("无数据记录！");
     }
@@ -191,13 +192,14 @@ function loadIndexHotData() {
                 } else {
                     classDiv = "class=\"item level0\"";
                 }
-                hotContent += "<a href =\"" + item.body.substr(0, item.body.indexOf("\n") - 1) + "\"target=\"_blank\"" + classDiv + ">" + item.title.substr(0, item.title.indexOf("-") - 1) + "&nbsp;🔥" + (item.comments * 101) + "</a>&nbsp;&nbsp;"
+                hotContent += "<a href =\"" + item.body.substr(0, item.body.indexOf("\n") - 1) +'\" '+ classDiv + ">" + item.title.substr(0, item.title.indexOf("-") - 1) + "&nbsp;🔥" + (item.comments * 101) + "</a>&nbsp;&nbsp;"
             })
             hotDiv.html("");
             if (hotContent == "") {
                 hotDiv.append("无数据记录！");
             } else {
                 hotDiv.append(hotContent);
+                loadPjax();
             }
         });
     }
@@ -243,8 +245,23 @@ function loadIssueData() {
         console.clear();
         console.log("~~~~欢迎光临！记得有时间多来看看哦，https://removeif.github.io/ ~~~~")
     }
-    ,
-    500
-)
+        ,
+        500
+    )
 }
 $(document).ready(loadIssueData());
+
+//load issue data completely execute
+function loadPjax(){
+    var pjax = new Pjax({
+        elements: "a",//代表点击链接就更新
+        selectors: [  //代表要更新的节点
+            ".section",
+            "title"
+        ],
+        cache: true,
+        cacheBust:false
+    })
+    document.addEventListener('pjax:complete', function () {
+    });
+}
