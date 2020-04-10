@@ -50,7 +50,7 @@ module.exports = class extends Component {
                             {/* Date */}
                             <time class="level-item" dateTime={date_xml(page.date)}>{date(page.date)}</time>
 
-                            {comment.type !== 'undefined' && comment.type == 'gitalk' ?
+                            {comment !== undefined && comment.type !== undefined && comment.type == 'gitalk' ?
                                 <a class="commentCountImg" href={`${url_for(page.link || page.path)}#comment-container`}><span class="display-none-class">{id}</span><img class="not-gallery-item" src={`${my_cdn(url_for('/img/chat.svg'))}`} />&nbsp;<span class="commentCount" id={id}>&nbsp;99+</span>&nbsp;&nbsp;&nbsp;&nbsp;</a> : null}
                             {/* Read time */}
                             {article && article.readtime && article.readtime === true ? <span class="level-item">

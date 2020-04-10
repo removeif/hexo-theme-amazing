@@ -5,9 +5,10 @@ module.exports = class extends Component {
     render() {
         const { site, config, helper, page } = this.props;
         const { url_for, cdn, my_cdn } = helper;
-        const { external_link, article } = config;
+        const { external_link, article, comment } = config;
         const language = page.lang || page.language || config.language || 'en';
-
+        const hasGitalk = !(comment == undefined || comment.type == undefined || comment.type == 'undefined' || comment.type != 'gitalk'
+            || (!comment.has_hot_recommend && !comment.has_latest_comment));
         let externalLink;
         if (typeof external_link === 'boolean') {
             externalLink = { enable: external_link, exclude: [] };
@@ -50,7 +51,7 @@ module.exports = class extends Component {
             <Plugins site={site} config={config} page={page} helper={helper} head={false} />
             <script src={my_cdn(url_for('/js/toc.js'))} defer={true}></script>
             <script src={my_cdn(url_for('/js/main.js'))} defer={true}></script>
-            <script src={my_cdn(url_for('/js/comment-issue-data.js'))} defer={true}></script>
+            {hasGitalk ? <script src={my_cdn(url_for('/js/comment-issue-data.js'))} defer={true}></script> : null}
         </Fragment>;
     }
 };
