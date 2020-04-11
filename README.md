@@ -13,8 +13,11 @@
 博客源码在主题[icarus](http://github.com/ppoffice/hexo-theme-icarus)基础之上参照各网友博客，以及自己的一些想法做出的一些修改以及增加部分新元素。除了以下配置，其余配置请到[icarus官网查看](http://github.com/ppoffice/hexo-theme-icarus)。
 因为修改了原作者源码，有什么问题请先联系我，不要去麻烦原作者了，能自己解决的问题就不要麻烦别人了，每个人的时间都很宝贵。  
 膜拜和感谢所有模块的原作者,orz👻,辛苦了。  
+**使用之前请详细阅读此文档，以及主题配置文件_config.yml**  
+**使用之前请详细阅读此文档，以及主题配置文件_config.yml**  
+**使用之前请详细阅读此文档，以及主题配置文件_config.yml**  
 
-**本仓库为纯主题仓库，博客主题完整仓库请移步为[hexo-theme-icarus-removeif](https://github.com/removeif/hexo-theme-icarus-removeif)**
+**本仓库为纯主题仓库，博客主题完整仓库(已不维护)请移步为[hexo-theme-icarus-removeif](https://github.com/removeif/hexo-theme-icarus-removeif)**
 
 
 **增加adsense分支，此分支信息流中加入adsense广告，如[本博客](https://removeif.github.io/)adsense每个地方的使用方式，具体请移步[branch](https://github.com/removeif/hexo-theme-amazing/tree/adsense)**
@@ -321,15 +324,13 @@ use_pjax: false #是否开启pjax，false-不开启，true-开启，开启后局
 ```
 #### 以上配置好后
 ```yaml
-$ npm install #安装依赖包（只需要执行一次）可直接把本文最后的json文件复制到博客下面的依赖文件package.json后在执行此命令
+$ npm install #安装依赖包（只需要执行一次）可直接把本文最后的json文件内容复制到博客下面的依赖文件package.json后在执行此命令，如果原来已有node_modules文件夹，请先删除在执行此命令
 $ hexo clean #清除缓存
 $ hexo g #编译 
 $ hexo s #启动服务 
 $ hexo d #推到远程 
 ```
 安装依赖包（只需要执行一次），以后修改了代码 只需要执行后面几条就好。  
-
-ok,enjoy it！👏👏👏
 
 ### 写在后面
 如果你有问题请反馈: [issues](https://github.com/removeif/hexo-theme-amazing/issues) （请务必先于issues中寻找答案）  

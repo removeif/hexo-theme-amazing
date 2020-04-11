@@ -1,11 +1,11 @@
 # Version of the configuration file
 version: 3.0.0
 # Path or URL to the website's logo
-logo: https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2019/20191121122803.png #https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2019/20191121115040.png
+logo: /img/logo.png #https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2019/20191121115040.png
 # Page metadata configurations
 head:
     # URL or path to the website's icon
-    favicon: https://cdn.jsdelivr.net/gh/removeif/removeif.github.io@latest/img/wico.png
+    favicon: /img/favicon.png
     # Canonical URL of the current page
     canonical_url:
     # Open Graph metadata
@@ -22,7 +22,7 @@ head:
         url: https://removeif.github.io/
         # Page cover (og:image) (optional) Default to the Open Graph image or thumbnail of the page
         # You should leave this blank for most of the time
-        image: https://cdn.jsdelivr.net/gh/removeif/removeif.github.io@latest/img/avatar.jpg
+        image: /img/avatar.png
         # Site name (og:site_name) (optional)
         # You should leave this blank for most of the time
         site_name: 辣椒の酱
@@ -61,7 +61,7 @@ head:
         author: removeif
         # Page images (optional) Default to the Open Graph image or thumbnail of the page
         # You should leave this blank for most of the time
-        image: https://cdn.jsdelivr.net/gh/removeif/removeif.github.io@latest/img/avatar.jpg
+        image: /img/avatar.png
     # Additional HTML meta tags in an array
     meta:
         # Meta tag specified in <attribute>=<value> style
@@ -188,7 +188,7 @@ widgets:
         # Author's current location to be shown in the profile widget
         location: 阿尔及利亚
         # Path or URL to the avatar to be shown in the profile widget
-        avatar: https://cdn.jsdelivr.net/gh/removeif/removeif.github.io@latest/img/avatar.jpg
+        avatar: /img/avatar.png
         # Whether show the rounded avatar image
         avatar_rounded: true
         # Email address for the Gravatar
