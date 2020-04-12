@@ -57,8 +57,7 @@ class Footer extends Component {
                                 </p>;
                             })}
                         </div> : null}
-                    </div>
-                    {side_music_netease_id ?
+                        {side_music_netease_id ?
                         <div class="sideMusic">
                             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" />
                             <script src={my_cdn(url_for('/js/APlayer.min.js'))}></script>
@@ -78,6 +77,7 @@ class Footer extends Component {
                             >
                             </meting-js>
                         </div> : null}
+                    </div>
                 </div>
             </div>
         </footer>;
