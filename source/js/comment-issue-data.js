@@ -192,7 +192,7 @@ function loadIndexHotData() {
                 } else {
                     classDiv = "class=\"item level0\"";
                 }
-                hotContent += "<a href =\"" + item.body.substr(0, item.body.indexOf("\n") - 1) +'\" '+ classDiv + ">" + item.title.substr(0, item.title.indexOf("-") - 1) + "&nbsp;🔥" + (item.comments * 101) + "</a>&nbsp;&nbsp;"
+                hotContent += "<a href =\"" + item.body.substr(0, item.body.indexOf("\n") - 1) + '\" ' + classDiv + ">" + item.title.substr(0, item.title.indexOf("-") - 1) + "&nbsp;🔥" + (item.comments * 101) + "</a>&nbsp;&nbsp;"
             })
             hotDiv.html("");
             if (hotContent == "") {
@@ -252,16 +252,18 @@ function loadIssueData() {
 $(document).ready(loadIssueData());
 
 //load issue data completely execute
-function loadPjax(){
-    var pjax = new Pjax({
-        elements: "a",//代表点击链接就更新
-        selectors: [  //代表要更新的节点
-            ".section",
-            "title"
-        ],
-        cache: true,
-        cacheBust:false
-    })
-    document.addEventListener('pjax:complete', function () {
-    });
+function loadPjax() {
+    if (typeof (eval('Pjax')) == "function") {
+        var pjax = new Pjax({
+            elements: "a",//代表点击链接就更新
+            selectors: [  //代表要更新的节点
+                ".section",
+                "title"
+            ],
+            cache: true,
+            cacheBust: false
+        })
+        document.addEventListener('pjax:complete', function () {
+        });
+    }
 }
