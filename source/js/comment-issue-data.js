@@ -277,7 +277,7 @@ function loadIssueData(appId, appKey, userName, userRepo, isValine) {
                 ADMIN_NAME = userName;
                 if (valine == undefined || valine == null) {
                     valine = new Valine({
-                        el: '#comment-container',
+                        el: '#comment-container-no',
                         notify: false,
                         verify: false,
                         appId: appId,
