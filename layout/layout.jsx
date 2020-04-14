@@ -14,8 +14,26 @@ module.exports = class extends Component {
         const { comment, use_pjax } = config;
         // 默认不加载公式，文中头部开启mathJax:true才加载
         var isMath = page.mathJax != undefined && page.mathJax;
-        const hasGitalk = !(comment == undefined || comment.type == undefined || comment.type == 'undefined' || comment.type != 'gitalk'
-            || (!comment.has_hot_recommend && !comment.has_latest_comment));
+        const hasComment = comment != undefined && comment.type != undefined && (comment.type == 'gitalk' || comment.type == 'valine')
+            && (comment.has_hot_recommend || comment.has_latest_comment);
+        var appKey;
+        var appId;
+        var userName;
+        var userRepo;
+        var isValine;
+
+        if (comment != undefined && comment.type != undefined && comment.type == 'gitalk') {
+            appId = comment.client_id;
+            appKey = comment.client_secret;
+            userName = comment.owner;;
+            userRepo = comment.repo;
+            isValine = false;
+        } else if (comment != undefined && comment.type != undefined && comment.type == 'valine') {
+            appId = comment.app_id;
+            appKey = comment.app_key;
+            userName = comment.owner;
+            isValine = true;
+        }
 
         // =====index hot_recommend
         var hotRecommendStr =
@@ -46,8 +64,8 @@ module.exports = class extends Component {
         // PJAX 完成之后执行的函数，可以和上面的重载放在一起
         document.addEventListener('pjax:complete', function () {
             $(".section").css({opacity:1});
-            if(${hasGitalk}){
-                loadIssueData();
+            if(${hasComment}){
+                $.getScript('${my_cdn(url_for('/js/comment-issue-data.js'))}',function(){loadIssueData('${appId}','${appKey}','${userName}','${userRepo}',${isValine});});
             }
             if(${isMath}){
                 loadMathJax();

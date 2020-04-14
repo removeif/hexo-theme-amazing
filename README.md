@@ -46,6 +46,7 @@
 + 加入pjax提升页面访问体验，配置文件中可开启关闭
 + 侧边栏加入可配置网易云歌单音乐插件，配合pjax可以实现页面间切换背景音乐不间断
 + 文章中加入相关文章模块，取分类相同的最新的5条文章
++ 支持valine最新评论以及文章评论数显示
 + `还有什么新的，好的feature欢迎大家随时提出来，有能力有时间就做出来`
 
 ### 二、部分配置说明：
@@ -64,7 +65,7 @@ git clone https://github.com/removeif/hexo-theme-amazing.git /themes/amazing
 #### 开始部分配置：
 **敲黑板！！！！首先全局以及主题中的`_config.yml`配置成自己的对应参数。**  
 
-把主题中ex_pages文件夹中的文件复制到博客主目录相应目录下面。包含了文章模板、关于页、相册页、友链、留言板、音乐、影音、碎碎念页面（各个页面的.md文件可自定义修改内容），可以自己选择性需要哪些页面复制哪些过去，同时对应配置主题中`_config.yml`需要哪些页面进行修改，如下配置
+把主题中ex_pages文件夹中的文件复制到博客主目录相应目录下面。包含了文章模板、关于页、相册页、友链、留言板、音乐、影音、碎碎念页面（各个页面的.md文件可自定义修改内容），可以自己选择性需要哪些页面复制哪些过去，同时对应配置主题中`_config.yml`需要删除以及保留相应的menu，如下配置
 ```yaml
 navbar:
     # Naviagtion menu items
@@ -81,21 +82,8 @@ navbar:
         关于: /about
 ```
 #### 1.热门推荐，最新评论：
-**仅针对gitalk评论有效，如果配置完后显示[本博客](https://removeif.github.io/)相关评论、推荐，请详细阅读这一条**  
-热门推荐，最新评论，文章评论数关联的js文件路径：themes/amazing/source/js/comment-issue-data.js  
-以下引号里的地址改成自己对应的博客评论的issues的仓库相关的值。repoIssuesUrl改两个值（removeif和blog_comment改成自己对应的）
-```yaml
-// 评论issues仓库 by.removeif https://removeif.github.io/
-var repoIssuesUrl = "https://api.github.com/repos/removeif/blog_comment/issues"; // removeif：用户名，blog_comment：评论的issue仓库
-// 评论issues仓库 clientId、clientSecret怎么申请自行搜索，关于这暴露两个参数的安全问题，查看 https://removeif.github.io/2019/09/19/博客源码分享.html#1-热门推荐，最新评论：
-var clientId = "46a9f3481b46ea0129d8";
-var clientSecret = "79c7c9cb847e141757d7864453bcbf89f0655b24";
-// 管理员名称,评论时添加 [博主] 后缀 removeif 改成自己的用户名
-var ADMIN_NAME = "removeif";
-```
-github api 详情可以参照[官方api说明](https://developer.github.com/v3/#rate-limiting)  
-关于配置暴露client_id和client_secret安全性问题，gitalk作者有[解释](https://github.com/gitalk/gitalk/issues/150)  
-对应主题中的`_config.yml`要开启如下配置，xxx换成自己的，否则无效。**部署博客后需要到相应文章评论处点击初始化issue评论，完成评论的初始化。**
+**热门推荐仅支持gitalk，最新评论支持gitalk & valine**
+对应主题中的`_config.yml`要开启如下配置（此为gitalk，valine配置文件中也有示例），xxx换成自己的，否则无效。**对于gitalk部署博客后需要到相应文章评论处点击初始化issue评论，完成评论的初始化。**
 ```yaml
 comment:
     type: gitalk

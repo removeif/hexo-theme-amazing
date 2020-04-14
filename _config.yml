@@ -319,8 +319,6 @@ providers:
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Comment/
 comment:
     type: gitalk
-    # Disqus shortname
-#    shortname: ''
     owner: removeif         # (required) GitHub user name
     repo: blog_comment          # (required) GitHub repository name
     client_id: 46a9f3481b46ea0129d8     # (required) OAuth application client id
@@ -330,6 +328,17 @@ comment:
     distraction_free_mode: false
     has_hot_recommend: true # 是否有热门推荐
     has_latest_comment: true #是否有最新评论
+
+# comment:
+#     type: valine
+#     app_id: rOtVIhvG3kd7QkMKe3naSU9R-gzGzoHsz
+#     app_key: F2sNV0CkqvbPat45di3DEn3z
+#     notify: false
+#     verify: false
+#     avatar: 'mp'
+#     placeholder: '留下您的高见！'
+#     has_latest_comment: true #是否有最新评论 true-有，false-无
+#     owner: 辣椒の酱 #博主名 最新评论标注[博主]
 
 global_gray: false #true 全局灰色，特定时期可以开启，false-不开启
 
