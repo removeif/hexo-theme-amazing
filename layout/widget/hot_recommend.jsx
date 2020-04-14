@@ -22,7 +22,7 @@ module.exports = cacheComponent(HotRecommend, 'widget.hotrecommend', props => {
     const { comment } = config;
 
 
-    if (comment.type == 'undefined' || comment.type != 'gitalk'
+    if (comment == undefined || comment.type == undefined || comment.type == 'undefined' || comment.type != 'gitalk'
         || !comment.has_hot_recommend) {
         return null
     }

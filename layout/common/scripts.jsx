@@ -5,9 +5,30 @@ module.exports = class extends Component {
     render() {
         const { site, config, helper, page } = this.props;
         const { url_for, cdn, my_cdn } = helper;
-        const { external_link, article } = config;
+        const { external_link, article, comment } = config;
         const language = page.lang || page.language || config.language || 'en';
+        const hasComment = comment != undefined && comment.type != undefined && (comment.type == 'gitalk' || comment.type == 'valine');
+        const isValineComment = comment != undefined && comment.type != undefined && comment.type == 'valine';
+        var appKey;
+        var appId;
+        var userName;
+        var userRepo;
+        var isValine;
 
+        if (comment != undefined && comment.type != undefined && comment.type == 'gitalk') {
+            appId = comment.client_id;
+            appKey = comment.client_secret;
+            userName = comment.owner;;
+            userRepo = comment.repo;
+            isValine = false;
+        } else if (comment != undefined && comment.type != undefined && comment.type == 'valine') {
+            appId = comment.app_id;
+            appKey = comment.app_key;
+            userName = comment.owner;
+            isValine = true;
+        }
+
+        const js = `$.getScript('${my_cdn(url_for('/js/comment-issue-data.js'))}',function(){loadIssueData('${appId}','${appKey}','${userName}','${userRepo}',${isValine});})`;
         let externalLink;
         if (typeof external_link === 'boolean') {
             externalLink = { enable: external_link, exclude: [] };
@@ -50,7 +71,9 @@ module.exports = class extends Component {
             <Plugins site={site} config={config} page={page} helper={helper} head={false} />
             <script src={my_cdn(url_for('/js/toc.js'))} defer={true}></script>
             <script src={my_cdn(url_for('/js/main.js'))} defer={true}></script>
-            <script src={my_cdn(url_for('/js/comment-issue-data.js'))} defer={true}></script>
+            {isValineComment ? <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> : null}
+            {isValineComment ? <script src="https://cdnjs.loli.net/ajax/libs/valine/1.4.4/Valine.min.js"></script> : null}
+            {hasComment ? <script dangerouslySetInnerHTML={{ __html: js }}></script> : null}
         </Fragment>;
     }
 };

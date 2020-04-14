@@ -21,7 +21,7 @@ module.exports = cacheComponent(LatestComment, 'widget.latestcomment', props => 
     const { config } = props;
     const { comment } = config;
 
-    if (comment.type == 'undefined' || comment.type != 'gitalk'
+    if (comment == undefined || comment.type == undefined || (comment.type != 'gitalk' && comment.type != 'valine')
         || !comment.has_latest_comment) {
         return null
     }

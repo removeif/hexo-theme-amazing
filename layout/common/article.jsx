@@ -24,12 +24,19 @@ module.exports = class extends Component {
         const { article, plugins, comment, index_adsense_positions, has_latest_modify_time, has_copyright, busuanzi_only_count, index_show_tags_cateories } = config;
         const { has_thumbnail, my_cdn, get_thumbnail, url_for, date, date_xml, __, _p } = helper;
         const language = page.lang || page.language || config.language || 'en';
-        const id = crypto.createHash('md5').update(helper.get_path_end_str(page.path, page.uniqueId, page.title)).digest('hex');
+        var id = crypto.createHash('md5').update(helper.get_path_end_str(page.path, page.uniqueId, page.title)).digest('hex');
         const myPermalink = config.url + config.root + page.path;
         var hasLatestTime = has_latest_modify_time == undefined || has_latest_modify_time;
         var hasCopyright = has_copyright == undefined || has_copyright;
         var showBusuanziVisitor = plugins && plugins.busuanzi === true && (busuanzi_only_count != undefined && !busuanzi_only_count);
         var indexShowTagsCat = index_show_tags_cateories == undefined || index_show_tags_cateories;
+        var isGitalk = comment !== undefined && comment.type !== undefined && comment.type == 'gitalk';
+        var showComment = comment !== undefined && comment.type !== undefined && (comment.type == 'gitalk' || comment.type == 'valine');
+        var md5Id = id;
+        if (!isGitalk) {
+            id = "/" + page.path;
+            md5Id = crypto.createHash('md5').update(id).digest('hex');
+        }
         return <Fragment>
             {/* Main content */}
             <div class="card">
@@ -51,8 +58,8 @@ module.exports = class extends Component {
                             {/* Date */}
                             <time class="level-item" dateTime={date_xml(page.date)}>{date(page.date)}</time>
 
-                            {comment.type !== 'undefined' && comment.type == 'gitalk' ?
-                                <a class="commentCountImg" href={`${url_for(page.link || page.path)}#comment-container`}><span class="display-none-class">{id}</span><img class="not-gallery-item" src={`${my_cdn(url_for('/img/chat.svg'))}`} />&nbsp;<span class="commentCount" id={id}>&nbsp;99+</span>&nbsp;&nbsp;&nbsp;&nbsp;</a> : null}
+                            {showComment ?
+                                <a class="commentCountImg" href={`${url_for(page.link || page.path)}#comment-container`}><span class="display-none-class">{id}</span><img class="not-gallery-item" src={`${my_cdn(url_for('/img/chat.svg'))}`} />&nbsp;<span class="commentCount" id={md5Id}>&nbsp;99+</span>&nbsp;&nbsp;&nbsp;&nbsp;</a> : null}
                             {/* Read time */}
                             {article && article.readtime && article.readtime === true ? <span class="level-item">
                                 {(() => {
