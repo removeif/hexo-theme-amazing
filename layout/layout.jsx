@@ -10,7 +10,7 @@ const classname = require('./util/classname');
 module.exports = class extends Component {
     render() {
         const { env, site, config, page, helper, body } = this.props;
-        const { my_cdn, url_for } = helper;
+        const { my_cdn, url_for, __ } = helper;
         const { comment, use_pjax } = config;
         // 默认不加载公式，文中头部开启mathJax:true才加载
         var isMath = page.mathJax != undefined && page.mathJax;
@@ -34,14 +34,16 @@ module.exports = class extends Component {
             userName = comment.owner;
             isValine = true;
         }
+        var hotTitle = __('widget.hot_recommend');
+        var hotTip = __('widget.hot_recommend_tip');
 
         // =====index hot_recommend
         var hotRecommendStr =
-            "<div class=\"card widget\">" +
-            "   <div class=\"card-content\">" +
-            "       <h3 class=\"menu-label\">热门推荐</h3><span id=\"index_hot_div\">加载中，稍等几秒...</span>" +
-            "   </div>" +
-            "</div>";
+            `<div class="card widget">
+            <div class="card-content">
+                <h3 class="menu-label">${hotTitle}</h3><span id="index_hot_div">${hotTip}</span>
+            </div>
+        </div>`;
 
         var pjaxJs = `var pjax = new Pjax({
             elements: "a",//代表点击链接就更新

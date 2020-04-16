@@ -353,9 +353,9 @@ lightgallery_is_full: true #图片灯箱是否显示完整的插件(包括放大
 
 website_start_time: 2018/11/11 00:00:00 #网站运行开始时间,不填不显示
 
-footer_registered_no: #测试-川ICP备88888888号-8 #备案号
+footer_registered_no: #川ICP备88888888号-8 #备案号
 
-footer_copyright_dsec: true #footer 版权说明 true-开 false-关
+footer_copyright_dsec: © 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /> #footer 版权说明 可自由配置
 
 has_live_2D_switch: true #live2D开关 true-开 false-关
 

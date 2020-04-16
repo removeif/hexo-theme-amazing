@@ -24,12 +24,23 @@ widget:
     adsense: 'Advertisement'
     recommend_posts: 'Recommend Post'
     related_posts: 'Related Post'
+    latest_comment: 'Latest Comment'
+    hot_recommend: 'Hot Recommend'
+    latest_comment_tip: 'Loading...Wait a Minute!'
+    hot_recommend_tip: 'Loading...Wait a Minute!'
 article:
     more: 'Read More'
     comments: 'Comments'
     read: 'read'
     about: 'About'
     words: 'words'
+    last_modified: 'Last Modified:'
+    copyright:
+        title: 'Post Title: '
+        author: 'Post Author: '
+        link: 'Post Link: '
+        copyright_title: 'Copyright Notice: '
+        copyright_content: 'All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.'
 donate:
     title: 'Like this article? Support the author with'
     alipay: 'Alipay'
@@ -41,6 +52,8 @@ plugin:
     backtotop: 'Back to Top'
     visit: '%s visits'
     visitor: 'Visited by %s users'
+    footer_visitor: '❤️thx <strong>%s</strong> users <strong>%s</strong> visited！❤️'
+    footer_website_time: '❤️Site from <strong>|</strong> has existed <strong>|</strong> d <strong>|</strong> h <strong>|</strong> m <strong>|</strong> s！❤️'
 search:
     search: 'Search'
     hint: 'Type something...'
