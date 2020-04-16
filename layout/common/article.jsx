@@ -36,6 +36,14 @@ module.exports = class extends Component {
             id = "/" + page.path;
             md5Id = crypto.createHash('md5').update(id).digest('hex');
         }
+
+        var lastModified = __('article.last_modified');
+        var copyrightTitle = __('article.copyright.title');
+        var copyrightAuthor = __('article.copyright.author');
+        var copyrightLink = __('article.copyright.link');
+        var copyrightCopyrightContent = __('article.copyright.copyright_content');
+        var copyrightCopyrightTitle = __('article.copyright.copyright_title');
+
         return <Fragment>
             {/* Main content */}
             <div class="card">
@@ -124,7 +132,7 @@ module.exports = class extends Component {
                                 <div class="level-start">
                                     <div class="level-item has-text-grey is-size-7">
                                         <time datetime={date_xml(page.updated)}><i
-                                            class="far fa-calendar-check">&nbsp;最后修改:&nbsp;</i>{date(page.updated)}
+                                            class="far fa-calendar-check">&nbsp;{lastModified}&nbsp;</i>{date(page.updated)}
                                         </time>
                                     </div>
                                 </div> : null
@@ -133,11 +141,11 @@ module.exports = class extends Component {
                     {/*copyright*/}
                     {hasCopyright && !index && page.layout == 'post' ?
                         <ul class="post-copyright">
-                            <li><strong>本文标题：</strong><a href={myPermalink}>{page.title}</a></li>
-                            <li><strong>本文作者：</strong><a href={url_for(config.url)}>{config.author}</a></li>
-                            <li><strong>本文链接：</strong><a href={myPermalink}>{myPermalink}</a></li>
-                            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
-                        </li>
+                            <li><strong>{copyrightTitle}</strong><a href={myPermalink}>{page.title}</a></li>
+                            <li><strong>{copyrightAuthor}</strong><a href={url_for(config.url)}>{config.author}</a></li>
+                            <li><strong>{copyrightLink}</strong><a href={myPermalink}>{myPermalink}</a></li>
+                            <li><strong>{copyrightCopyrightTitle}</strong><span dangerouslySetInnerHTML={{ __html: copyrightCopyrightContent }}></span>
+                            </li>
                         </ul> : null}
                     {!index && page.layout == 'post' ? <RecommendPosts config={config} curPost={page} helper={helper} site={site} /> : null}
                     {/* Share button */}
