@@ -1,18 +1,22 @@
 // author by removef
 // https://removeif.github.io/
 
-var isNight = localStorage.getExpire('night');
+function isNightFun() {
+    var isNightTemp = localStorage.getExpire('night');
 
-// 第一次进来判断是白天还是晚上
-if (isNight == null || isNight == undefined) {
-    if (isNightRange("19:00", "23:59") || isNightRange("00:00", "07:00")) {
-        isNight = 'true';
-    } else {
-        isNight = 'false';
+    // 第一次进来判断是白天还是晚上
+    if (isNightTemp == null || isNightTemp == undefined) {
+        if (isNightRange("19:00", "23:59") || isNightRange("00:00", "07:00")) {
+            isNightTemp = 'true';
+        } else {
+            isNightTemp = 'false';
+        }
+        localStorage.setExpire("night", isNightTemp, expireTime1H);
     }
-    localStorage.setExpire("night", isNight, expireTime1H);
+    return isNightTemp;
 }
 
+var isNight=isNightFun();
 // 参考自 https://www.imaegoo.com/
 var nightNav;
 var nightIcon;
@@ -53,9 +57,12 @@ function switchNight() {
     } else {
         isNight = 'false';
     }
-
+    
     applyNight(isNight);
     localStorage.setExpire('night', isNight, expireTime1H);
+    if(typeof loadUtterances == 'function'){
+        loadUtterances();
+    }
 }
 
 findNightIcon();

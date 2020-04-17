@@ -104,7 +104,7 @@ function fillComments(result, authorizationToken) {
     });
 }
 
-function dealWtihContentStr(contentStr){
+function dealWtihContentStr(contentStr) {
     if (contentStr == undefined || contentStr == "") {
         contentStr = "内容为空！";
     }
@@ -237,7 +237,7 @@ function renderValineComment(valine, ADMIN_NAME) {
                 var createDate = comments[i]._serverData.insertedAt;
                 var link = comments[i]._serverData.link;
                 var mail = comments[i]._serverData.mail;
-                content = content.replace(/<\/?.+?>/g,"");
+                content = content.replace(/<\/?.+?>/g, "");
                 content = dealWtihContentStr(content);
                 resultArr.push({
                     "content": content,
@@ -268,12 +268,11 @@ function loadIssueData(appId, appKey, userName, userRepo, isValine) {
                 COMMENT_ARR = COMMENT["data"];
             } catch (e) {
                 COMMENT_CACHE = '';
-                console.error(e);
             }
         }
 
         if (isValine) {
-            if (typeof (eval('Valine')) == "function") {
+            if (typeof Valine == "function") {
                 ADMIN_NAME = userName;
                 if (valine == undefined || valine == null) {
                     valine = new Valine({
@@ -339,7 +338,7 @@ function loadIssueData(appId, appKey, userName, userRepo, isValine) {
 
 //load issue data completely execute
 function loadPjax() {
-    if (typeof (eval('Pjax')) == "function") {
+    if (typeof Pjax === "function") {
         var pjax = new Pjax({
             elements: "a",//代表点击链接就更新
             selectors: [  //代表要更新的节点
