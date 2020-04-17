@@ -340,6 +340,16 @@ comment:
 #     has_latest_comment: true #是否有最新评论 true-有，false-无
 #     owner: 辣椒の酱 #博主名 最新评论标注[博主]
 
+
+# utteranc site: https://utteranc.es/
+# comment:
+#     type: utteranc
+#     repo: removeif/utteranc_comment # (required) GitHub userName & repository name
+#     issue_term: pathname 
+#     issue_number: 
+#     label: 
+#     theme: github-light
+  
 global_gray: false #true 全局灰色，特定时期可以开启，false-不开启
 
 has_latest_modify_time: true #是否显示最后修改时间 true开启，false-关闭   

@@ -30,6 +30,9 @@
         },
         {
             "$ref": "/comment/valine.json"
+        },
+        {
+            "$ref": "/comment/utteranc.json"
         }
     ]
 }
