@@ -1,0 +1,22 @@
+[
+    {
+        "img" : "https://dp2px.com/json-data/banner/git-github.jpeg", 
+        "url" : "https://space.bilibili.com/386767453/channel/detail?cid=84534",
+        "alt" : "让你彻底理解Git视频教程"
+    },
+    {
+        "img" : "https://dp2px.com/json-data/banner/android-video.jpg", 
+        "url" : "https://space.bilibili.com/386767453/channel/detail?cid=83639",
+        "alt" : "Android从入门到进阶全套视频教程"
+    },
+    {
+        "img" : "https://dp2px.com/json-data/banner/win10-tools.png", 
+        "url" : "https://www.bilibili.com/video/av90639199",
+        "alt" : "Win10 常用工具和软件推荐"
+    },
+    {
+        "img" : "https://dp2px.com/json-data/banner/blog-build.png", 
+        "url" : "https://space.bilibili.com/386767453/channel/detail?cid=89247",
+        "alt" : "个人博客搭建视频教程"
+    }
+]

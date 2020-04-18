@@ -11,7 +11,7 @@ module.exports = class extends Component {
     render() {
         const { env, site, config, page, helper, body } = this.props;
         const { my_cdn, url_for, __ } = helper;
-        const { comment, use_pjax } = config;
+        const { comment, use_pjax, has_banner } = config;
         // 默认不加载公式，文中头部开启mathJax:true才加载
         var isMath = page.mathJax != undefined && page.mathJax;
         const hasComment = comment != undefined && comment.type != undefined && (comment.type == 'gitalk' || comment.type == 'valine')
@@ -45,6 +45,14 @@ module.exports = class extends Component {
             </div>
         </div>`;
 
+        // =====index banner
+        var bannerStr =
+            `<div class="card widget">
+            <div class="card-content1">
+                <span id="banner">Banner ${hotTip}</span>
+            </div>
+        </div>`;
+
         var pjaxJs = `var pjax = new Pjax({
             elements: "a",//代表点击链接就更新
             selectors: [  //代表要更新的节点
@@ -75,19 +83,31 @@ module.exports = class extends Component {
             loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
             loadBackTop();
             loadBusuanzi();
+            if(typeof loadBanner == 'function'){
+                loadBanner();
+            }
         });`;
 
-        if (page.path != 'index.html'
-            || (comment == undefined || comment.type == undefined
+        if (comment == undefined || comment.type == undefined
                 || comment.type != 'gitalk'
                 || comment.has_hot_recommend == undefined
-                || !comment.has_hot_recommend)) {
+                || !comment.has_hot_recommend) {
             hotRecommendStr = '';
         }
-        // =====
+
+        var indexTopData = hotRecommendStr;
 
         const language = page.lang || page.language || config.language;
         const columnCount = Widgets.getColumnCount(config.widgets);
+        const hasBanner = has_banner != undefined && has_banner;
+
+        if (indexTopData == '' && hasBanner) {
+            indexTopData = bannerStr;
+        }
+
+        if(page.path != 'index.html'){
+            indexTopData = '';
+        }
 
         return <html lang={language ? language.substr(0, 2) : ''}>
             <Head env={env} site={site} config={config} helper={helper} page={page} />
@@ -105,7 +125,7 @@ module.exports = class extends Component {
                                 'is-8-tablet is-8-desktop is-8-widescreen': columnCount === 2,
                                 'is-8-tablet is-8-desktop is-6-widescreen': (page.layout != 'post' && page.layout != 'page') && columnCount === 3,
                                 'is-8-tablet is-8-desktop is-9-widescreen': page.layout == 'page' || page.layout == 'post'
-                            })} dangerouslySetInnerHTML={{ __html: hotRecommendStr + body }}></div>
+                            })} dangerouslySetInnerHTML={{ __html: indexTopData + body }}></div>
                             <Widgets site={site} config={config} helper={helper} page={page} position={'left'} />
                             {page.layout == 'page' || page.layout == 'post' ? null : <Widgets site={site} config={config} helper={helper} page={page} position={'right'} />}
                         </div>

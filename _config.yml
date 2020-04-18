@@ -352,6 +352,8 @@ comment:
   
 global_gray: false #true 全局灰色，特定时期可以开启，false-不开启
 
+has_banner: false #首页是否有banner，true-是，false-否，如果配置了热门推荐显示热门推荐，banner配置数据在json_data/banner.json里按照配置格式配置好，至少三条
+
 has_latest_modify_time: true #是否显示最后修改时间 true开启，false-关闭   
 
 busuanzi_only_count: false #当上面plugins中busuanzi: true时，此配置busuanzi_only_count为true时，网站不显示不蒜子统计数据，但是会每次统计。false时显示统计数据。

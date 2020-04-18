@@ -1689,3 +1689,106 @@ night-link = #3273dc
     margin-bottom: 4px;
     }
 }
+
+//index banner
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+
+/* banner css */
+#banner {
+    margin-bottom: 1rem;
+    .pull-left {
+        float: left!important;
+    }
+    .pull-right{
+        float: right!important;
+    }
+    .clearfix:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+    }
+    .clearfix { display: inline-block; }
+    .clearfix { display: block; }
+    ul,li{
+        margin:0;
+        padding:0;
+        list-style-type: none;
+    }
+    .carousel-box{
+        position: relative;
+        width:100%;
+    }
+    .transverse-box{
+        position: relative;
+        width:66.7%;
+    }
+    .img-item{
+        position: absolute;
+        top:0;
+        left:0;
+        z-index: 0;
+    }
+    .vertical-box{
+        position: relative;
+        width:33.3%;
+    }
+    .vertical-box ul{
+        overflow: hidden;
+    }
+    .img-item{
+        transition: width 1s;
+    }
+    .img-item img{
+        width:100%;
+        height:100%;
+    }
+    .vertical-box ul li{
+        font-size: 0;
+    }
+    .vertical-box ul li img{
+        width:100%;
+        height:100%;
+    }
+    .left-arrow{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top:50%;
+        left:0px;
+        color:#fff;
+        margin-top:-35px;
+        font-size: 50px;
+        font-weight: 200;
+        text-align: center;
+        line-height: 100px;
+        width:50px;
+        height:70px;
+        background:rgba(0,0,0,0.6);
+        cursor: pointer;
+        z-index: 99;
+    }
+    .right-arrow{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top:50%;
+        right:0px;
+        color:#fff;
+        margin-top:-35px;
+        font-size: 50px;
+        font-weight: 200;
+        text-align: center;
+        line-height: 100px;
+        width:50px;
+        height:70px;
+        background:rgba(0,0,0,0.6);
+        cursor: pointer;
+        z-index: 99;
+    }
+}
