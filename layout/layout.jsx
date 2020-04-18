@@ -48,8 +48,8 @@ module.exports = class extends Component {
         // =====index banner
         var bannerStr =
             `<div class="card widget">
-            <div class="card-content">
-                <span id="banner">Banner ${hotTip}</span>
+            <div class="card-content1">
+                <span id="banner"><div class="card-content ">Banner ${hotTip}</div></span>
             </div>
         </div>`;
 
