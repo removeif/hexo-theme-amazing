@@ -3,7 +3,7 @@ const MetaTags = require('../misc/meta');
 const OpenGraph = require('../misc/open_graph');
 const StructuredData = require('../misc/structured_data');
 const Plugins = require('./plugins');
-const {stripHTML} = require('hexo-util');
+const { stripHTML } = require('hexo-util');
 
 function getPageTitle(page, siteTitle, helper) {
     let title = page.title;
@@ -99,6 +99,14 @@ module.exports = class extends Component {
             structuredImages = page.photos;
         }
 
+        const keywordsCon = (page.keywords || (page.tags && page.tags.length ? page.tags : undefined) || config.keywords);
+        const descCon = (page.description || stripHTML(page.excerpt) || open_graph.description || page.content || config.description);
+        const authorCon = (page.author || open_graph.author || config.author)
+        // head meta data
+        meta.push("name=keywords;content=" + keywordsCon);
+        meta.push("name=description;content=" + descCon);
+        meta.push("name=author;content=" + authorCon);
+
         var hasLive2D = has_live_2D_switch == undefined || has_live_2D_switch;
         var globalGray = global_gray != undefined && global_gray;
         return <head>
@@ -114,9 +122,9 @@ module.exports = class extends Component {
                 title={page.title || open_graph.title || config.title}
                 date={page.date}
                 updated={page.updated}
-                author={open_graph.author || config.author}
-                description={page.description || stripHTML(page.excerpt) || open_graph.description || page.content || config.description}
-                keywords={page.keywords || (page.tags && page.tags.length ? page.tags : undefined) || config.keywords}
+                author={authorCon}
+                description={descCon}
+                keywords={keywordsCon}
                 url={page.permalink || open_graph.url || url}
                 images={openGraphImages}
                 siteName={open_graph.site_name || config.title}
@@ -130,9 +138,9 @@ module.exports = class extends Component {
 
             {typeof structured_data === 'object' ? <StructuredData
                 title={page.title || structured_data.title || config.title}
-                description={page.description || stripHTML(page.excerpt) || structured_data.description || page.content || config.description}
+                description={descCon}
                 url={page.permalink || structured_data.url || url}
-                author={structured_data.author || config.author}
+                author={authorCon}
                 date={page.date}
                 updated={page.updated}
                 images={structuredImages} /> : null}
