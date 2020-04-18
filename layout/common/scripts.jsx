@@ -5,10 +5,12 @@ module.exports = class extends Component {
     render() {
         const { site, config, helper, page } = this.props;
         const { url_for, cdn, my_cdn } = helper;
-        const { external_link, article, comment } = config;
+        const { external_link, article, comment, has_banner } = config;
         const language = page.lang || page.language || config.language || 'en';
         const hasComment = comment != undefined && comment.type != undefined && (comment.type == 'gitalk' || comment.type == 'valine');
         const isValineComment = comment != undefined && comment.type != undefined && comment.type == 'valine';
+        var hasHotRecommend = false;
+        var hasBanner = has_banner != undefined && has_banner;
         var appKey;
         var appId;
         var userName;
@@ -16,6 +18,7 @@ module.exports = class extends Component {
         var isValine;
 
         if (comment != undefined && comment.type != undefined && comment.type == 'gitalk') {
+            hasHotRecommend = comment.has_hot_recommend != undefined && comment.has_hot_recommend;
             appId = comment.client_id;
             appKey = comment.client_secret;
             userName = comment.owner;;
@@ -63,6 +66,7 @@ module.exports = class extends Component {
             }
         };`;
 
+
         return <Fragment>
             <script src={cdn('moment', '2.22.2', 'min/moment-with-locales.min.js')}></script>
             <script dangerouslySetInnerHTML={{ __html: `moment.locale("${language}");` }}></script>
@@ -73,6 +77,8 @@ module.exports = class extends Component {
             <script src={my_cdn(url_for('/js/main.js'))} defer={true}></script>
             {isValineComment ? <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> : null}
             {isValineComment ? <script src="https://cdnjs.loli.net/ajax/libs/valine/1.4.4/Valine.min.js"></script> : null}
+            {isValineComment ? <script src={my_cdn(url_for('/js/md5.min.js'))}></script> : null}
+            {(hasHotRecommend || !hasBanner) ? null : <script src={my_cdn(url_for('/js/banner.js'))}></script>}
             {hasComment ? <script dangerouslySetInnerHTML={{ __html: js }}></script> : null}
         </Fragment>;
     }
