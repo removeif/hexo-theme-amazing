@@ -1,30 +1,41 @@
 // reference https://dp2px.com/2019/08/13/hexo-carousel/
-var Carousel = function() {};
+var Carousel = function () { };
 Carousel.prototype = {
     container: "",
     datas: null,
     autoplaySpeed: null,
     autoplay: false,
-    init: function(options) {
+    hasPlay: false,
+    init: function (options) {
         this.container = options.container;
         this.datas = options.datas;
         this.autoplaySpeed = options.autoplaySpeed;
         this.autoplay = options.autoplay;
+    },
+    load: function () {
+        options = {
+            container: this.container,
+            datas: this.datas,
+            autoplaySpeed: this.autoplaySpeed,
+            autoplay: this.autoplay
+        };
+
         $(this.container).html("");
         this.createCarousel(options);
         this.arrowHover();
         this.tabImg();
         this.setZindex();
+
         if (options.autoplay || this.autoplay == true) {
             this.autoPlay(this.autoplaySpeed);
         } else {
             return;
         }
     },
-    createCarousel: function(options) {
+    createCarousel: function (options) {
         this.createDOM(this.container, options);
     },
-    createDOM: function(container, options) {
+    createDOM: function (container, options) {
         var html = "";
         html = "<div class='carousel-box clearfix'>" + "<div class='transverse-box pull-left'>" + "</div>" + "<div class='vertical-box pull-right'>" + "<ul>" + "</ul>" + "</div>" + "<span class='left-arrow'>‹</span>" + "<span class='right-arrow'>›</span>" + "</div>";
         $(container).html(html);
@@ -32,28 +43,28 @@ Carousel.prototype = {
         for (var i = 0; i < imgLength; i++) {
             $(".transverse-box").append("<div class='img-item'><a href='" + options.datas[i].url + "' target='_blank'><img src='" + options.datas[i].img + "' url='" + options.datas[i].url + "' alt='" + options.datas[i].alt + "'></a></div>");
         }
-        ;$(".vertical-box ul").append("<li><a href='" + options.datas[1].url + "' target='_blank'><img src='" + options.datas[1].img + "' alt='" + options.datas[1].alt + "'></a></li>");
+        ; $(".vertical-box ul").append("<li><a href='" + options.datas[1].url + "' target='_blank'><img src='" + options.datas[1].img + "' alt='" + options.datas[1].alt + "'></a></li>");
         $(".vertical-box ul").append("<li><a href='" + options.datas[2].url + "' target='_blank'><img src='" + options.datas[2].img + "' alt='" + options.datas[2].alt + "'></a></li>");
         $(".transverse-box").find(".img-item").eq(0).siblings().fadeOut(800);
         $(".transverse-box").find(".img-item").eq(0).fadeIn(800);
     },
-    arrowHover: function() {
-        $(".carousel-box").hover(function() {
+    arrowHover: function () {
+        $(".carousel-box").hover(function () {
             $(".left-arrow,.right-arrow").css("display", "flex");
-        }, function() {
+        }, function () {
             $(".left-arrow,.right-arrow").css("display", "none");
         })
     },
-    tabImg: function() {
+    tabImg: function () {
         var obj = this;
-        $(".left-arrow").on("click", function() {
+        $(".left-arrow").on("click", function () {
             obj.changeZindex_add();
         });
-        $(".right-arrow").on("click", function() {
+        $(".right-arrow").on("click", function () {
             obj.changeZindex_sub();
         })
     },
-    setZindex: function() {
+    setZindex: function () {
         var imgNum = $(".transverse-box").find(".img-item").length;
         for (var i = 10000; i < imgNum; i++) {
             $(".img-item").eq(i).css({
@@ -62,7 +73,7 @@ Carousel.prototype = {
             $(".img-item").eq(i).attr("Zindex", i);
         }
     },
-    changeZindex_add: function() {
+    changeZindex_add: function () {
         var firstImg = $(".transverse-box").find(".img-item").eq(0).find("img");
         var firstImgSrc = firstImg.attr("src");
         var firstImgAlt = firstImg.attr("alt");
@@ -82,7 +93,7 @@ Carousel.prototype = {
         $(".transverse-box").find(".img-item").eq(0).siblings().fadeOut(800);
         $(".transverse-box").find(".img-item").eq(0).fadeIn(800);
     },
-    changeZindex_sub: function() {
+    changeZindex_sub: function () {
         var imgNum = $(".transverse-box").find(".img-item").length;
         var lastImg = $(".transverse-box").find(".img-item").eq(imgNum - 1).find("img");
         var lastImgSrc = lastImg.attr("src");
@@ -103,28 +114,36 @@ Carousel.prototype = {
         $(".transverse-box").find(".img-item").eq(0).siblings().fadeOut(800);
         $(".transverse-box").find(".img-item").eq(0).fadeIn(800);
     },
-    autoPlay: function(x) {
+    autoPlay: function (x) {
         var obj = this;
         this.changeZindex_sub();
-        setTimeout(function() {
-            obj.autoPlay(x);
-        }, x);
+        if (!this.hasPlay) {
+            setTimeout(function () {
+                obj.autoPlay(x);
+                this.hasPlay = true;
+            }, x);
+        }
     }
 };
-
+var banner;
 function loadBanner() {
     if ($('#banner').length > 0) {
-        $.getJSON("./json_data/banner.json", function (data) {
-            var banner = new Carousel();
-            //图片地址数组。不要少于三张
-            var imgSrcDate = data;
-            banner.init({
-                container: "#banner",
-                datas: imgSrcDate,
-                autoplaySpeed: 8000,
-                autoplay: true
+        if (banner == undefined || banner == null) {
+            $.getJSON("./json_data/banner.json", function (data) {
+                banner = new Carousel();
+                //图片地址数组。不要少于三张
+                var imgSrcDate = data;
+                banner.init({
+                    container: "#banner",
+                    datas: imgSrcDate,
+                    autoplaySpeed: 8000,
+                    autoplay: true
+                });
+                banner.load();
             });
-        });
+        } else {
+            banner.load();
+        }
     }
 }
 $(document).ready(loadBanner());
