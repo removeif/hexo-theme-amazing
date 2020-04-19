@@ -45,6 +45,9 @@ module.exports = class extends Component {
         var copyrightCopyrightContent = __('article.copyright.copyright_content');
         var copyrightCopyrightTitle = __('article.copyright.copyright_title');
 
+        const words = getWordCount(page._content);
+        const time = moment.duration((words / 150.0) * 60, 'seconds');
+
         return <Fragment>
             {/* Main content */}
             <div class="card">
@@ -62,20 +65,16 @@ module.exports = class extends Component {
                         <div class="level-left">
                             {/*置顶图标*/}
                             {page.top > 0 ?
-                                <div class="level-item tag is-danger" style="background-color: #3273dc;">已置顶</div> : null}
+                                <div style="color: #3273dc;font-size: 1.8rem;"><i class="fas fa-arrow-alt-circle-up"></i>&nbsp;</div> : null}
                             {/* Date */}
-                            <time class="level-item" dateTime={date_xml(page.date)}>{date(page.date)}</time>
+                            <i class="far fa-calendar-plus">&nbsp;</i>{date(page.date)}&nbsp;&nbsp;
 
                             {showComment ?
-                                <a class="commentCountImg" href={`${url_for(page.link || page.path)}#comment-container`}><span class="display-none-class">{id}</span><img class="not-gallery-item" src={`${my_cdn(url_for('/img/chat.svg'))}`} />&nbsp;<span class="commentCount" id={md5Id}>&nbsp;99+</span>&nbsp;&nbsp;&nbsp;&nbsp;</a> : null}
+                                <a class="commentCountImg" href={`${url_for(page.link || page.path)}#comment-container`}><span class="display-none-class">{id}</span><i class="far fa-comment-dots" />&nbsp;<span class="commentCount" id={md5Id}>99+</span>&nbsp;&nbsp;</a> : null}
                             {/* Read time */}
                             {article && article.readtime && article.readtime === true ? <span class="level-item">
-                                {(() => {
-                                    const words = getWordCount(page._content);
-                                    const time = moment.duration((words / 150.0) * 60, 'seconds');
-                                    return `${time.locale(language).humanize()} ${__('article.read')} (${__('article.about')} ${words} ${__('article.words')})`;
-                                })()}
-                            </span> : null}
+                                <i class="far fa-clock">&nbsp;</i>{time.locale(language).humanize().replace('a few seconds', 'fast').replace(' hours', 'h').replace(' minutes', 'm').replace(' seconds', 's').replace(' days', 'd')} &nbsp;<i class="fas fa-pencil-alt">&nbsp;</i>{(words / 1000.0).toFixed(1)}k
+                                </span> : null}
                             {/* Visitor counter */}
                             {!index && showBusuanziVisitor ? <span class="level-item" id="busuanzi_container_page_pv" dangerouslySetInnerHTML={{
                                 __html: '<i class="far fa-eye"></i>' + _p('plugin.visit', '&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>')
@@ -88,14 +87,14 @@ module.exports = class extends Component {
                     </h1>
                     {/* Content/Excerpt */}
                     <div class="content" dangerouslySetInnerHTML={{ __html: index && page.excerpt ? page.excerpt : page.content }}></div>
-                    {/* Tags */}
                     {index && indexShowTagsCat ? <div class="index-category-tag">
+                        {/* categories */}
                         {page.categories && page.categories.length ? <div class="level-item">
                             {(() => {
                                 const categories = [];
                                 categories.push(<i class="fas fa-folder-open has-text-grey">&nbsp;</i>)
                                 page.categories.forEach((category, i) => {
-                                    categories.push(<a class="article-more button is-small link-muted" href={url_for(category.path)}>{category.name}</a>);
+                                    categories.push(<a class="article-more button is-small link-muted index-categories" href={url_for(category.path)}>{category.name}</a>);
                                     if (i < page.categories.length - 1) {
                                         categories.push(<span>&nbsp;</span>);
                                     }
@@ -104,14 +103,14 @@ module.exports = class extends Component {
                             })()}
                         </div> : null}
                         &nbsp;&nbsp;
-                        {/* Categories */}
+                        {/* tags */}
                         {page.tags && page.tags.length ?
                             <div class="level-item">
                                 {(() => {
                                     const tags = [];
                                     tags.push(<i class="fas fa-tags has-text-grey">&nbsp;</i>)
                                     page.tags.forEach((tag, i) => {
-                                        tags.push(<a class="article-more button is-small link-muted" href={url_for(tag.path)}>{tag.name}</a>);
+                                        tags.push(<a class="article-more button is-small link-muted index-tags" href={url_for(tag.path)}>{tag.name}</a>);
                                         if (i < page.tags.length - 1) {
                                             tags.push(<span>&nbsp;</span>);
                                         }
@@ -119,6 +118,7 @@ module.exports = class extends Component {
                                     return tags;
                                 })()}
                             </div> : null}
+                            <hr />
                     </div> : null}
                     {/* "Read more" button ・ */}
                     {index && page.excerpt ?
@@ -126,7 +126,7 @@ module.exports = class extends Component {
                             <div class="level-start">
                                 <div class="level-item">
                                     <a class="article-more button is-small size-small link-muted"
-                                        href={`${url_for(page.path)}#more`}><i class="fas fa-book-reader has-text-grey">&nbsp;</i>{__('article.more')}>></a>
+                                        href={`${url_for(page.path)}#more`}>{__('article.more')}>></a>
                                 </div>
                             </div>
                             {hasLatestTime && page.updated && page.updated > page.date ?
