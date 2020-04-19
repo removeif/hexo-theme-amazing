@@ -16,6 +16,7 @@
 **使用之前请详细阅读此文档，以及主题配置文件_config.yml**  
 **使用之前请详细阅读此文档，以及主题配置文件_config.yml**  
 **使用之前请详细阅读此文档，以及主题配置文件_config.yml**  
+**相关使用问题也在此[issue](https://github.com/removeif/hexo-theme-amazing/issues/16)有说明，请先查看**
 
 **本仓库为纯主题仓库，博客主题完整仓库(已不维护)请移步为[hexo-theme-icarus-removeif](https://github.com/removeif/hexo-theme-icarus-removeif)**
 
@@ -205,8 +206,6 @@ title: 2019成长记01
 top: -1
 toc: true
 keywords: categories-java
-
-#以下为文章加密信息
 encrypt: true
 password: 123456 #此处为文章密码
 abstract: 咦，这是一篇加密文章，好像需要输入密码才能查看呢！
@@ -223,8 +222,8 @@ wrong_hash_message: 不好意思，信息无法验证！
 <script>
     $.getScript("/js/gitalk_self.min.js", function () {
         var gitalk = new Gitalk({
-            clientID: clientId,
-            clientSecret: clientSecret,
+            clientID: '46a9f3481b46ea0129d8',
+            clientSecret: '79c7c9cb847e141757d7864453bcbf89f0655b24',
             id: '666666',
             repo: 'issue_database',
             owner: 'removeif',
