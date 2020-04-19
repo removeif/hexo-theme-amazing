@@ -1304,7 +1304,7 @@ night-link = #3273dc
         color white
     }
 
-    hr {
+    hr{
         background-color: night-color;
     }
 
@@ -1583,7 +1583,7 @@ night-link = #3273dc
         color: silver;
     }
 
-    hr {
+    hr, .index-category-tag hr  {
         background-color: #989898;
     }
 
@@ -1619,6 +1619,16 @@ night-link = #3273dc
 
     .friend-card-item {
         color: unset;
+    }
+
+    .index-category-tag{
+        .button.is-small {
+            color: silver;
+            filter: unset !important;
+        }
+        .article-more:hover{
+            background-color: unset !important;
+        }
     }
 
 }
@@ -1682,8 +1692,15 @@ night-link = #3273dc
         display: unset;
     }
     .button.is-small {
-    border-radius: 20px;
-    margin-bottom: 4px;
+        border-radius: 2px;
+        margin-bottom: 4px;
+        background-color: unset;
+    }
+    hr {
+        background-color: #f5f5f5;
+        margin-top: .3rem;
+        margin-bottom: .5rem;
+        box-shadow: unset;
     }
 }
 
@@ -1788,4 +1805,12 @@ night-link = #3273dc
         cursor: pointer;
         z-index: 99;
     }
+}
+
+.index-categories,.index-tags{
+    padding: 2px;    
+}
+
+article.article .article-meta {
+    height: 41px;
 }
