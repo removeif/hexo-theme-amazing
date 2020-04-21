@@ -319,6 +319,7 @@ providers:
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Comment/
 comment:
     type: gitalk
+    language: zh-CN #zh-CN #Localization language key, en, zh-CN and zh-TW are currently available.
     owner: removeif         # (required) GitHub user name
     repo: blog_comment          # (required) GitHub repository name
     client_id: 46a9f3481b46ea0129d8     # (required) OAuth application client id

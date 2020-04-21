@@ -46,6 +46,8 @@ module.exports = class extends Component {
 
         const words = getWordCount(page._content);
         const time = moment.duration((words / 150.0) * 60, 'seconds');
+        const timeStr = time.locale(language).humanize().replace('a few seconds', 'fast').replace('hours', 'h').replace('minutes', 'm').replace('seconds', 's').replace('days', 'd');
+        const wordsCount = (words / 1000.0).toFixed(1);
 
         return <Fragment>
             {/* Main content */}
@@ -72,7 +74,7 @@ module.exports = class extends Component {
                                 <a class="commentCountImg" href={`${url_for(page.link || page.path)}#comment-container`}><span class="display-none-class">{id}</span><i class="far fa-comment-dots" />&nbsp;<span class="commentCount" id={md5Id}>99+</span>&nbsp;&nbsp;</a> : null}
                             {/* Read time */}
                             {article && article.readtime && article.readtime === true ? <span class="level-item">
-                                <i class="far fa-clock">&nbsp;</i>{time.locale(language).humanize().replace('a few seconds', 'fast').replace(' hours', 'h').replace(' minutes', 'm').replace(' seconds', 's').replace(' days', 'd')} &nbsp;<i class="fas fa-pencil-alt">&nbsp;</i>{(words / 1000.0).toFixed(1)}k
+                                <i class="far fa-clock">&nbsp;</i>{timeStr} &nbsp;<i class="fas fa-pencil-alt">&nbsp;</i>{wordsCount}&nbsp;k
                                 </span> : null}
                             {/* Visitor counter */}
                             {!index && showBusuanziVisitor ? <span class="level-item" id="busuanzi_container_page_pv" dangerouslySetInnerHTML={{

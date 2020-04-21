@@ -28,9 +28,14 @@ widget:
     hot_recommend: 'Hot Recommend'
     latest_comment_tip: 'Loading...Wait a Minute!'
     hot_recommend_tip: 'Loading...Wait a Minute!'
+    hitokoto_from: 'From'
+    hitokoto_provider: 'Provider'
+
 article:
     more: 'Read More'
     comments: 'Comments'
+    comments_closed: 'This page’s comment has closed,it’s can’t comment.'
+    comments_language: 'en'
     read: 'read'
     about: 'About'
     words: 'words'
