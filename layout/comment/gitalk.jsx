@@ -66,8 +66,9 @@ module.exports = cacheComponent(Gitalk, 'comment.gitalk', props => {
     const id = crypto.createHash('md5').update(helper.get_path_end_str(props.page.path, props.page.uniqueId, props.page.title)).digest('hex');
 
     let canComments = props.page.comments;
+
     return {
-        language: comment.language | __('article.comments_language'),
+        language: comment.language || __('article.comments_language'),
         id,
         repo: comment.repo,
         owner: comment.owner,
