@@ -28,9 +28,13 @@ widget:
     hot_recommend: '热门推荐'
     latest_comment_tip: '加载中，最新评论有1分钟缓存...'
     hot_recommend_tip: '加载中，请稍等...'
+    hitokoto_from: '来源'
+    hitokoto_provider: '提供者'
 article:
     more: '阅读更多'
     comments: '评论'
+    comments_closed: '此处评论已关，暂不支持评论。'
+    comments_language: 'zh-CN'
     read: '读完'
     about: '大约'
     words: '个字'

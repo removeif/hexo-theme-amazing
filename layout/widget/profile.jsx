@@ -28,7 +28,9 @@ class Profile extends Component {
             followLink,
             followTitle,
             socialLinks,
-            hasHitokoto
+            hasHitokoto,
+            hitokotoFrom,
+            hitokotoProvider
         } = this.props;
 
         const hitokotoJs = `function getYiyan(){
@@ -36,7 +38,7 @@ class Profile extends Component {
                                 if(data){
                                     $('#hitokoto').html("");
                                     $('#hitokoto').append("<strong style='color: #3273dc;'>"+data.hitokoto+"</strong>"+
-                                    "<p>"+"来源《"+data.from+"》</p><p>提供者-"+data.creator+"</p>");
+                                    "<p>"+"${hitokotoFrom}《"+data.from+"》</p><p>${hitokotoProvider}-"+data.creator+"</p>");
                                 }});}
                                 $(function (){getYiyan();$('#hitokoto').click(function(){getYiyan();})});`;
 
@@ -167,6 +169,8 @@ module.exports = cacheComponent(Profile, 'widget.profile', props => {
         },
         followLink: url_for(follow_link),
         followTitle: __('widget.follow'),
+        hitokotoFrom: __('widget.hitokoto_from'),
+        hitokotoProvider: __('widget.hitokoto_provider'),
         socialLinks,
         hasHitokoto: has_hitokoto
     };

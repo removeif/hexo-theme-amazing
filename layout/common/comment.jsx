@@ -25,7 +25,7 @@ module.exports = class extends Component {
                             return <Fragment>
                                 <div id="comment-container">
                                     <div class="gt-container">
-                                        <div class="text-center">此处评论已关，暂不支持评论。</div>
+                                        <div class="menu-label has-text-centered">{__('article.comments_closed')}</div>
                                     </div>
                                 </div>
                             </Fragment>;

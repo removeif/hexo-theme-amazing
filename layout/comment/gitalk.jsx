@@ -5,6 +5,7 @@ const { cacheComponent } = require('../util/cache');
 class Gitalk extends Component {
     render() {
         const {
+            language,
             id,
             repo,
             owner,
@@ -32,6 +33,7 @@ class Gitalk extends Component {
         }
         const js = ` $.getScript('${jsUrl}', function () { 
             var gitalk = new Gitalk({
+            language:'${language}',
             id: '${id}',
             repo: '${repo}',
             owner: '${owner}',
@@ -58,13 +60,14 @@ class Gitalk extends Component {
 
 module.exports = cacheComponent(Gitalk, 'comment.gitalk', props => {
     const { helper, comment } = props;
-    const { my_cdn, url_for } = helper;
+    const { my_cdn, url_for, __ } = helper;
 
     // FIXME: config name change
-    const id = crypto.createHash('md5').update(helper.get_path_end_str(props.page.path,props.page.uniqueId,props.page.title)).digest('hex');
+    const id = crypto.createHash('md5').update(helper.get_path_end_str(props.page.path, props.page.uniqueId, props.page.title)).digest('hex');
 
     let canComments = props.page.comments;
     return {
+        language: comment.language | __('article.comments_language'),
         id,
         repo: comment.repo,
         owner: comment.owner,
