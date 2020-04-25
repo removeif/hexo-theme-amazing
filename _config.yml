@@ -340,6 +340,8 @@ comment:
 #     placeholder: '留下您的高见！'
 #     has_latest_comment: true #是否有最新评论 true-有，false-无
 #     owner: 辣椒の酱 #博主名 最新评论标注[博主]
+#     required_fields: ['nick', 'mail', 'link']
+#     lang: en #zh-CN zh-TW en ja
 
 
 # utteranc site: https://utteranc.es/

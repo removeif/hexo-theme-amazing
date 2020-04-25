@@ -39,7 +39,8 @@ module.exports = class extends Component {
             article,
             highlight,
             has_live_2D_switch,
-            global_gray
+            global_gray,
+            comment
         } = config;
         const {
             meta = [],
@@ -109,6 +110,7 @@ module.exports = class extends Component {
 
         var hasLive2D = has_live_2D_switch == undefined || has_live_2D_switch;
         var globalGray = global_gray != undefined && global_gray;
+        const isValineComment = comment != undefined && comment.type != undefined && comment.type == 'valine';
         return <head>
             <meta charset="utf-8" />
             {meta_generator ? <meta name="generator" content={`Hexo ${env.version}`} /> : null}
@@ -160,6 +162,9 @@ module.exports = class extends Component {
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async={true}></script> : null}
             {hasLive2D ? <link rel="stylesheet" href={my_cdn(url_for('/live2d/waifu.css'))} /> : null}
             {hasLive2D ? <script type="text/javascript" async={true} src={my_cdn(url_for('/live2d/autoload.js'))}></script> : null}
+            {isValineComment ? <script async="" referrerpolicy="no-referrer" src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script> : null}
+            {isValineComment ? <script src="//unpkg.com/valine/dist/Valine.min.js"></script> : null}
+            {isValineComment ? <script src={my_cdn(url_for('/js/md5.min.js'))}></script> : null}
 
         </head>;
     }

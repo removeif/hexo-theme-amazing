@@ -16,8 +16,11 @@ class Valine extends Component {
             visitor = false,
             highlight = true,
             recordIp = false,
-            jsUrl,
-            path
+            path,
+            lang,
+            enableQQ = true,
+            requiredFields,
+            use_pjax
         } = this.props;
         if (!appId || !appKey) {
             return <div class="notification is-danger">
@@ -25,6 +28,7 @@ class Valine extends Component {
                 Please set it in <code>_config.yml</code>.
             </div>;
         }
+        const usePjax = use_pjax != undefined && use_pjax;
         const js = `var valine = new Valine({
             el: '#comment-container' ,
             notify: ${notify},
@@ -39,19 +43,20 @@ class Valine extends Component {
             visitor: ${visitor},
             highlight: ${highlight},
             recordIP: ${recordIp},
-            path:'${path}'
+            path:'${path}',
+            lang:'${lang}',
+            enableQQ:${enableQQ},
+            requiredFields:${JSON.stringify(requiredFields)}
         });`;
         return <Fragment>
             <div id="comment-container" class="content"></div>
-            {/* <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-            <script src={jsUrl}></script> */}
             <script dangerouslySetInnerHTML={{ __html: js }}></script>
         </Fragment>;
     }
 }
 
 module.exports = cacheComponent(Valine, 'comment.valine', props => {
-    const { comment, helper,page } = props;
+    const { comment, page, use_pjax } = props;
 
     return {
         appId: comment.app_id,
@@ -66,7 +71,9 @@ module.exports = cacheComponent(Valine, 'comment.valine', props => {
         visitor: comment.visitor,
         highlight: comment.highlight,
         recordIp: comment.record_ip,
-        jsUrl: helper.cdn('valine', '1.4.4', 'dist/Valine.min.js'),
-        path: "/"+page.path
+        path: "/" + page.path,
+        lang: comment.lang || __('article.comments_language'),
+        requiredFields: comment.required_fields,
+        use_pjax
     };
 });

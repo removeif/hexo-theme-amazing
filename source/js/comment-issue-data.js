@@ -239,12 +239,16 @@ function renderValineComment(valine, ADMIN_NAME) {
                 var mail = comments[i]._serverData.mail;
                 content = content.replace(/<\/?.+?>/g, "");
                 content = dealWtihContentStr(content);
+                var avatar = 'https://gravatar.loli.net/avatar/' + md5(mail) + '?d=mp';
+                if (mail.endsWith("@qq.com")) {
+                    avatar = 'https://q2.qlogo.cn/headimg_dl?dst_uin=' + mail.replace('@qq.com', '') + '&spec=100';
+                }
                 resultArr.push({
                     "content": content,
                     "date": new Date(createDate.getTime() - 8 * 1000 * 60 * 60).Format('yyyy-MM-ddThh:mm:ssZ'),
                     "userName": nick,
                     "userUrl": link,
-                    "userAvatar": 'https://gravatar.loli.net/avatar/' + md5(mail) + '?d=mp',
+                    "userAvatar": avatar,
                     "url": url
                 });
             }

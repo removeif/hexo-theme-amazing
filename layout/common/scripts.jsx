@@ -8,7 +8,6 @@ module.exports = class extends Component {
         const { external_link, article, comment, has_banner } = config;
         const language = page.lang || page.language || config.language || 'en';
         const hasComment = comment != undefined && comment.type != undefined && (comment.type == 'gitalk' || comment.type == 'valine');
-        const isValineComment = comment != undefined && comment.type != undefined && comment.type == 'valine';
         var hasHotRecommend = false;
         var hasBanner = has_banner != undefined && has_banner;
         var appKey;
@@ -75,9 +74,9 @@ module.exports = class extends Component {
             <Plugins site={site} config={config} page={page} helper={helper} head={false} />
             <script src={my_cdn(url_for('/js/toc.js'))} defer={true}></script>
             <script src={my_cdn(url_for('/js/main.js'))} defer={true}></script>
-            {isValineComment ? <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> : null}
-            {isValineComment ? <script src="https://cdnjs.loli.net/ajax/libs/valine/1.4.4/Valine.min.js"></script> : null}
-            {isValineComment ? <script src={my_cdn(url_for('/js/md5.min.js'))}></script> : null}
+            {/* {isValineComment ? <script async="" referrerpolicy="no-referrer" src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script> : null} */}
+            {/* {isValineComment ? <script src="//unpkg.com/valine/dist/Valine.min.js"></script> : null} */}
+            {/* {isValineComment ? <script src={my_cdn(url_for('/js/md5.min.js'))}></script> : null} */}
             {(hasHotRecommend || !hasBanner) ? null : <script src={my_cdn(url_for('/js/banner.js'))}></script>}
             {hasComment ? <script dangerouslySetInnerHTML={{ __html: js }}></script> : null}
         </Fragment>;
