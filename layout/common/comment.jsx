@@ -15,7 +15,7 @@ module.exports = class extends Component {
         
         return <div class="card">
             <div class="card-content">
-                {!commentColsed ? <h3 class="title is-5">{__('article.comments')}</h3> : null}
+                {!commentColsed ? <div class="title is-5">{__('article.comments')}</div> : null}
                 {(() => {
                     try {
                         if (isGitalk || !commentColsed) {
@@ -25,7 +25,7 @@ module.exports = class extends Component {
                             return <Fragment>
                                 <div id="comment-container">
                                     <div class="gt-container">
-                                        <div class="menu-label has-text-centered">{__('article.comments_closed')}</div>
+                                        <h3 class="menu-label has-text-centered">{__('article.comments_closed')}</h3>
                                     </div>
                                 </div>
                             </Fragment>;
