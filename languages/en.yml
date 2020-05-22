@@ -30,6 +30,7 @@ widget:
     hot_recommend_tip: 'Loading...Wait a Minute!'
     hitokoto_from: 'From'
     hitokoto_provider: 'Provider'
+    notice: 'Notice'
 
 article:
     more: 'Read More'

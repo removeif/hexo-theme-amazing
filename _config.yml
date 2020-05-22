@@ -265,6 +265,13 @@ widgets:
 #        client_id: ''
 #        # AdSense AD unit ID
 #        slot_id: ''
+    - 
+        # position: right
+        # type: notice
+        # contents: 
+        #     1: 2019.8.15 <a href="https://github.com/removeif/hexo-theme-amazing" target="_blank">主题开源</a>
+        #     2: 2020.5.20 添加公告widget
+        #     3: 2020.5.21 公告测试
 # Plugin configurations
 plugins:
     # Enable page startup animations

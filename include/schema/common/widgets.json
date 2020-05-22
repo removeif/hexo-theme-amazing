@@ -45,6 +45,9 @@
             },
             {
                 "$ref": "/widget/adsense.json"
+            },
+            {
+                "$ref": "/widget/notice.json"
             }
         ],
         "required": [
