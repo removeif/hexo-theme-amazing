@@ -265,7 +265,7 @@ widgets:
 #        client_id: ''
 #        # AdSense AD unit ID
 #        slot_id: ''
-    - 
+#    - 
         # position: right
         # type: notice
         # contents: 
