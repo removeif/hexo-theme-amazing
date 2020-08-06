@@ -155,6 +155,7 @@ module.exports = class extends Component {
             {hlTheme ? <link rel="stylesheet" href={cdn('highlight.js', '9.12.0', 'styles/' + hlTheme + '.css')} /> : null}
             <Plugins site={site} config={config} helper={helper} page={page} head={true} />
             <link rel="stylesheet" href={my_cdn(url_for('/css/style.css'))} />
+            <link rel="stylesheet" href={url_for('/css/e-style.css')} />
             {globalGray ? <link rel="stylesheet" href={url_for('/css/global_gray.css')} /> : null}
             <script src={cdn('jquery', '3.3.1', 'dist/jquery.min.js')}></script>
             <script src={my_cdn(url_for('/js/globalUtils.js'))}></script>
