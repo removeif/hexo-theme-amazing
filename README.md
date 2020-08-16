@@ -63,7 +63,7 @@ v11.1.0
 ```  
 #### 在博客目录下clone主题代码
 ```jshelllanguage
-git clone https://github.com/removeif/hexo-theme-amazing.git /themes/amazing
+git clone https://github.com/removeif/hexo-theme-amazing.git themes/amazing
 ```
 #### 开始部分配置：
 **敲黑板！！！！首先全局以及主题中的`_config.yml`配置成自己的对应参数。**  
