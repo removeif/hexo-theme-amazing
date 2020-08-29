@@ -64,9 +64,6 @@ module.exports = class extends Component {
                 <article class={`card-content article${'direction' in page ? ' ' + page.direction : ''}`} role="article">
                     {page.layout !== 'page' ? <div class="article-meta size-small is-uppercase level is-mobile">
                         <div class="level-left">
-                            {/*置顶图标*/}
-                            {page.top > 0 ?
-                                <div style="color: #3273dc;font-size: 1.8rem;"><i class="fas fa-arrow-alt-circle-up"></i>&nbsp;</div> : null}
                             {/* Date */}
                             <i class="far fa-calendar-plus">&nbsp;</i>{date(page.date)}&nbsp;&nbsp;
 
@@ -81,6 +78,9 @@ module.exports = class extends Component {
                                 __html: '<i class="far fa-eye"></i>' + _p('plugin.visit', '&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>')
                             }}></span> : null}
                         </div>
+                        {/*置顶图标*/}
+                        {page.top > 0 ?
+                            <div class="pin-icon"><i class="fas fa-thumbtack"></i></div> : null}
                     </div> : null}
                     {/* Title */}
                     <h1 class="title is-3 is-size-4-mobile">
