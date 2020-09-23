@@ -50,7 +50,6 @@
 + 支持valine最新评论以及文章评论数显示
 + utteranc评论随博客主题切换自动切换深色主题
 + 首页增加可配置banner参考自[水寒教程](https://dp2px.com/2019/08/13/hexo-carousel/)
-+ 有问题可以在线询问[gitter.im](https://gitter.im/hexo-theme-amazing/community)
 + `还有什么新的，好的feature欢迎大家随时提出来，有能力有时间就做出来`
 
 ### 二、部分配置说明：

@@ -1,0 +1,58 @@
+common:
+    archive:
+        one: 'Arsip'
+        other: 'Arsip'
+    category:
+        one: 'Kategori'
+        other: 'Kategori'
+    tag:
+        one: 'Tag'
+        other: 'Tag'
+    post:
+        one: 'Artikel'
+        other: 'Artikel'
+    page:
+        one: 'Halaman'
+        other: 'Halaman'
+    prev: 'Sebelumnya'
+    next: 'Berikutnya'
+widget:
+    follow: 'IKUTI'
+    recents: 'Terbaru'
+    links: 'Tautan'
+    catalogue: 'Katalog'
+    subscribe_email: 'Berlangganan untuk pembaruan'
+    subscribe: 'Berlangganan'
+    adsense: 'Iklan'
+article:
+    created_at: 'Diposting&nbsp;%s'
+    updated_at: 'Diperbarui&nbsp;%s'
+    more: 'Selengkapnya'
+    comments: 'Komentar'
+    read_time: '%s membaca'
+    word_count:
+        one: 'Sekitar %d kata'
+        other: 'Sekitar %d kata'
+    licensing:
+        author: 'Author'
+        created_at: 'Posted on'
+        updated_at: 'Updated on'
+        licensed_under: 'Licensed under'
+donate:
+    title: 'Suka dengan artikel ini? Bantu penulis dengan donasi melalui'
+    afdian: 'Afdian.net'
+    alipay: 'Alipay'
+    wechat: 'Wechat'
+    paypal: 'Paypal'
+    patreon: 'Patreon'
+    buymeacoffee: 'Belikan aku kopi'
+plugin:
+    backtotop: 'Kembali ke atas'
+    visit_count: '%s&nbsp;kunjungan'
+    visitor_count: 'Dikunjungi oleh %s pengguna'
+search:
+    search: 'Pencarian'
+    hint: 'Tulis Sesuatu..'
+    no_result: 'Tidak ada hasil untuk'
+    untitled: '(Tanpa judul)'
+    empty_preview: '(Tidak ada preview)'

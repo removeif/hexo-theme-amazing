@@ -1,0 +1,72 @@
+common:
+    archive:
+        one: 'Archive'
+        other: 'Archives'
+    category:
+        one: 'Category'
+        other: 'Categories'
+    tag:
+        one: 'Tag'
+        other: 'Tags'
+    post:
+        one: 'Post'
+        other: 'Posts'
+    prev: 'Previous'
+    next: 'Next'
+widget:
+    follow: 'Follow'
+    recents: 'Recent'
+    links: 'Links'
+    tag_cloud: 'Tag Cloud'
+    catalogue: 'Catalogue'
+    subscribe_email: 'Subscribe to Updates'
+    subscribe: 'Subscribe'
+    adsense: 'Advertisement'
+    recommend_posts: 'Recommend Post'
+    related_posts: 'Related Post'
+    latest_comment: 'Latest Comment'
+    hot_recommend: 'Hot Recommend'
+    latest_comment_tip: 'Loading...Wait a Minute!'
+    hot_recommend_tip: 'Loading...Wait a Minute!'
+    hitokoto_from: 'From'
+    hitokoto_provider: 'Provider'
+    notice: 'Notice'
+
+article:
+    more: 'Read More'
+    comments: 'Comments'
+    comments_closed: 'This page’s comment has closed,it’s can’t comment.'
+    comments_language: 'en'
+    read: 'read'
+    about: 'About'
+    words: 'words'
+    last_modified: 'Last Modified:'
+    copyright:
+        title: 'Post Title: '
+        author: 'Post Author: '
+        link: 'Post Link: '
+        copyright_title: 'Copyright Notice: '
+        copyright_content: 'All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.'
+donate:
+    title: 'Like this article? Support the author with'
+    alipay: 'Alipay'
+    wechat: 'Wechat'
+    paypal: 'Paypal'
+    patreon: 'Patreon'
+    buymeacoffee: 'Buy me a coffee'
+plugin:
+    backtotop: 'Back to Top'
+    visit: '%s visits'
+    visitor: 'Visited by %s users'
+    footer_visitor: '❤️Thx <strong>%s</strong> users <strong>%s</strong> visited！❤️'
+    footer_website_time: '❤️Site from <strong>|</strong> has existed <strong>|</strong> d <strong>|</strong> h <strong>|</strong> m <strong>|</strong> s！❤️'
+search:
+    search: 'Search'
+    hint: 'Type something...'
+insight:
+    hint: 'Type something...'
+    posts: 'Posts'
+    pages: 'Pages'
+    categories: 'Categories'
+    tags: 'Tags'
+    untitled: '(Untitled)'

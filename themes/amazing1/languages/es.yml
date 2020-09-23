@@ -1,0 +1,38 @@
+#By SrWoOoW
+common:
+    archive:
+        one: 'Archivo'
+        other: 'Archivos'
+    category:
+        one: 'Categoría'
+        other: 'Categorías'
+    tag:
+        one: 'Etiqueta'
+        other: 'Etiquetas'
+    post:
+        one: 'Entrada'
+        other: 'Entradas'
+    prev: 'Anterior'
+    next: 'Siguiente'
+widget:
+    follow: 'SEGUIR'
+    recents: 'Recientes'
+    links: 'Enlaces'
+    tag_cloud: 'Nube de etiquetas'
+    catalogue: 'Catálogo'
+article:
+    more: 'Leer más'
+    comments: 'Comentarios'
+    read: 'leer'
+    about: 'Acerca de'
+    words: 'palabras'
+search:
+    search: 'Buscar'
+    hint: 'Teclea algo...'
+insight:
+    hint: 'Teclea algo...'
+    posts: 'Entradas'
+    pages: 'Páginas'
+    categories: 'Categorías'
+    tags: 'Etiquetas'
+    untitled: '(Sin título)'
