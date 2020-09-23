@@ -19,9 +19,8 @@
 **相关使用问题也在此[issue](https://github.com/removeif/hexo-theme-amazing/issues/16)有说明，请先查看**
 
 **本仓库为纯主题仓库，博客主题完整仓库(已不维护)请移步为[hexo-theme-icarus-removeif](https://github.com/removeif/hexo-theme-icarus-removeif)**
-
-
-**增加adsense分支，此分支信息流中加入adsense广告，如[本博客](https://removeif.github.io/)adsense每个地方的使用方式，具体请移步[branch](https://github.com/removeif/hexo-theme-amazing/tree/adsense)**
+**master分支已在信息流中加入adsense广告配置**
+**提供site分支博客demo源码**
 
 线上博客：[欢迎围观](https://removeif.github.io/)，[博客源码Live Demo](https://removeif.github.io/removeif-demo/)
 
