@@ -18,8 +18,8 @@
 **使用之前请详细阅读此文档，以及主题配置文件_config.yml**  
 **相关使用问题也在此[issue](https://github.com/removeif/hexo-theme-amazing/issues/16)有说明，请先查看**
 
-**本仓库为纯主题仓库，博客主题完整仓库(已不维护)请移步为[hexo-theme-icarus-removeif](https://github.com/removeif/hexo-theme-icarus-removeif)**
-**master分支已在信息流中加入adsense广告配置**
+**本仓库为纯主题仓库，博客主题完整仓库(已不维护)请移步为[hexo-theme-icarus-removeif](https://github.com/removeif/hexo-theme-icarus-removeif)**  
+**master分支已在信息流中加入adsense广告配置**  
 **提供site分支博客demo源码**
 
 线上博客：[欢迎围观](https://removeif.github.io/)，[博客源码Live Demo](https://removeif.github.io/removeif-demo/)
