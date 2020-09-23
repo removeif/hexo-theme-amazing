@@ -1,5 +1,5 @@
 const { Component } = require('inferno');
-const { cacheComponent } = require('../util/cache');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
 class AnimeJs extends Component {
     render() {
@@ -11,11 +11,12 @@ class AnimeJs extends Component {
     }
 }
 
-module.exports = cacheComponent(AnimeJs, 'plugin.animejs', props => {
+AnimeJs.Cacheable = cacheComponent(AnimeJs, 'plugin.animejs', props => {
     const { helper, head } = props;
-    const { url_for, my_cdn } = helper;
     return {
         head,
-        jsUrl: my_cdn(url_for('/js/animation.js'))
+        jsUrl: helper.url_for('/js/animation.js')
     };
 });
+
+module.exports = AnimeJs;

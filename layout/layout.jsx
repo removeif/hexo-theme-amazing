@@ -1,19 +1,22 @@
 const { Component } = require('inferno');
+const classname = require('hexo-component-inferno/lib/util/classname');
 const Head = require('./common/head');
 const Navbar = require('./common/navbar');
 const Widgets = require('./common/widgets');
 const Footer = require('./common/footer');
 const Scripts = require('./common/scripts');
 const Search = require('./common/search');
-const classname = require('./util/classname');
 
 module.exports = class extends Component {
     render() {
-        const { env, site, config, page, helper, body } = this.props;
-        const { my_cdn, url_for, __ } = helper;
+        const { site, config, page, helper, body } = this.props;
         const { comment, use_pjax, has_banner } = config;
+        const { __, my_cdn, url_for } = helper;
+
         // 默认不加载公式，文中头部开启mathJax:true才加载
         var isMath = page.mathJax != undefined && page.mathJax;
+        const language = page.lang || page.language || config.language;
+        const columnCount = Widgets.getColumnCount(config.widgets);
         const hasComment = comment != undefined && comment.type != undefined && (comment.type == 'gitalk' || comment.type == 'valine')
             && (comment.has_hot_recommend || comment.has_latest_comment);
         var appKey;
@@ -89,29 +92,28 @@ module.exports = class extends Component {
         });`;
 
         if (comment == undefined || comment.type == undefined
-                || comment.type != 'gitalk'
-                || comment.has_hot_recommend == undefined
-                || !comment.has_hot_recommend) {
+            || comment.type != 'gitalk'
+            || comment.has_hot_recommend == undefined
+            || !comment.has_hot_recommend) {
             hotRecommendStr = '';
         }
 
         var indexTopData = hotRecommendStr;
 
-        const language = page.lang || page.language || config.language;
-        const columnCount = Widgets.getColumnCount(config.widgets);
         const hasBanner = has_banner != undefined && has_banner;
 
         if (indexTopData == '' && hasBanner) {
             indexTopData = bannerStr;
         }
 
-        if(page.path != 'index.html'){
+        if (page.path != 'index.html') {
             indexTopData = '';
         }
 
+        let isPageOrPost = page.layout == 'page' || page.layout == 'post';
         return <html lang={language ? language.substr(0, 2) : ''}>
-            <Head env={env} site={site} config={config} helper={helper} page={page} />
-            <body class={`is-${columnCount}-column has-navbar-fixed-top`}>
+            <Head site={site} config={config} helper={helper} page={page} />
+            <body className={`is-${columnCount}-column has-navbar-fixed-top`}>
                 <Navbar config={config} helper={helper} page={page} />
                 <script type="text/javascript" src={my_cdn(url_for('/js/theme-setting.js'))}></script>
                 <section class="section">
@@ -122,12 +124,11 @@ module.exports = class extends Component {
                                 'order-2': true,
                                 'column-main': true,
                                 'is-12': columnCount === 1,
-                                'is-8-tablet is-8-desktop is-8-widescreen': columnCount === 2,
                                 'is-8-tablet is-8-desktop is-6-widescreen': (page.layout != 'post' && page.layout != 'page') && columnCount === 3,
-                                'is-8-tablet is-8-desktop is-9-widescreen': page.layout == 'page' || page.layout == 'post'
-                            })} dangerouslySetInnerHTML={{ __html: indexTopData + body }}></div>
-                            <Widgets site={site} config={config} helper={helper} page={page} position={'left'} />
-                            {page.layout == 'page' || page.layout == 'post' ? null : <Widgets site={site} config={config} helper={helper} page={page} position={'right'} />}
+                                'is-8-tablet is-8-desktop is-9-widescreen': isPageOrPost
+                            })} dangerouslySetInnerHTML={{__html: indexTopData + body}}></div>
+                            <Widgets site={site} config={config} helper={helper} page={page} position={'left'}/>
+                            {isPageOrPost ? null : <Widgets site={site} config={config} helper={helper} page={page} position={'right'}/>}
                         </div>
                     </div>
                 </section>

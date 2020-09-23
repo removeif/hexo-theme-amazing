@@ -1,5 +1,6 @@
 const { Component } = require('inferno');
-const { cacheComponent } = require('../util/cache');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
+const AdsenseX = require('./ads_x');
 
 class Tags extends Component {
     render() {
@@ -12,7 +13,9 @@ class Tags extends Component {
         } = this.props;
         var count = 0;
 
-        return <div class="card widget">
+        return <Fragment>
+            {isPage ? <AdsenseX /> : null}
+            <div class="card widget">
             <div class="card-content">
                 <div class="menu">
                     <h3 class="menu-label">{title}</h3>
@@ -33,11 +36,13 @@ class Tags extends Component {
                     }
                 </div>
             </div>
-        </div>;
+        </div>
+        {isPage ? <AdsenseX /> : null}
+        </Fragment>
     }
 }
 
-module.exports = cacheComponent(Tags, 'widget.tags', props => {
+module.exports = Tags.Cacheable = cacheComponent(Tags, 'widget.tags', props => {
     // adapted from hexo/lib/plugins/helper/list_tags.js
     const {
         helper,

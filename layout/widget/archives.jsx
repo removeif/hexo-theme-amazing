@@ -1,5 +1,5 @@
 const { Component } = require('inferno');
-const { cacheComponent } = require('../util/cache');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
 class Archives extends Component {
     render() {
@@ -43,7 +43,7 @@ class Archives extends Component {
     }
 }
 
-module.exports = cacheComponent(Archives, 'widget.archives', props => {
+module.exports = Archives.Cacheable = cacheComponent(Archives, 'widget.archives', props => {
     // adapted from hexo/lib/plugins/helper/list_archives.js
     const {
         site,

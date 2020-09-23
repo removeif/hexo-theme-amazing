@@ -29,10 +29,10 @@
             "$ref": "/comment/livere.json"
         },
         {
-            "$ref": "/comment/valine.json"
+            "$ref": "/comment/utterances.json"
         },
         {
-            "$ref": "/comment/utteranc.json"
+            "$ref": "/comment/valine.json"
         }
     ]
 }

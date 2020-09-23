@@ -29,12 +29,6 @@
                 "$ref": "/widget/recent_posts.json"
             },
             {
-                "$ref": "/widget/latest_comment.json"
-            },
-            {
-                "$ref": "/widget/hot_recommend.json"
-            },
-            {
                 "$ref": "/widget/archives.json"
             },
             {
@@ -47,7 +41,16 @@
                 "$ref": "/widget/adsense.json"
             },
             {
-                "$ref": "/widget/notice.json"
+                "$ref": "/widget/ads_x.json"
+            },
+            {
+                "$ref": "/widget/hot_recommend.json"
+            },
+            {
+                "$ref": "/widget/latest_comment.json"
+            },
+            {
+                "$ref": "/widget/recommend_post.json"
             }
         ],
         "required": [

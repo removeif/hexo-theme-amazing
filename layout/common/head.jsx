@@ -1,9 +1,8 @@
 const { Component } = require('inferno');
-const MetaTags = require('../misc/meta');
-const OpenGraph = require('../misc/open_graph');
-const StructuredData = require('../misc/structured_data');
+const MetaTags = require('hexo-component-inferno/lib/view/misc/meta');
+const OpenGraph = require('hexo-component-inferno/lib/view/misc/open_graph');
+const StructuredData = require('hexo-component-inferno/lib/view/misc/structured_data');
 const Plugins = require('./plugins');
-const { stripHTML } = require('hexo-util');
 
 function getPageTitle(page, siteTitle, helper) {
     let title = page.title;
@@ -30,14 +29,15 @@ function getPageTitle(page, siteTitle, helper) {
 
 module.exports = class extends Component {
     render() {
-        const { env, site, config, helper, page } = this.props;
-        const { url_for, cdn, my_cdn, iconcdn, fontcdn, is_post } = helper;
+        const { site, config, helper, page } = this.props;
+        const { url_for, cdn, fontcdn, iconcdn, is_post, my_cdn } = helper;
         const {
             url,
-            meta_generator = true,
             head = {},
             article,
             highlight,
+            variant = 'default',
+            adsense_client_id,
             has_live_2D_switch,
             global_gray,
             comment
@@ -46,12 +46,17 @@ module.exports = class extends Component {
             meta = [],
             open_graph = {},
             structured_data = {},
-            canonical_url,
+            canonical_url = page.permalink,
             rss,
             favicon
         } = head;
 
         const language = page.lang || page.language || config.language;
+        const fontCssUrl = {
+            default: fontcdn('Ubuntu:wght@400;600&family=Source+Code+Pro', 'css2'),
+            cyberpunk: fontcdn('Oxanium:wght@300;400;600&family=Roboto+Mono', 'css2')
+        };
+
         let hlTheme, images;
         if (highlight && highlight.enable === false) {
             hlTheme = null;
@@ -63,8 +68,10 @@ module.exports = class extends Component {
 
         if (typeof page.og_image === 'string') {
             images = [page.og_image];
-        } else if (helper.has_thumbnail(page)) {
-            images = [helper.get_thumbnail(page)];
+        } else if (typeof page.cover === 'string') {
+            images = [url_for(page.cover)];
+        } else if (typeof page.thumbnail === 'string') {
+            images = [url_for(page.thumbnail)];
         } else if (article && typeof article.og_image === 'string') {
             images = [article.og_image];
         } else if (page.content && page.content.includes('<img')) {
@@ -79,55 +86,46 @@ module.exports = class extends Component {
         }
 
         let adsenseClientId = null;
-        if (Array.isArray(config.widgets)) {
-            const widget = config.widgets.find(widget => widget.type === 'adsense');
-            if (widget) {
-                adsenseClientId = widget.client_id;
-            }
+        if (adsense_client_id) {
+            adsenseClientId = adsense_client_id;
         }
 
         let openGraphImages = images;
-        if ((Array.isArray(open_graph.image) && open_graph.image.length > 0) || typeof open_graph.image === 'string') {
+        if ((typeof open_graph === 'object' && open_graph !== null)
+            && ((Array.isArray(open_graph.image) && open_graph.image.length > 0) || typeof open_graph.image === 'string')) {
             openGraphImages = open_graph.image;
         } else if ((Array.isArray(page.photos) && page.photos.length > 0) || typeof page.photos === 'string') {
             openGraphImages = page.photos;
         }
 
         let structuredImages = images;
-        if ((Array.isArray(structured_data.image) && structured_data.image.length > 0) || typeof structured_data.image === 'string') {
+        if ((typeof structured_data === 'object' && structured_data !== null)
+            && ((Array.isArray(structured_data.image) && structured_data.image.length > 0) || typeof structured_data.image === 'string')) {
             structuredImages = structured_data.image;
         } else if ((Array.isArray(page.photos) && page.photos.length > 0) || typeof page.photos === 'string') {
             structuredImages = page.photos;
         }
 
-        const keywordsCon = (page.keywords || (page.tags && page.tags.length ? page.tags : undefined) || config.keywords);
-        const descCon = (page.description || stripHTML(page.excerpt) || open_graph.description || page.content || config.description);
-        const authorCon = (page.author || open_graph.author || config.author)
-        // head meta data
-        meta.push("name=keywords;content=" + keywordsCon);
-        meta.push("name=description;content=" + descCon);
-        meta.push("name=author;content=" + authorCon);
-
         var hasLive2D = has_live_2D_switch == undefined || has_live_2D_switch;
         var globalGray = global_gray != undefined && global_gray;
         const isValineComment = comment != undefined && comment.type != undefined && comment.type == 'valine';
+
         return <head>
             <meta charset="utf-8" />
-            {meta_generator ? <meta name="generator" content={`Hexo ${env.version}`} /> : null}
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-            <MetaTags meta={meta} />
+            {meta && meta.length ? <MetaTags meta={meta} /> : null}
 
             <title>{getPageTitle(page, config.title, helper)}</title>
 
-            {typeof open_graph === 'object' ? <OpenGraph
-                type={(is_post(page) ? 'article' : 'website') || open_graph.type}
-                title={page.title || open_graph.title || config.title}
+            {typeof open_graph === 'object' && open_graph !== null ? <OpenGraph
+                type={open_graph.type || (is_post(page) ? 'article' : 'website')}
+                title={open_graph.title || page.title || config.title}
                 date={page.date}
                 updated={page.updated}
-                author={authorCon}
-                description={descCon}
-                keywords={keywordsCon}
-                url={page.permalink || open_graph.url || url}
+                author={open_graph.author || config.author}
+                description={open_graph.description || page.description || page.excerpt || page.content || config.description}
+                keywords={(page.tags && page.tags.length ? page.tags : undefined) || config.keywords}
+                url={open_graph.url || page.permalink || url}
                 images={openGraphImages}
                 siteName={open_graph.site_name || config.title}
                 language={language}
@@ -138,29 +136,32 @@ module.exports = class extends Component {
                 facebookAdmins={open_graph.fb_admins}
                 facebookAppId={open_graph.fb_app_id} /> : null}
 
-            {typeof structured_data === 'object' ? <StructuredData
-                title={page.title || structured_data.title || config.title}
-                description={descCon}
-                url={page.permalink || structured_data.url || url}
-                author={authorCon}
+            {typeof structured_data === 'object' && structured_data !== null ? <StructuredData
+                title={structured_data.title || config.title}
+                description={structured_data.description || page.description || page.excerpt || page.content || config.description}
+                url={structured_data.url || page.permalink || url}
+                author={structured_data.author || config.author}
                 date={page.date}
                 updated={page.updated}
                 images={structuredImages} /> : null}
 
             {canonical_url ? <link rel="canonical" href={canonical_url} /> : null}
-            {rss ? <link rel="alternative" href={url_for(rss)} title={config.title} type="application/atom+xml" /> : null}
+            {rss ? <link rel="alternate" href={url_for(rss)} title={config.title} type="application/atom+xml" /> : null}
             {favicon ? <link rel="icon" href={url_for(favicon)} /> : null}
             <link rel="stylesheet" href={iconcdn()} />
-            <link rel="stylesheet" href={fontcdn('Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css')} />
             {hlTheme ? <link rel="stylesheet" href={cdn('highlight.js', '9.12.0', 'styles/' + hlTheme + '.css')} /> : null}
-            <Plugins site={site} config={config} helper={helper} page={page} head={true} />
-            <link rel="stylesheet" href={my_cdn(url_for('/css/style.css'))} />
-            <link rel="stylesheet" href={url_for('/css/e-style.css')} />
+            <link rel="stylesheet" href={fontCssUrl[variant]} />
+            <link rel="stylesheet" href={url_for('/css/' + variant + '.css')} />
+            {/*icon*/}
+            <link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"/>
+            <link rel="stylesheet" href={fontcdn('Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css')} />
             {globalGray ? <link rel="stylesheet" href={url_for('/css/global_gray.css')} /> : null}
             <script src={cdn('jquery', '3.3.1', 'dist/jquery.min.js')}></script>
             <script src={my_cdn(url_for('/js/globalUtils.js'))}></script>
+            <Plugins site={site} config={config} helper={helper} page={page} head={true} />
+
             {adsenseClientId ? <script data-ad-client={adsenseClientId}
-                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async={true}></script> : null}
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script> : null}
             {hasLive2D ? <link rel="stylesheet" href={my_cdn(url_for('/live2d/waifu.css'))} /> : null}
             {hasLive2D ? <script type="text/javascript" async={true} src={my_cdn(url_for('/live2d/autoload.js'))}></script> : null}
             {isValineComment ? <script async="" referrerpolicy="no-referrer" src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script> : null}

@@ -53,10 +53,6 @@ module.exports = class extends Component {
         }
 
         const embeddedConfig = `var IcarusThemeSettings = {
-            site: {
-                url: '${config.url}',
-                external_link: ${JSON.stringify(externalLink)}
-            },
             article: {
                 highlight: {
                     clipboard: ${clipboard},
@@ -65,18 +61,14 @@ module.exports = class extends Component {
             }
         };`;
 
-
         return <Fragment>
             <script src={cdn('moment', '2.22.2', 'min/moment-with-locales.min.js')}></script>
+            {clipboard && <script src={cdn('clipboard', '2.0.4', 'dist/clipboard.min.js')} async></script>}
             <script dangerouslySetInnerHTML={{ __html: `moment.locale("${language}");` }}></script>
             <script dangerouslySetInnerHTML={{ __html: embeddedConfig }}></script>
-            {clipboard ? <script src={cdn('clipboard', '2.0.4', 'dist/clipboard.min.js')} defer={true}></script> : null}
+            <script src={my_cdn(url_for('/js/column.js'))}></script>
             <Plugins site={site} config={config} page={page} helper={helper} head={false} />
-            <script src={my_cdn(url_for('/js/toc.js'))} defer={true}></script>
-            <script src={my_cdn(url_for('/js/main.js'))} defer={true}></script>
-            {/* {isValineComment ? <script async="" referrerpolicy="no-referrer" src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script> : null} */}
-            {/* {isValineComment ? <script src="//unpkg.com/valine/dist/Valine.min.js"></script> : null} */}
-            {/* {isValineComment ? <script src={my_cdn(url_for('/js/md5.min.js'))}></script> : null} */}
+            <script src={my_cdn(url_for('/js/main.js'))} defer></script>
             {(hasHotRecommend || !hasBanner) ? null : <script src={my_cdn(url_for('/js/banner.js'))}></script>}
             {hasComment ? <script dangerouslySetInnerHTML={{ __html: js }}></script> : null}
         </Fragment>;

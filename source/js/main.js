@@ -1,11 +1,5 @@
 /* eslint-disable node/no-unsupported-features/node-builtins */
-// (mainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings));
-
 function loadMainJs($, moment, ClipboardJS, config) {
-    if (!$('.columns .column-right-shadow').children().length) {
-        $('.columns .column-right-shadow').append($('.columns .column-right').children().clone());
-    }
-
     $('.article img:not(".not-gallery-item")').each(function () {
         // wrap images with link and add caption if possible
         if ($(this).parent('a').length === 0) {
@@ -16,15 +10,15 @@ function loadMainJs($, moment, ClipboardJS, config) {
         }
     });
 
-    // render images
-    if (typeof ($.fn.lightGallery) === 'function') {
-        $('.article').lightGallery({ selector: '.gallery-item', mode: 'lg-fade' });
+    if (typeof $.fn.lightGallery === 'function') {
+        $('.article').lightGallery({selector: '.gallery-item'});
     }
-    if (typeof ($.fn.justifiedGallery) === 'function') {
+    if (typeof $.fn.justifiedGallery === 'function') {
         if ($('.justified-gallery > p > .gallery-item').length) {
             $('.justified-gallery > p > .gallery-item').unwrap();
         }
-        $('.justified-gallery').justifiedGallery({ rowHeight: 230, margins: 4 });
+        // 调整gallery图片渲染尺寸
+        $('.justified-gallery').justifiedGallery({rowHeight: 230, margins: 4});
     }
 
     if (typeof moment === 'function') {
@@ -47,6 +41,7 @@ function loadMainJs($, moment, ClipboardJS, config) {
             $('.navbar-main .navbar-menu').removeClass('justify-content-start');
         }
     }
+
     adjustNavbar();
     $(window).resize(adjustNavbar);
 
@@ -141,61 +136,6 @@ function loadMainJs($, moment, ClipboardJS, config) {
         $mask.on('click', toggleToc);
         $('.navbar-main .catalogue').on('click', toggleToc);
     }
-
-    // hexo-util/lib/is_external_link.js
-    function isExternalLink(input, sitehost, exclude) {
-        try {
-            sitehost = new URL(sitehost).hostname;
-        } catch (e) { }
-
-        if (!sitehost) return false;
-
-        // handle relative url
-        var data;
-        try {
-            data = new URL(input, 'http://' + sitehost);
-        } catch (e) {
-            return false;
-        }
-
-        // handle mailto: javascript: vbscript: and so on
-        if (data.origin === 'null') return false;
-
-        const host = data.hostname;
-
-        if (exclude) {
-            exclude = Array.isArray(exclude) ? exclude : [exclude];
-
-            if (exclude && exclude.length) {
-                for (const i of exclude) {
-                    if (host === i) return false;
-                }
-            }
-        }
-
-        if (host !== sitehost) return true;
-
-        return false;
-    }
-
-    if (typeof config !== 'undefined'
-        && typeof config.site.url !== 'undefined'
-        && typeof config.site.external_link !== 'undefined'
-        && config.site.external_link.enable) {
-        $('.article .content a').filter((i, link) => {
-            return link.href
-                && !$(link).attr('href').startsWith('#')
-                && link.classList.length === 0
-                && isExternalLink(link.href,
-                    config.site.url,
-                    config.site.external_link.exclude);
-        }).each((i, link) => {
-            link.relList.add('noopener');
-            link.target = '_blank';
-        });
-    }
-    // load toc fold or show
-    loadToc();
 }
 
 function loadMathJax() { //加载mathjax

@@ -3,8 +3,7 @@
  * @module view/comment/utterances
  */
 const { Component } = require('inferno');
-const { cacheComponent } = require('../util/cache');
-
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 /**
  * Utterances comment JSX component.
  *

@@ -1,6 +1,5 @@
 const { Component, Fragment } = require('inferno');
-const { cacheComponent } = require('../util/cache');
-
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 class Valine extends Component {
     render() {
         const {
@@ -20,7 +19,6 @@ class Valine extends Component {
             lang,
             enableQQ = true,
             requiredFields,
-            use_pjax
         } = this.props;
         if (!appId || !appKey) {
             return <div class="notification is-danger">
@@ -28,7 +26,6 @@ class Valine extends Component {
                 Please set it in <code>_config.yml</code>.
             </div>;
         }
-        const usePjax = use_pjax != undefined && use_pjax;
         const js = `var valine = new Valine({
             el: '#comment-container' ,
             notify: ${notify},
@@ -55,8 +52,8 @@ class Valine extends Component {
     }
 }
 
-module.exports = cacheComponent(Valine, 'comment.valine', props => {
-    const { comment, page, use_pjax } = props;
+module.exports = Valine.Cacheable = cacheComponent(Valine, 'comment.valine', props => {
+    const { comment, page } = props;
 
     return {
         appId: comment.app_id,
@@ -74,6 +71,5 @@ module.exports = cacheComponent(Valine, 'comment.valine', props => {
         path: "/" + page.path,
         lang: comment.lang || __('article.comments_language'),
         requiredFields: comment.required_fields,
-        use_pjax
     };
 });

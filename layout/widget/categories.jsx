@@ -1,5 +1,6 @@
 const { Component } = require('inferno');
-const { cacheComponent } = require('../util/cache');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
+const AdsenseX = require('./ads_x');
 
 class Categories extends Component {
 
@@ -28,27 +29,31 @@ class Categories extends Component {
         } = this.props;
         var count={n: 0};
 
-        return <div class="card widget">
-            <div class="card-content">
-                <div class="menu">
-                    <h3 class="menu-label">{title}</h3>
-                    <ul class="menu-list">
-                        {this.renderList(categories, showCount,count,isPage)}
-                        {count.n >= 10 && !isPage ?
-                            <a className="level is-mobile is-marginless" href={allUrl}>
-                                <span className="level-start">
-                                    <span className="level-item">查看全部>></span>
-                                </span>
-                            </a> : null
-                        }
-                    </ul>
+        return <Fragment>
+            {isPage ? <AdsenseX /> : null}
+            <div class="card widget">
+                <div class="card-content">
+                    <div class="menu">
+                        <h3 class="menu-label">{title}</h3>
+                        <ul class="menu-list">
+                            {this.renderList(categories, showCount,count,isPage)}
+                            {count.n >= 10 && !isPage ?
+                                <a className="level is-mobile is-marginless" href={allUrl}>
+                                    <span className="level-start">
+                                        <span className="level-item">查看全部>></span>
+                                    </span>
+                                </a> : null
+                            }
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </div>;
+        </div>
+        {isPage ? <AdsenseX /> : null}
+        </Fragment>
     }
 }
 
-module.exports = cacheComponent(Categories, 'widget.categories', props => {
+module.exports = Categories.Cacheable = cacheComponent(Categories, 'widget.categories', props => {
     // adapted from hexo/lib/plugins/helper/list_categories.js
     const {
         page,

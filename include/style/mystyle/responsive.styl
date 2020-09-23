@@ -1,0 +1,66 @@
+/* ---------------------------------
+ *         Responsive Layout
+ * --------------------------------- */
++widescreen()
+    .is-1-column .container
+    .is-2-column .container
+    .is-3-column .container {
+        /* 关闭评论图片 后调节 原94%*/
+        max-width: 85%; /*screen-widescreen + 2 * extend-width - 2 * gap*/
+        width: 85%;
+    }
+    max-width: $desktop - 2 * $gap
+    width: $desktop - 2 * $gap
+    .column.is-3-widescreen {
+        flex: none;
+        width: 24%;
+    }
+    .column.is-6-widescreen {
+        width: 52%;
+    }
+    .column.is-4-widescreen {
+        flex: none;
+        width: 24%;
+    }
+    .column.is-8-widescreen {
+        width: 76%;
+    }
+    .column.is-9-widescreen {
+        width: 76%;
+    }
+    //screen-widescreen + 2 * extend-width - 2 * gap
+    .navbar > .container .navbar-brand, .container > .navbar .navbar-brand {
+        margin-left: 0%;
+    }
+
+    .navbar > .container .navbar-menu, .container > .navbar .navbar-menu {
+        margin-right: 0.5%;
+    }
+
+    .level-end {
+        margin-right: -1.5%;
+    }
+
++fullhd()
+    .is-2-column .container
+        max-width: $widescreen - 2 * $gap
+        width: $widescreen - 2 * $gap
+
+    .is-1-column .container
+        max-width: $desktop - 2 * $gap
+        width: $desktop - 2 * $gap
+
++tablet()
+    //参考自 https://github.com/ppoffice/hexo-theme-icarus/pull/616/files
+    .has-navbar-fixed-top
+        .column-main,
+        .column-left,
+        .column-right,
+        .column-right-shadow
+        .widget
+            &.is-sticky
+                top: 5.5rem;
+
++mobile()
+    .section
+        padding: 6.5rem 1.5rem

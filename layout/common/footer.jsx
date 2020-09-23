@@ -1,5 +1,5 @@
 const { Component } = require('inferno');
-const { cacheComponent } = require('../util/cache');
+const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 
 class Footer extends Component {
     render() {
@@ -10,9 +10,9 @@ class Footer extends Component {
             siteTitle,
             siteYear,
             author,
-            visitorCounterTitle,
             links,
             showVisitorCounter,
+            visitorCounterTitle,
             url_for,
             my_cdn,
             side_music_netease_id,
@@ -21,6 +21,18 @@ class Footer extends Component {
             registeredNo,
             footerWebsiteTime
         } = this.props;
+
+        let footerLogo = '';
+        if (logo) {
+            if (logo.text) {
+                footerLogo = logo.text;
+            } else {
+                footerLogo = <img src={logoUrl} alt={siteTitle} height="28" />;
+            }
+        } else {
+            footerLogo = siteTitle;
+        }
+
         var footerWebsiteTimeTemp =  footerWebsiteTime+"";
         var timeArr = footerWebsiteTimeTemp.split("|");
         var timeJs = `function createTime(time) {
@@ -45,7 +57,7 @@ class Footer extends Component {
                 <div class="level">
                     <div class="level-start">
                         <a class="footer-logo is-block mb-2" href={siteUrl}>
-                            {logo && logo.text ? logo.text : <img src={logoUrl} alt={siteTitle} height="28" />}
+                            {footerLogo}
                         </a>
                         <p class="size-small">
                             <span dangerouslySetInnerHTML={{ __html: `&copy; ${siteYear} ${author || siteTitle}` }}></span>

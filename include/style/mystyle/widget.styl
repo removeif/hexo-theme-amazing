@@ -1,0 +1,142 @@
+/* ---------------------------------
+ *    Widget
+ * --------------------------------- */
+
+.level-item .subtitle, .level-item .title {
+  margin-bottom: 0;
+}
+
+#hitokoto {
+  text-align: center;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.level:not(:last-child) {
+  margin-bottom: .5rem;
+}
+
+hr {
+  margin: 0 0;
+}
+
+.donate .qrcode img {
+  max-width: 140px;
+}
+
+// 最新评论CSS
+.body_hot_comment .comment-content {
+  font-size: 0.75em;
+  letter-spacing: 0.1em;
+  .card-comment-item {
+    display: inline-block;
+    margin-top: 10px;
+    width: 100%;
+    .ava {
+      height: 3rem !important;
+      margin-right: 0.2em !important;
+      border-radius: 40px;
+    }
+    img {
+      float: left;
+      transition: all 0.5s ease-in;
+      -webkit-transition: all 0.5s ease-in;
+      -moz-transition: all 0.5s ease-in;
+      -o-transition: all 0.5s ease-in;
+    }
+
+    img:hover {
+      transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+    }
+  }
+  :first-child {
+    margin-top: unset;
+  }
+  .item-header-text {
+    padding-left: 0.75em;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+
+  }
+  .item-text {
+    padding-left: 0.75em;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: auto;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    display: -webkit-box;
+    white-space: normal;
+  }
+}
+
+.level0 {
+  background-color: #d9e6fd;
+  color: #4a4a4a;
+}
+
+.level1 {
+  background-color: #8fb8fb;
+  color: #4a4a4a;
+}
+
+.level2 {
+  background-color: #5593f7;
+  color: white;
+}
+
+.level3 {
+  background-color: #3273dc;
+  color: white;
+}
+
+#index_hot_div {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  .item {
+    align-items: center;
+    border-radius: 4px;
+    display: inline-flex;
+    font-size: 0.75rem;
+    height: 2.1rem;
+    justify-content: center;
+    line-height: 1.5;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    white-space: nowrap;
+    margin-bottom: 0.75rem;
+    box-shadow: 0px 0px 2px 1px #b5b5b5;
+  }
+
+}
+
+// 归档
+.post-calendar-pre {
+  overflow-x: auto;
+  justify-content: center;
+  max-width: 100%;
+}
+
+#post-calendar {
+  display: flex;
+  justify-context: center;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 200px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  margin-bottom: 2rem;
+}

@@ -1,13 +1,13 @@
 const logger = require('hexo-log')();
 const deepmerge = require('deepmerge');
-const Migration = require('../util/migrate').Migration;
+const Migration = require('hexo-component-inferno/lib/core/migrate').Migration;
 
 module.exports = class extends Migration {
     constructor() {
         super('3.0.0', null);
     }
 
-    doMigrate(config) {
+    upgrade(config) {
         const result = deepmerge({}, config);
         result.head = {
             favicon: config.favicon || null,
@@ -45,6 +45,11 @@ module.exports = class extends Migration {
                     delete result.comment.appid;
                     break;
             }
+        }
+
+        if (Array.isArray(result.donate) && result.donate.length) {
+            result.donates = result.donate;
+            delete result.donate;
         }
 
         if (Array.isArray(result.widgets) && result.widgets.length) {

@@ -1,6 +1,6 @@
 const { Component, Fragment } = require('inferno');
+const Paginator = require('hexo-component-inferno/lib/view/misc/paginator');
 const Article = require('./common/article');
-const Paginator = require('./misc/paginator');
 
 module.exports = class extends Component {
     render() {
@@ -8,7 +8,7 @@ module.exports = class extends Component {
         const { __, url_for } = helper;
 
         return <Fragment>
-            {page.posts.map(post => <Article config={config} page={post} helper={helper} index={true} />)}
+            {page.posts.map((post, index, arr) => <Article config={config} page={post} helper={helper} index={true} indexAt={index} />)}
             {page.total > 1 ? <Paginator
                 current={page.current}
                 total={page.total}

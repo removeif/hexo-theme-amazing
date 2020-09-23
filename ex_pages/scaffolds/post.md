@@ -3,7 +3,11 @@ thumbnail:
 title: {{ title }}
 date: {{ date }}
 tags:
+-test1
+-test2
 categories: 
+-test3
+-test4
 toc: true
 recommend: 1
 keywords: categories-java

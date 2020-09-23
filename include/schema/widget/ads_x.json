@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "/widget/ads_x.json",
+    "description": "Adsense X Widget",
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "ads_x"
+        }
+    },
+    "required": [
+        "type"
+    ]
+}

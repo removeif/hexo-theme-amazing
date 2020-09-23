@@ -1,6 +1,6 @@
 const crypto = require('crypto');
-const { Component, Fragment } = require('inferno');
-const { cacheComponent } = require('../util/cache');
+const {Component, Fragment} = require('inferno');
+const {cacheComponent} = require('hexo-component-inferno/lib/util/cache');
 
 class Gitalk extends Component {
     render() {
@@ -52,18 +52,18 @@ class Gitalk extends Component {
         gitalk.render('comment-container')});`;
         return <Fragment>
             <div id="comment-container"></div>
-            <link rel="stylesheet" href={cssUrl} />
-            <script dangerouslySetInnerHTML={{ __html: js }}></script>
+            <link rel="stylesheet" href={cssUrl}/>
+            <script dangerouslySetInnerHTML={{__html: js}}></script>
         </Fragment>;
     }
 }
 
-module.exports = cacheComponent(Gitalk, 'comment.gitalk', props => {
-    const { helper, comment } = props;
-    const { my_cdn, url_for, __ } = helper;
+module.exports = Gitalk.Cacheable = cacheComponent(Gitalk, 'comment.gitalk', props => {
+    const {helper, comment} = props;
+    const {my_cdn, url_for, __, _get_md5, _get_path_end_str} = helper;
 
     // FIXME: config name change
-    const id = crypto.createHash('md5').update(helper.get_path_end_str(props.page.path, props.page.uniqueId, props.page.title)).digest('hex');
+    const id = _get_md5(_get_path_end_str(props.page.path, props.page.uniqueId, props.page.title));
 
     let canComments = props.page.comments;
 
