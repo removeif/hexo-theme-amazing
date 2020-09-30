@@ -114,3 +114,5 @@ yarn.lock
 *.iws
 *.iml
 .DS_Store
+db.json
+public/
