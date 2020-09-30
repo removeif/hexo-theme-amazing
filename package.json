@@ -16,6 +16,7 @@
     "hexo": "^5.0.0",
     "hexo-blog-encrypt": "^3.0.13",
     "hexo-component-inferno": "^0.8.2",
+    "hexo-deployer-git": "^2.1.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-index": "^2.0.0",
