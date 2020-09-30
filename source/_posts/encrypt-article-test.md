@@ -4,7 +4,7 @@ top: -1
 toc: true
 keywords: categories-java
 encrypt: true
-password: 201901lyc!
+password: 2020123!
 abstract: 咦，这是一篇加密文章，好像需要输入密码才能查看呢！
 message: 嗨，请准确无误地输入密码查看哟！
 wrong_pass_message: 不好意思，密码没对哦，在检查检查呢！

@@ -2,10 +2,10 @@ title: Hexo
 subtitle: ''
 description: ''
 keywords: null
-author: John Doe
+author: 辣椒の酱
 language: zh-CN
 timezone: ''
-url: 'http://example.com'
+url: 'https://removeif.github.io/'
 root: /
 permalink: ':title.html'
 permalink_defaults: null
