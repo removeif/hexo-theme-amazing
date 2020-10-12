@@ -9,6 +9,9 @@ $body-background-color ?= #f7f7f7
 $family-sans-serif ?= Ubuntu, Roboto, 'Open Sans', 'Microsoft YaHei', sans-serif
 $family-code ?= 'Source Code Pro', monospace, 'Microsoft YaHei'
 
+$size-7 ?= .85rem
+$size-small ?= .75rem
+
 $primary ?= $blue
 $custom-colors ?= {
     grey-lightest: {
@@ -94,3 +97,7 @@ body > .section
 
     ::-webkit-scrollbar-thumb:hover
         background: rgba(0,0,0,0.24)
+
+.article-licensing .licensing-meta h6, .article-licensing .licensing-title a, .size-small {
+    font-size: .85rem!important;
+}
