@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 **Note 0**
-Please review [the contributing guide](https://github.com/ppoffice/hexo-theme-icarus/blob/master/CONTRIBUTING.md) before making this pull request.
+Please review [the contributing guide](https://github.com/removeif/hexo-theme-amazing/blob/master/CONTRIBUTING.md) before making this pull request.
 
 **Note 1**
 
@@ -25,6 +25,6 @@ the above components.
 
 **Detailed description**
 
-> Please use the [Icarus issue template](https://github.com/ppoffice/hexo-theme-icarus/blob/master/.github/ISSUE_TEMPLATE/bug_report.md) if it is a bug fix.
+> Please use the [Icarus issue template](https://github.com/removeif/hexo-theme-amazing/blob/master/.github/ISSUE_TEMPLATE/bug_report.md) if it is a bug fix.
 
-> Please use the [Icarus feature request template](https://github.com/ppoffice/hexo-theme-icarus/blob/master/.github/ISSUE_TEMPLATE/feature_request.md) if it is a bug fix.
+> Please use the [Icarus feature request template](https://github.com/removeif/hexo-theme-amazing/blob/master/.github/ISSUE_TEMPLATE/feature_request.md) if it is a bug fix.
