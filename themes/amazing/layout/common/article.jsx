@@ -185,7 +185,7 @@ module.exports = class extends Component {
                     {!index ? <Share config={config} page={page} helper={helper} /> : null}
                 </article>
             </div>
-            {index && (index_ad_positions.indexOf(indexAt) > -1) ? <AdsenseX config={config} display={index_ad_positions != undefined}/> : null}
+            {index && index_ad_positions && (index_ad_positions.indexOf(indexAt) > -1) ? <AdsenseX config={config} display={index_ad_positions != undefined}/> : null}
             {/* Donate button */}
             {!index ? <Donates config={config} helper={helper} /> : null}
             {/* Post navigation */}
