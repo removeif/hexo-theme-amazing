@@ -1,5 +1,5 @@
 ---
-thumbnail: http://wx2.sinaimg.cn/large/b5d1b710ly1g6tkoq1a10j212w0k17wh.jpg
+thumbnail: https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20201030170457.png
 date: 2019-09-09 18:52:09
 ---
 <div class="friend-title-item"><br>申请友链须知<br><br><hr></div>

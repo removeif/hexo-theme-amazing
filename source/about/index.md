@@ -1,5 +1,5 @@
 ---
-thumbnail: http://wx3.sinaimg.cn/large/b5d1b710ly1g6s7hn2aycj212w0k0dx5.jpg
+thumbnail: https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20201030172650.png
 date: 2018-11-11 08:24:49
 comments: false
 ---
@@ -33,6 +33,7 @@ comments: false
 + 在Icarus主题之上进行了部分修改。
 
 ***更新日志：***
+--*2020.09.20：icarus4.0适配*
 --*2020.01.18：icarus3.0适配*
 --*2019.11.17：增加深色主题开关*
 --*2019.10.30：去图，精简卡片*
