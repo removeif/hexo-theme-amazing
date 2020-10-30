@@ -1,5 +1,5 @@
 ---
-thumbnail: http://wx3.sinaimg.cn/large/b5d1b710ly1g6s7hn2aycj212w0k0dx5.jpg
+thumbnail: https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20201030172650.png
 date: 2018-11-11 08:24:49
 comments: false
 ---
