@@ -125,7 +125,7 @@ module.exports = class extends Component {
                                 'column-main': true,
                                 'is-12': columnCount === 1,
                                 'is-8-tablet is-8-desktop is-6-widescreen': (page.layout != 'post' && page.layout != 'page') && columnCount === 3,
-                                'is-8-tablet is-8-desktop is-9-widescreen': isPageOrPost
+                                'is-8-tablet is-8-desktop is-9-widescreen': columnCount === 2
                             })} dangerouslySetInnerHTML={{__html: indexTopData + body}}></div>
                             <Widgets site={site} config={config} helper={helper} page={page} position={'left'}/>
                             {isPageOrPost ? null : <Widgets site={site} config={config} helper={helper} page={page} position={'right'}/>}
