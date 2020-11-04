@@ -133,7 +133,7 @@ class ArticleLicensing extends Component {
 ArticleLicensing.Cacheable = cacheComponent(ArticleLicensing, 'misc.articlelicensing', (props) => {
     const {config, page, helper} = props;
     const {licenses} = config.article || {};
-    const link = page.source_url || (config.url + config.root + page.path);
+    const link = decodeURI(page.permalink);
 
     const links = {};
     if (licenses) {
