@@ -42,7 +42,7 @@
   "deprecated": false,
   "description": "A simple, delicate, and modern theme for Hexo",
   "devDependencies": {
-    "bulma-stylus": "0.8.0",
+    "bulma-stylus": "0.9.1",
     "eslint": "^7.6.0",
     "eslint-config-hexo": "^4.1.0",
     "eslint-plugin-json": "^2.0.1",
@@ -66,7 +66,7 @@
   "license": "MIT",
   "name": "hexo-theme-amazing",
   "peerDependencies": {
-    "bulma-stylus": "0.8.0",
+    "bulma-stylus": "0.9.1",
     "hexo": "^5.0.2",
     "hexo-log": "^2.0.0",
     "hexo-pagination": "^1.0.0",
