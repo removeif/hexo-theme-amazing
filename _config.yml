@@ -153,6 +153,30 @@ comment:
     distraction_free_mode: false
     has_hot_recommend: true # 是否有热门推荐
     has_latest_comment: true #是否有最新评论
+    
+# comment:
+#     type: valine
+#     app_id: rOtVIhvG3kd7QkMKe3naSU9R-gzGzoHsz
+#     app_key: F2sNV0CkqvbPat45di3DEn3z
+#     notify: false
+#     verify: false
+#     avatar: 'mp'
+#     placeholder: '留下您的高见！'
+#     has_latest_comment: true #是否有最新评论 true-有，false-无
+#     owner: 辣椒の酱 #博主名 最新评论标注[博主]
+#     required_fields: ['nick', 'mail', 'link']
+#     lang: en #zh-CN zh-TW en ja
+
+
+# utteranc site: https://utteranc.es/
+# comment:
+#     type: utteranc
+#     repo: removeif/utteranc_comment # (required) GitHub userName & repository name
+#     issue_term: pathname 
+#     issue_number: 
+#     label: 
+#     theme: github-light
+
 # Donate plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Donation/
 donates:
