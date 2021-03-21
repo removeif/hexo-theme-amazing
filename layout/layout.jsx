@@ -55,6 +55,15 @@ module.exports = class extends Component {
                 <span id="banner"><div class="card-content ">Banner ${hotTip}</div></span>
             </div>
         </div>`;
+        
+        // mathjax support 使用方法 md文章头部开启mathJax: true，md文章中公式格式：$$f(x) = a_1x^n + a_2x^{n-1} + a_3x^{n-2}$$
+        var mathJaxJs = `function loadMathJax() { //加载mathjax
+            $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+                MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+                var math = document.getElementsByClassName("entry-content")[0];
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+            });
+        };loadMathJax();`;
 
         var pjaxJs = `var pjax = new Pjax({
             elements: "a",//代表点击链接就更新
@@ -69,6 +78,14 @@ module.exports = class extends Component {
         function loadBusuanzi(){
         $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", function () {});
         }
+
+        function loadMathJax() { //加载mathjax
+            $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+                MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] } });
+                var math = document.getElementsByClassName("entry-content")[0];
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+            });
+        };
 
         // 开始 PJAX 执行的函数
         document.addEventListener('pjax:send', function () {
@@ -137,6 +154,7 @@ module.exports = class extends Component {
                 <Search config={config} helper={helper} />
                 {use_pjax ? <script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script> : null}
                 {use_pjax ? <script type="text/javascript" dangerouslySetInnerHTML={{ __html: pjaxJs }}></script> : null}
+                {isMath ? <script type="text/javascript" dangerouslySetInnerHTML={{ __html: mathJaxJs }}></script> : null}
             </body>
         </html>;
     }
