@@ -153,7 +153,7 @@ comment:
     distraction_free_mode: false
     has_hot_recommend: true # 是否有热门推荐
     has_latest_comment: true #是否有最新评论
-    
+    proxy: https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token #解决登录后403问题
 # comment:
 #     type: valine
 #     app_id: rOtVIhvG3kd7QkMKe3naSU9R-gzGzoHsz
