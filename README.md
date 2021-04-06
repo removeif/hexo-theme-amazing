@@ -285,7 +285,7 @@ body:not(.night) .post-navigation:hover{
 如下：
 ![无界样式](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200218084713.png)
 #### 精简部分widget数据
-widget中的归档和分类和标签精简了，数据多时很丑，改为了分别展示5条和10条和20条，增加了查看全部。
+widget中的归档和分类和标签精简了，数据多时不太协调，改为了分别展示5条和10条和20条，增加了查看全部。
 ![查看全部](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200119181201.png)
 
 #### gitalk评论增加评论开关，评论列表中标记博主
