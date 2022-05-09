@@ -43,7 +43,7 @@
   "description": "A simple, delicate, and modern theme for Hexo",
   "devDependencies": {
     "bulma-stylus": "0.8.0",
-    "eslint": "^7.6.0",
+    "eslint": "^8.15.0",
     "eslint-config-hexo": "^4.1.0",
     "eslint-plugin-json": "^2.0.1",
     "eslint-plugin-react": "^7.17.0",
