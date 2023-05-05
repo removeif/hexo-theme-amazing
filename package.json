@@ -1,6 +1,6 @@
 {
-  "_from": "hexo-theme-amazing@^2.0.0",
-  "_id": "hexo-theme-amazing@2.0.0",
+  "_from": "hexo-theme-amazing@^5.0.0",
+  "_id": "hexo-theme-amazing@5.0.0",
   "_inBundle": false,
   "_integrity": "sha512-8u6l4FCVR4/Yo6066nuHPec5TmkuD9G1Pgyu3Djhi+T6/T5bEIgiAUwIjyD3xXgqQY3i8CKSB7AdISOFVosOzA==",
   "_location": "/hexo-theme-amazing",
@@ -8,20 +8,20 @@
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "hexo-theme-amazing@^2.0.0",
+    "raw": "hexo-theme-amazing@^5.0.0",
     "name": "hexo-theme-amazing",
     "escapedName": "hexo-theme-amazing",
-    "rawSpec": "^2.0.0",
+    "rawSpec": "^5.0.0",
     "saveSpec": null,
-    "fetchSpec": "^2.0.0"
+    "fetchSpec": "^5.0.0"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/hexo-theme-amazing/-/hexo-theme-amazing-2.0.0.tgz",
+  "_resolved": "https://registry.npmjs.org/hexo-theme-amazing/-/hexo-theme-amazing-5.0.0.tgz",
   "_shasum": "9f96ee5c948ab11f77dfe420464e08229184eb35",
-  "_spec": "hexo-theme-amazing@^2.0.0",
+  "_spec": "hexo-theme-amazing@^5.0.0",
   "_where": "/opt/blog/blog5",
   "author": {
     "name": "removeif",
@@ -33,10 +33,12 @@
   "bundleDependencies": false,
   "dependencies": {
     "deepmerge": "^4.2.2",
-    "hexo-component-inferno": "^0.10.1",
-    "inferno": "^7.3.3",
-    "inferno-create-element": "^7.3.3",
+    "hexo-component-inferno": "^2.0.3",
+    "inferno": "^8.1.1",
+    "inferno-create-element": "^8.1.1",
     "moment": "^2.22.2",
+    "hexo-blog-encrypt": "^3.0.13",
+    "hexo-generator-index": "^2.0.0",
     "semver": ">=5.0.0"
   },
   "deprecated": false,
@@ -55,7 +57,7 @@
     "hexo-util": "^2.2.0"
   },
   "engines": {
-    "node": ">=10.13.0"
+    "node": ">=12.13.0"
   },
   "homepage": "https://github.com/removeif/hexo-theme-amazing",
   "keywords": [
@@ -76,10 +78,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/removeif/hexo-theme-amazing.git"
+    "url": "https://github.com/removeif/hexo-theme-amazing.git"
   },
   "scripts": {
     "lint": "eslint --ext .js --ext .jsx --ext .json ."
   },
-  "version": "2.0.0"
+  "version": "5.0.0"
 }
