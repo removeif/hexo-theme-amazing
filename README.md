@@ -59,9 +59,17 @@ v11.1.0
 192:hexo-theme-icarus-removeif xx$ npm -v
 6.4.1
 ```  
-#### 在博客目录下clone主题代码
+#### 安装方法
+博客下 直接clone
 ```jshelllanguage
 git clone https://github.com/removeif/hexo-theme-amazing.git themes/amazing
+```
+
+或者通过 npm 安装
+```jshelllanguage
+npm i hexo-theme-amazing  
+hexo config theme amazing // 提示缺少依赖就按提示的安装相应依赖即可
+
 ```
 #### 开始部分配置：
 **敲黑板！！！！首先全局以及主题中的`_config.yml`配置成自己的对应参数。**  
