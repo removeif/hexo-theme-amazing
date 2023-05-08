@@ -38,7 +38,7 @@
     "inferno-create-element": "^8.1.1",
     "moment": "^2.22.2",
     "hexo-blog-encrypt": "^3.0.13",
-    "hexo-generator-index": "^2.0.0",
+    "hexo-generator-index": "^3.0.0",
     "semver": ">=5.0.0"
   },
   "deprecated": false,
