@@ -169,11 +169,11 @@ module.exports = class extends Component {
                                 </div>
                             </div>
                         {/*lastModified updated*/}
-                        {page.updated && page.updated > page.date ?
+                        {page.updated_date && date(page.updated_date) > date(page.date) ?
                             <div class="level-start">
                                 <div class="level-item has-text-grey is-size-7">
-                                    <time datetime={date_xml(page.updated)}><i
-                                        class="far fa-calendar-check">&nbsp;{lastModified}&nbsp;</i>{date(page.updated)}
+                                    <time datetime={date_xml(page.updated_date)}><i
+                                        class="far fa-calendar-check">&nbsp;{lastModified}&nbsp;</i>{date(page.updated_date)}
                                     </time>
                                 </div>
                             </div> : null

@@ -1,4 +1,6 @@
-const logger = require('hexo-log')();
+const createLogger = require('hexo-log');
+
+const logger = createLogger.default();
 
 module.exports = hexo => {
     logger.info('=== Registering Hexo extensions ===');
@@ -11,6 +13,8 @@ module.exports = hexo => {
     require('hexo-component-inferno/lib/hexo/generator/tags')(hexo);
     require('hexo-component-inferno/lib/hexo/helper/cdn')(hexo);
     require('hexo-component-inferno/lib/hexo/helper/page')(hexo);
+    require('hexo-component-inferno/lib/hexo/tag/message')(hexo);
+    require('hexo-component-inferno/lib/hexo/tag/tabs')(hexo);
     require('hexo-component-inferno/lib/core/view').init(hexo);
-    require('./myhelper/myhelper')(hexo)
+    require('./myhelper/myhelper')(hexo);
 };
