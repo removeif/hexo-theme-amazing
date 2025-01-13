@@ -1,5 +1,6 @@
 /* global hexo */
 const createLogger = require('hexo-log');
+
 const logger = createLogger.default();
 
 /**

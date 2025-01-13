@@ -1,5 +1,6 @@
 const moment = require('moment');
 const { Component, Fragment } = require('inferno');
+const { toMomentLocale } = require('hexo/dist/plugins/helper/date');
 const Share = require('./share');
 const Donates = require('./donates');
 const Comment = require('./comment');
@@ -24,7 +25,7 @@ module.exports = class extends Component {
         const { article, plugins, index_show_tags_categories,comment,comment_head_has_ad,article_head_has_ad,index_zero_position_ad,index_ad_positions } = config;
         const { url_for, date, date_xml, __, _p, _get_md5, _get_path_end_str } = helper;
 
-        const language = page.lang || page.language || config.language || 'en';
+        const language = toMomentLocale(page.lang || page.language || config.language || 'en');
         const cover = page.thumbnail ? page.thumbnail : null;
 
         const words = getWordCount(page._content);

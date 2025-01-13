@@ -7,23 +7,24 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10, 14]
+        node-version: [14, latest]
       fail-fast: false
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           repository: hexojs/hexo-starter
-      - uses: actions/checkout@v2
+          ref: dcd18588de8f5c1bcc689c101e2f21726c11c4d6  # pin blog dependencies to support node.js 14
+      - uses: actions/checkout@v3
         with:
           path: themes/icarus
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           repository: SukkaLab/hexo-many-posts
           path: source/_posts/hexo-many-posts
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: actions/cache@v1
+      - uses: actions/cache@v3
         with:
           path: node_modules
           key: npm-cache
@@ -32,8 +33,6 @@ jobs:
       - run: >
           npm install $(node -e "const deps=require('./themes/icarus/package.json').dependencies;
           console.log(Object.keys(deps).map(key=>key+'@'+deps[key]).join(' '));")
-      - run: >
-          npm install $(node -e "const deps=require('./themes/icarus/package.json').peerDependencies;
-          console.log(Object.keys(deps).map(key=>key+'@'+deps[key]).join(' '));")
+      - run: npm install hexo-tag-embed
       - run: npx hexo config theme icarus
       - run: time NODE_ENV=production npx hexo g -b

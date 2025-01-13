@@ -24,6 +24,7 @@ widget:
     subscribe_email: '订阅更新'
     subscribe: '订阅'
     adsense: '广告'
+    followit: 'follow.it'
     recommend_posts: '推荐文章'
     related_posts: '相关文章'
     latest_comment: '最新评论'

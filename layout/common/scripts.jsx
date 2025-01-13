@@ -1,4 +1,5 @@
 const { Component, Fragment } = require('inferno');
+const { toMomentLocale } = require('hexo/dist/plugins/helper/date');
 const Plugins = require('./plugins');
 
 module.exports = class extends Component {
@@ -6,7 +7,7 @@ module.exports = class extends Component {
         const { site, config, helper, page } = this.props;
         const { url_for, cdn, my_cdn } = helper;
         const { external_link, article, comment, has_banner } = config;
-        const language = page.lang || page.language || config.language || 'en';
+        const language = toMomentLocale(page.lang || page.language || config.language || 'en');
         const hasComment = comment != undefined && comment.type != undefined && (comment.type == 'gitalk' || comment.type == 'valine');
         var hasHotRecommend = false;
         var hasBanner = has_banner != undefined && has_banner;

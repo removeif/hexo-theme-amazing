@@ -1,6 +1,4 @@
-$(document).ready(loadBackTop());
-
-function loadBackTop() {
+$(document).ready(() => {
     const $button = $('#back-to-top');
     const $footer = $('footer.footer');
     const $mainColumn = $('.column-main');
@@ -151,4 +149,4 @@ function loadBackTop() {
             $('body, html').animate({ scrollTop: 0 }, 400);
         }
     });
-};
+});

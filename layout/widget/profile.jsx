@@ -154,20 +154,20 @@ Profile.Cacheable = cacheComponent(Profile, 'widget.profile', props => {
             post: {
                 count: postCount,
                 title: _p('common.post', postCount),
-                url: url_for('/archives')
+                url: url_for('/archives/')
             },
             category: {
                 count: categoryCount,
                 title: _p('common.category', categoryCount),
-                url: url_for('/categories')
+                url: url_for('/categories/')
             },
             tag: {
                 count: tagCount,
                 title: _p('common.tag', tagCount),
-                url: url_for('/tags')
+                url: url_for('/tags/')
             }
         },
-        followLink: url_for(follow_link),
+        followLink: follow_link ? url_for(follow_link) : undefined,
         followTitle: __('widget.follow'),
         socialLinks,
         hitokotoFrom: __('widget.hitokoto_from'),

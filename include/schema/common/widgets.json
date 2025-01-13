@@ -41,6 +41,9 @@
                 "$ref": "/widget/adsense.json"
             },
             {
+                "$ref": "/widget/followit.json"
+            },
+            {
                 "$ref": "/widget/ads_x.json"
             },
             {
