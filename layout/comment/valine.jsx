@@ -69,7 +69,7 @@ module.exports = Valine.Cacheable = cacheComponent(Valine, 'comment.valine', pro
         highlight: comment.highlight,
         recordIp: comment.record_ip,
         path: "/" + page.path,
-        lang: comment.lang || __('article.comments_language'),
+        lang: comment.lang || page.lang || page.language || config.language || 'zh-CN',
         requiredFields: comment.required_fields,
     };
 });
