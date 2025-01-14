@@ -57,13 +57,6 @@ AMAZING
 
 ### 二、部分配置说明：
 
-#### 本机环境：
-```jshelllanguage
-192:hexo-theme-icarus-removeif xx$ node -v
-v11.1.0
-192:hexo-theme-icarus-removeif xx$ npm -v
-6.4.1
-```  
 #### 安装方法
 博客下 直接clone
 ```jshelllanguage
@@ -74,7 +67,7 @@ git clone https://github.com/removeif/hexo-theme-amazing.git themes/amazing
 ```jshelllanguage
 npm i hexo-theme-amazing  
 hexo config theme amazing // 提示缺少依赖就按提示的安装相应依赖即可
-
+// 博客目录下增加 博客配置文件_config.yml，以及主题配置文件_config.amazing.yml进行配置即可 
 ```
 #### 开始部分配置：
 **敲黑板！！！！首先全局以及主题中的`_config.yml`配置成自己的对应参数。**  
