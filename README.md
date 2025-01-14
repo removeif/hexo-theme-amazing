@@ -1,9 +1,14 @@
-**预览图**
-+ 首页1
+<p align="center" class="mb-2">
+AMAZING
+<br> A simple, delicate, and modern theme for the static site generator Hexo.
+<br>
+<a href="https://removeif.github.io/">Preview</a> |
+<a href="https://github.com/removeif/hexo-theme-amazing/discussions">Discuss on GitHub</a>
+<br>
+</p>
+
 ![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200923152909.png)
-+ 首页2
-![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200923153331.png)
-+ 首页深色
+
 ![](https://cdn.jsdelivr.net/gh/removeif/blog_image/img/2020/20200923153450.png)
 
 ### 写在前面
